@@ -14,7 +14,7 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$positive:                        #71B4F0 !default;
+$positive:                        #EC9F48 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -22,3 +22,30 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+ #dashboard {
+ 	text-align: center;
+
+ 	.dashboard-card {
+ 		height: 30vh;
+ 	}
+
+ 	.dashboard-header {
+ 		height: calc(40vh - 200px);
+ 	}
+ }
+
+ #activity {
+
+ }
+
+ #post {
+
+ }
+
+ #leaderboard {
+
+ }
+
+ #account {
+ 	
+ }
