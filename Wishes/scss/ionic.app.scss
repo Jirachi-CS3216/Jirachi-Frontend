@@ -23,14 +23,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
  #dashboard {
- 	text-align: center;
 
  	.dashboard-card {
+ 		text-align: center;
  		height: 30vh;
  	}
 
  	.dashboard-header {
+ 		align-items: center;
+ 		text-align: center;
  		height: calc(40vh - 110px);
+
+ 		div {
+ 			position: relative;
+ 			top: calc(50% - 10px);
+ 			font-size: 30px;
+ 		}
  	}
  }
 
