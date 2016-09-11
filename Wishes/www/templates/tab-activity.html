@@ -1,5 +1,17 @@
 <ion-view view-title="Activity" id="activity">
   	<ion-content class="padding">
-    	<h2>Activity Page Not Implemented</h2>
+    	<div class="card activity-card" ng-repeat="activity in activities" ng-click="selectActivity(activity)">
+			<div class="item item-avatar">
+				<img src="http://www.jf258.com/uploads/2014-01-01/012704526.jpg">
+					<h2>Pretty Hate Machine</h2>
+					<p>Nine Inch Nails</p>
+			</div>
+
+            <div class="item item-text-wrap">
+                <div>
+                    {{ activity.description }}
+                </div>
+            </div>
+        </div>
   	</ion-content>
 </ion-view>

@@ -17,6 +17,7 @@ $dark:                            #444 !default;
 $positive:                        #219AA0 !default;
 $text-dark:						  #444444;
 $text-light:					  #ffffff;
+$pimary-background-color:		  #A9DDDD;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -30,7 +31,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
  #dashboard {
- 	background: #A9DDDD;
+ 	background: $pimary-background-color;
 
  	.dashboard-card {
  		margin-left: 10px;
@@ -68,17 +69,26 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
  }
 
  #activity {
+ 	color: $text-light;
+ 	background: $pimary-background-color;
 
+ 	.activity-card {
+ 		cursor: pointer;
+ 		transition: 0.2s ease-in-out all !important;
+ 	}
  }
 
  #post {
-
+ 	color: $text-light;
+ 	background: $pimary-background-color;
  }
 
  #leaderboard {
-
+ 	color: $text-light;
+ 	background: $pimary-background-color;
  }
 
  #account {
-
+ 	color: $text-light;
+ 	background: $pimary-background-color;
  }
