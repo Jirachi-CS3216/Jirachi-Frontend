@@ -24,6 +24,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.tabs.position('bottom');
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
