@@ -33,13 +33,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
  	background: #A9DDDD;
 
  	.dashboard-card {
- 		color: $text-dark;
+ 		margin-left: 10px;
+ 		margin-right: 10px;
  		background: rgba(255, 255, 255, 0.7);
  		text-align: center;
  		height: 30vh;
 
  		.item {
+ 			position: relative;
+ 			top: calc(50% - 68px);
+ 			color: $text-dark;
  			background: transparent;
+
+ 			button {
+ 				width: 250px;
+ 				margin-top: 30px;
+ 			}
  		}
  	}
 
