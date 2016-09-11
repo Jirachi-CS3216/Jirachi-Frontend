@@ -14,30 +14,46 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$positive:                        #EC9F48 !default;
+$positive:                        #219AA0 !default;
+$text-dark:						  #444444;
+$text-light:					  #ffffff;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import 'https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i';
+
+* {
+    font-family: 'Lato';
+}
 
  #dashboard {
+ 	background: #A9DDDD;
 
  	.dashboard-card {
+ 		color: $text-dark;
+ 		background: rgba(255, 255, 255, 0.7);
  		text-align: center;
  		height: 30vh;
+
+ 		.item {
+ 			background: transparent;
+ 		}
  	}
 
  	.dashboard-header {
+ 		color: $text-light;
  		align-items: center;
  		text-align: center;
- 		height: calc(40vh - 110px);
+ 		height: calc(40vh - 120px);
 
  		div {
  			position: relative;
- 			top: calc(50% - 10px);
- 			font-size: 30px;
+ 			top: calc(50% - 4px);
+ 			font-size: 40px;
+ 			font-weight: 300;
  		}
  	}
  }
