@@ -27,16 +27,26 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import 'https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i';
 
 * {
-    font-family: 'Lato';
+    font-family: 'Lato' !important;
+}
+
+@mixin gradient-background($direction, $color1, $color2) {
+  	background: $color2; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient($direction, $color1, $color2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient($direction, color1, $color2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient($direction, $color1, $color2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to $direction, $color1, $color2); /* Standard syntax */
 }
 
  #dashboard {
- 	background: $pimary-background-color;
+ 	background: url('../img/background-dashboard.png');
+ 	background-size: cover;
+ 	background-position: center; 
 
  	.dashboard-card {
  		margin-left: 10px;
  		margin-right: 10px;
- 		background: rgba(255, 255, 255, 0.7);
+ 		background: rgba(255, 255, 255, 0.9);
  		text-align: center;
  		height: 30vh;
 
@@ -49,17 +59,23 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
  			button {
  				width: 250px;
  				margin-top: 30px;
+ 				text-transform: uppercase;
  			}
  		}
  	}
 
  	.dashboard-header {
+ 		margin-top: -10px;
+ 		margin-left: -10px;
+ 		margin-right: -10px;
  		color: $text-light;
  		align-items: center;
  		text-align: center;
  		height: calc(40vh - 120px);
+ 		@include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));
 
  		div {
+ 			text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
  			position: relative;
  			top: calc(50% - 4px);
  			font-size: 40px;
