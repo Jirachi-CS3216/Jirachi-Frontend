@@ -104,7 +104,7 @@ ion-nav-bar {
  	}
  }
 
- #activity {
+#activity {
  	color: $text-light;
  	background: $pimary-background-color;
 
@@ -113,8 +113,23 @@ ion-nav-bar {
  		transition: 0.2s ease-in-out all !important;
     margin-top: 10px;
     margin-bottom: 10px;
+    background: transparent;
+
+    .viewed {
+      background: black;
+      color: white !important;
+      opacity: 0.1;
+    }
 
  		.item {
+
+      .dismiss {
+        position: relative;
+        top: 10px;
+        right: 10px;
+
+      }
+
       .title {
         margin-top: 3px;
         line-height: 1.5em;
@@ -128,19 +143,19 @@ ion-nav-bar {
       }
  		}
  	}
- }
+}
 
- #wishes {
- 	color: $text-light;
- 	background: $pimary-background-color;
- }
+#wishes {
+	color: $text-light;
+	background: $pimary-background-color;
+}
 
- #leaderboard {
- 	color: $text-light;
- 	background: $pimary-background-color;
- }
+#leaderboard {
+	color: $text-light;
+	background: $pimary-background-color;
+}
 
- #settings {
- 	color: $text-light;
- 	background: $pimary-background-color;
- }
+#settings {
+	color: $text-light;
+	background: $pimary-background-color;
+}

@@ -1,7 +1,12 @@
 <ion-view view-title="Activity" id="activity">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear nav-button" style="font-size:13px; font-weight: 400;" ng-click="">
+            Archive All
+        </button>
+    </ion-nav-buttons>
   	<ion-content class="padding">
     	<div class="card activity-card" ng-repeat="activity in activities" ng-click="selectActivity(activity)">
-			<div class="item item-text-wrap item-icon-left">
+			<div class="item item-text-wrap item-icon-left" ng-class="viewedClass[activity.viewed]">
 				<i class="icon" ng-class="iconMap[activity.type]"></i>
 				<div class="title">{{ activity.description }}</div>
 				<div class="time">{{ activity.time }}</div>
