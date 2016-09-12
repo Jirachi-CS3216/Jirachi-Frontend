@@ -103,11 +103,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
  	.activity-card {
  		cursor: pointer;
  		transition: 0.2s ease-in-out all !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
- 		.item-avatar {
- 			img {
- 				@include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2)); 
- 			}
+ 		.item {
+      .title {
+        margin-top: 3px;
+        line-height: 1.5em;
+        font-size: 15px;
+      }
+
+      .time {
+        margin-top: 10px;
+        color: #aaaaaa;
+        font-size: 12px;
+      }
  		}
  	}
  }
