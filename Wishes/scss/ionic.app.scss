@@ -14,8 +14,9 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$positive:                        #219AA0 !default;
-$text-dark:						  #444444;
+$positive:                        #219aa0 !default;
+$energized:                       #f2d863 !default;
+$text-dark:						  #6c7c93;
 $text-light:					  #ffffff;
 $pimary-background-color:		  #A9DDDD;
 
@@ -50,6 +51,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
+.button {
+  font-weight: bold;
+}
+
+ #dashboard {
 ion-nav-bar {
   @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.1));
 }
@@ -66,7 +72,7 @@ ion-nav-bar {
  	.dashboard-card {
  		margin-left: 10px;
  		margin-right: 10px;
- 		background: rgba(255, 255, 255, 0.9);
+ 		background: rgba(255, 255, 255, 0.3);
  		text-align: center;
  		height: 25vh;
 
@@ -77,9 +83,9 @@ ion-nav-bar {
  			background: transparent;
 
  			a, button {
- 				width: 250px;
+ 				width: 150px;
  				margin-top: 30px;
- 				text-transform: uppercase;
+ 				text-transform: uppercase; 
  			}
  		}
  	}
