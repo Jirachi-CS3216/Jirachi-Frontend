@@ -39,7 +39,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     background: linear-gradient(to $direction, $color1, $color2); /* Standard syntax */
 }
 
-@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+@mixin box-shadow($left, $top, $blur, $color, $inset: false) {
   @if $inset {
     -webkit-box-shadow:inset $top $left $blur $color;
     -moz-box-shadow:inset $top $left $blur $color;
@@ -56,6 +56,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
  #dashboard {
+ion-nav-bar {
+  @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.1));
+}
+
+.tab-nav {
+  @include box-shadow(-2px, 0px, 3px, rgba(0, 0, 0, 0.1)); 
+}
+
+#dashboard {
  	background: url('../img/background-dashboard.png');
  	background-size: cover;
  	background-position: center; 
@@ -108,11 +117,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
  	.activity-card {
  		cursor: pointer;
  		transition: 0.2s ease-in-out all !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
- 		.item-avatar {
- 			img {
- 				@include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2)); 
- 			}
+ 		.item {
+      .title {
+        margin-top: 3px;
+        line-height: 1.5em;
+        font-size: 15px;
+      }
+
+      .time {
+        margin-top: 10px;
+        color: #aaaaaa;
+        font-size: 12px;
+      }
  		}
  	}
  }
