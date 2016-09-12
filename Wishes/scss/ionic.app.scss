@@ -38,6 +38,18 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     background: linear-gradient(to $direction, $color1, $color2); /* Standard syntax */
 }
 
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
  #dashboard {
  	background: url('../img/background-dashboard.png');
  	background-size: cover;
@@ -91,6 +103,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
  	.activity-card {
  		cursor: pointer;
  		transition: 0.2s ease-in-out all !important;
+
+ 		.item-avatar {
+ 			img {
+ 				@include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.2)); 
+ 			}
+ 		}
  	}
  }
 
