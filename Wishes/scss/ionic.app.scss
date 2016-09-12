@@ -109,6 +109,37 @@ ion-nav-bar {
  	}
  }
 
+#post {
+  background: url('../img/background-dashboard.png');
+  background-size: cover;
+  background-position: center;
+
+  .wish-title {
+    background-color: transparent;
+    color: $text-light;
+    width: 100%;
+    font-size: 2em;
+    margin-top: 5px;
+  }
+
+  hr {
+    color: white;
+  }
+
+  .wish-content {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: $text-dark;
+    width: 100%;
+    height: 40vh;
+    margin-top: 20px;
+  }
+
+  .button {
+    float: right;
+    margin-top: 10px;
+  }
+}
+
 #activity {
  	color: $text-light;
  	background: $pimary-background-color;
