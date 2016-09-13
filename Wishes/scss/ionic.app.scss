@@ -152,9 +152,7 @@ ion-nav-bar {
  	background: $pimary-background-color;
 
  	.activity-card {
-    -vendor-animation-duration: 3s !important;
-    -vendor-animation-delay: 2s;
-    -vendor-animation-iteration-count: infinite;
+    animation-duration: 0.3s;
  		cursor: pointer;
  		transition: 0.2s ease-in-out all !important;
     margin-top: 10px;
