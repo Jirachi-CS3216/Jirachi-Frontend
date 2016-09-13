@@ -9,7 +9,7 @@
                     <div>
                         You haven't made any wish today...
                     </div>
-                    <a class="button button-energized" href="/#/tab/post">
+                    <a on-touch="buttonDidTouch('SELF')" class="button button-energized" href="/#/tab/post" ng-class="buttonAnimations.SELF">
                         I Wish ...
                     </a>
                 </div>
@@ -19,7 +19,7 @@
                     <div>
                         Listened to other's wishes...
                     </div>
-                    <a on-touch="buttonDidTouch()" class="button button-energized">
+                    <a on-touch="buttonDidTouch('OTHER')" class="button button-energized" ng-class="buttonAnimations.OTHER">
                         Show Me
                     </a>
                 </div>

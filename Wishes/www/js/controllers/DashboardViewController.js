@@ -1,5 +1,12 @@
 module.controller('DashCtrl', function($scope) {
-	$scope.buttonDidTouch = function(event) {
-		console.log(event);
+	
+	$scope.buttonAnimations = {
+		"SELF": "",
+		"OTHER": ""
 	}
+
+	$scope.buttonDidTouch = function(key) {
+		$scope.buttonAnimations.key = "animated pulse"
+	}
+
 })
