@@ -5,7 +5,7 @@
         </button>
     </ion-nav-buttons>
   	<ion-content class="padding">
-    	<div class="card activity-card animated fadeInUp" ng-repeat="activity in activities" ng-click="selectActivity(activity)" style="animation-delay:{{$index * 0.03}}s">
+    	<div class="card activity-card animated fadeInUp" ng-repeat="activity in activities" ng-click="selectActivity(activity)" style="animation-delay:{{$index * 0.05}}s">
 			<div class="item item-text-wrap item-icon-left" ng-class="viewedClass[activity.viewed]">
 				<i class="icon" ng-class="iconMap[activity.type]"></i>
 				<div class="title">{{ activity.description }}</div>
