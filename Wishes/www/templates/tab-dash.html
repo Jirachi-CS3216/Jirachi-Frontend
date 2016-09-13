@@ -1,26 +1,28 @@
 <ion-view view-title="Dashboard" id="dashboard" hide-nav-bar="true">
-    <ion-content class="padding" scroll="false">
+    <ion-content class="padding">
         <div class="dashboard-header">
             <div>Nice day, Alice!</div>
         </div>
-        <div class="card dashboard-card">
-            <div class="item item-text-wrap">
-                <div>
-                    You haven't made any wish today...
+        <div class="cards">
+            <div class="card dashboard-card">
+                <div class="item item-text-wrap">
+                    <div>
+                        You haven't made any wish today...
+                    </div>
+                    <a class="button button-energized" href="/#/tab/post">
+                        I Wish ...
+                    </a>
                 </div>
-                <a class="button button-energized" href="/#/tab/post">
-                    I Wish ...
-                </a>
             </div>
-        </div>
-        <div class="card dashboard-card">
-            <div class="item item-text-wrap">
-                <div>
-                    Listened to other's wishes...
+            <div class="card dashboard-card">
+                <div class="item item-text-wrap">
+                    <div>
+                        Listened to other's wishes...
+                    </div>
+                    <a on-touch="buttonDidTouch()" class="button button-energized">
+                        Show Me
+                    </a>
                 </div>
-                <a class="button button-energized">
-                    Show Me
-                </a>
             </div>
         </div>
   </ion-content>
