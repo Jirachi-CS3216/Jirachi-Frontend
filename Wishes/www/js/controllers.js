@@ -10,3 +10,5 @@ module
 
 
 ;
+
+var GOOGLE_MAPE_API_KEY = "AIzaSyBtfTcTsfx5i-jnxresmHLdDlyb5hG4VZA"

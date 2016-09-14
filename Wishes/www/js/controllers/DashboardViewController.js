@@ -38,4 +38,46 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 		$scope.buttonAnimations.key = "animated pulse"
 	}
 
+	// Map
+
+	$scope.thumbnailURL = function() {
+		var selectedPoint = new google.maps.LatLng(1.3521,103.8198);
+		var imageElement = document.querySelectorAll(".map-wrapper")[0]
+		if (imageElement) {
+			var url = "https://maps.googleapis.com/maps/api/staticmap" + 
+				  "?center=Brooklyn+Bridge,New+York,NY" + 
+				  "&zoom=13" + 
+				  "&size=" + imageElement.clientWidth + "x150" + 
+				  "&scale=2" + 
+				  "&maptype=roadmap" + 
+				  "&markers=red:blue%7Clabel:S%7C40.702147,-74.015794" + 
+				  "&key=" + GOOGLE_MAPE_API_KEY +
+				  " 2x"
+			return url
+		} else {
+			return ""
+		}
+	}
+
+	$scope.mapThumbnailDidClick = function() {
+		window.alert("Location Picker Not Implemented")
+	}
+
+	// var myLatlng = new google.maps.LatLng(1.3521,103.8198);
+        
+ //    var mapOptions = {
+	// 	draggable: false,
+	// 	scrollwheel: false,
+	// 	disableDoubleClickZoom: true,
+	// 	clickableLabels:false,
+	// 	zoomControl: false,
+	// 	center: myLatlng,
+	// 	zoom: 13,
+	// 	mapTypeId: google.maps.MapTypeId.ROADMAP
+ //    };
+
+ //    var map = new google.maps.Map(document.getElementById("map-modal-post"), mapOptions);
+
+	// End of Map
+
 })

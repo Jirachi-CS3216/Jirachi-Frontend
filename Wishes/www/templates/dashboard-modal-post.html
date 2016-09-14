@@ -14,7 +14,20 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<textarea placeholder="I wish..." class="wish-content"></textarea>
+					<div class="description-wrapper">
+						<textarea placeholder="I wish..." class="wish-content"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="map-wrapper" ng-click="mapThumbnailDidClick()">
+						<div class="address-line">
+							Prince George's Park
+						</div>
+						<img ng-srcset="{{thumbnailURL()}}">
+						<!-- <div id="map-modal-post" data-tap-disabled="true"></div> -->
+					</div>
 				</div>
 			</div>
 			<div class="row">
