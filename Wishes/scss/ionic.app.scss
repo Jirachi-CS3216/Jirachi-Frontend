@@ -179,6 +179,7 @@ ion-nav-bar, ion-header-bar {
       @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
       border-radius: 5px;
       .wish-content {
+        line-height: 1.5em;
         background: rgba(255, 255, 255, 1);
         padding: 10px;
         color: $text-dark;
@@ -249,6 +250,7 @@ ion-nav-bar, ion-header-bar {
     left: calc(50vw - 40px);
     top: calc(50vh - 51px);
     z-index: 1;
+    pointer-events:none;
   }
 }
 
