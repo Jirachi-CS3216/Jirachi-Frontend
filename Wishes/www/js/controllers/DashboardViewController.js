@@ -37,11 +37,26 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 		$scope.buttonAnimations.key = "animated pulse"
 	}
 
+	$scope.isElementVisible = function(name) {
+		if ($scope.selectedPoint) {
+			return name !== 'select-address-button' ? "" : "hidden"
+		} else {
+			return name === 'select-address-button' ? "" : "hidden"
+		}
+	}
+
+
 	// Map
 
-	$scope.mapThumbnailDidClick = function() {
+	$scope.removeAddress = function() {
+		$scope.selectedPoint = undefined;
+	}
+
+	$scope.showLocationPicker = function() {
 		$scope.locationPickerModal.show();
-		intializeMap();
+		if (!$scope.map) {
+			intializeMap();
+		}
 	}
 
 	$scope.locationPickerDone = function() {
@@ -70,13 +85,17 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 	    };
 
 		$scope.map = new google.maps.Map(document.getElementById("map-modal-post"), mapOptions);
+
+		google.maps.event.addListener($scope.map, "dragend", function() {
+   			var currentSelectedPoint = $scope.map.getCenter()
+		});
 	}
 
 	$scope.thumbnailURL = function() {
 		var selectedPoint = $scope.selectedPoint;
 		var selectedZoom = $scope.selectedZoom;
 		var imageElement = document.querySelectorAll(".map-wrapper")[0]
-		if (imageElement && selectedPoint) {
+		if (imageElement && imageElement.clientWidth !== 0 && selectedPoint) {
 			var url = "https://maps.googleapis.com/maps/api/staticmap" + 
 				  "?center=" + selectedPoint.toUrlValue() +
 				  "&zoom=" + selectedZoom +

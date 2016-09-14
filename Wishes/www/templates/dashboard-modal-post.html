@@ -19,9 +19,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" ng-class="isElementVisible('map-thumbnail')">
 				<div class="col">
-					<div class="map-wrapper" ng-click="mapThumbnailDidClick()">
+					<div class="map-wrapper" ng-click="showLocationPicker()">
 						<div class="address-line">
 							Prince George's Park
 						</div>
@@ -31,7 +31,11 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col">
+				<div class="col col-75">
+					<button class="button button-balanced location-picker-button" ng-click="showLocationPicker()" ng-class="isElementVisible('select-address-button')">Select Address</button>
+					<button class="button button-assertive location-picker-button" ng-click="removeAddress()" ng-class="isElementVisible('remove-address-button')">Remove Address</button>
+				</div>
+				<div class="col col-25">
 					<a class="button button-energized post-button">Post!</a>
 				</div>
 			</div>
