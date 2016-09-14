@@ -64,7 +64,8 @@ ion-nav-bar {
 }
 
 #dashboard {
- 	background: url('../img/background-dashboard.jpg');
+  background-color: white;
+ 	background-image: url('../img/background-dashboard.jpg');
  	background-size: cover;
  	background-position: center; 
 
@@ -130,7 +131,7 @@ ion-nav-bar {
  	}
  }
 
-#post {
+#dashboard-modal-post {
   background: url('../img/background-dashboard.jpg');
   background-size: cover;
   background-position: center;
@@ -155,9 +156,11 @@ ion-nav-bar {
     margin-top: 20px;
   }
 
-  .button {
-    float: right;
-    margin-top: 10px;
+  ion-content {
+    .button {
+      float: right;
+      margin-top: 10px;
+    }
   }
 }
 
