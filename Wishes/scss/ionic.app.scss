@@ -130,7 +130,6 @@ ion-nav-bar {
  	}
 }
 
-
 #dashboard-modal-post {
   background: url('../img/background-dashboard.jpg');
   background-size: cover;
@@ -203,16 +202,6 @@ ion-nav-bar {
         border-bottom-left-radius: 5px;
         margin-bottom: -5px;
       }
-
-      #map-modal-post {
-        height: 120px;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
-        z-index: 1;
-        .gm-style > div:first-child {
-          z-index: 10000000 !important;
-        }
-      }
     }
 
     .post-button {
@@ -228,6 +217,13 @@ ion-nav-bar {
       /*background-color: #85929E;*/
       @include box-shadow(1px, 0px, 1px, rgba(0, 0, 0, 0.1));
     }
+  }
+}
+
+#dashboard-modal-post-modal-location-picker {
+  #map-modal-post {
+    height: calc(100vh - 30px);
+    margin: -10px;
   }
 }
 
@@ -286,4 +282,29 @@ ion-nav-bar {
 #settings {
 	color: $text-light;
 	background: $pimary-background-color;
+}
+
+
+
+
+/*Global Animation Options*/
+
+.scale-in {
+  transform: scale(0.5);
+  opacity: 0;
+}
+.scale-in.ng-enter,
+.scale-in > .ng-enter {
+  transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
+}
+
+.scale-in.ng-enter-active,
+.scale-in > .ng-enter-active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.scale-in.ng-leave,
+.scale-in > .ng-leave {
+  transition: all ease-in-out 250ms;
 }

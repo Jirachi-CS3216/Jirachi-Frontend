@@ -7,26 +7,25 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 	    $scope.postModal = modal;
 	});
 
+	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-post-modal-location-picker.html', {
+	    scope: $scope,
+	    animation: 'scale-in'
+	}).then(function(modal) {
+    	$scope.locationPickerModal = modal;
+	});
+
 	$scope.openModal = function() {
 	    $scope.postModal.show();
 	};
-		$scope.closeModal = function() {
+	
+	$scope.closeModal = function() {
 		$scope.postModal.hide();
 	};
 
 	// Cleanup the modal when we're done with it!
 	$scope.$on('$destroy', function() {
 		$scope.postModal.remove();
-	});
-
-	// Execute action on hide modal
-	$scope.$on('modal.hidden', function() {
-		// Execute action
-	});
-
-	// Execute action on remove modal
-	$scope.$on('modal.removed', function() {
-		// Execute action
+		$scope.locationPickerModal.remove();
 	});
 
 	$scope.buttonAnimations = {
@@ -61,23 +60,17 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 	}
 
 	$scope.mapThumbnailDidClick = function() {
-		window.alert("Location Picker Not Implemented")
+		$scope.locationPickerModal.show();
+		var map = new google.maps.Map(document.getElementById("map-modal-post"), mapOptions);
 	}
 
-	// var myLatlng = new google.maps.LatLng(1.3521,103.8198);
+	var myLatlng = new google.maps.LatLng(1.3521,103.8198);
         
- //    var mapOptions = {
-	// 	draggable: false,
-	// 	scrollwheel: false,
-	// 	disableDoubleClickZoom: true,
-	// 	clickableLabels:false,
-	// 	zoomControl: false,
-	// 	center: myLatlng,
-	// 	zoom: 13,
-	// 	mapTypeId: google.maps.MapTypeId.ROADMAP
- //    };
-
- //    var map = new google.maps.Map(document.getElementById("map-modal-post"), mapOptions);
+    var mapOptions = {
+		center: myLatlng,
+		zoom: 13,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
 	// End of Map
 
