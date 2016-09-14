@@ -39,18 +39,51 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 
 	// Map
 
+	$scope.mapThumbnailDidClick = function() {
+		$scope.locationPickerModal.show();
+		intializeMap();
+	}
+
+	$scope.locationPickerDone = function() {
+		$scope.locationPickerModal.hide();
+		$scope.selectedPoint = $scope.map.getCenter()
+		$scope.selectedZoom = $scope.map.getZoom()
+	}
+
+	$scope.locationPickerCancel = function() {
+		$scope.locationPickerModal.hide();
+	}
+
+	var intializeMap = function() {
+		if ($scope.selectedPoint) {
+			var myLatlng = $scope.selectedPoint
+			var myZoom = $scope.selectedZoom
+		} else {
+			var myLatlng = new google.maps.LatLng(1.3521,103.8198);
+			var myZoom = 13
+		}
+        
+	    var mapOptions = {
+			center: myLatlng,
+			zoom: myZoom,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+	    };
+
+		$scope.map = new google.maps.Map(document.getElementById("map-modal-post"), mapOptions);
+	}
+
 	$scope.thumbnailURL = function() {
-		var selectedPoint = new google.maps.LatLng(1.3521,103.8198);
-		var selectedZoom = 13;
+		var selectedPoint = $scope.selectedPoint;
+		var selectedZoom = $scope.selectedZoom;
 		var imageElement = document.querySelectorAll(".map-wrapper")[0]
 		if (imageElement && selectedPoint) {
 			var url = "https://maps.googleapis.com/maps/api/staticmap" + 
-				  "?center=" + selectedPoint.lat() + "," + selectedPoint.lng() +
+				  "?center=" + selectedPoint.toUrlValue() +
 				  "&zoom=" + selectedZoom +
 				  "&size=" + imageElement.clientWidth + "x150" + 
 				  "&scale=2" + 
 				  "&maptype=roadmap" + 
-				  "&markers=red%7C" + selectedPoint.lat() + "," + selectedPoint.lng() +
+				  "&markers=red%7C" + selectedPoint.toUrlValue() +
 				  "&key=" + GOOGLE_MAPE_API_KEY +
 				  " 2x"
 			return url
@@ -59,18 +92,7 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 		}
 	}
 
-	$scope.mapThumbnailDidClick = function() {
-		$scope.locationPickerModal.show();
-		var map = new google.maps.Map(document.getElementById("map-modal-post"), mapOptions);
-	}
-
-	var myLatlng = new google.maps.LatLng(1.3521,103.8198);
-        
-    var mapOptions = {
-		center: myLatlng,
-		zoom: 13,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+	
 
 	// End of Map
 

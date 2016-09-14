@@ -222,8 +222,18 @@ ion-nav-bar {
 
 #dashboard-modal-post-modal-location-picker {
   #map-modal-post {
-    height: calc(100vh - 30px);
+    height: calc(100vh - 43px);
     margin: -10px;
+  }
+
+  .map-marker {
+    position: absolute !important;
+    top: 100px;
+    width: 60px;
+    height: 60px;
+    left: calc(50vw - 40px);
+    top: calc(50vh - 51px);
+    z-index: 1;
   }
 }
 
