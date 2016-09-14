@@ -64,7 +64,6 @@ ion-nav-bar {
 }
 
 #dashboard {
-  background-color: white;
  	background-image: url('../img/background-dashboard.jpg');
  	background-size: cover;
  	background-position: center; 
@@ -132,13 +131,12 @@ ion-nav-bar {
  }
 
 #dashboard-modal-post {
-  background-color: white;
-
+  background-color: $pimary-background-color;
+  background: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center;
+  
   ion-content {
-    background: url('../img/background-dashboard.jpg');
-    background-size: cover;
-    background-position: center;
-
 
     .wish-title {
       background-color: transparent;
@@ -146,23 +144,51 @@ ion-nav-bar {
       width: 100%;
       font-size: 2em;
       margin-top: 5px;
-    }
+      margin-bottom: 10px;
+      padding-left: 5px;
 
-    hr {
-      color: white;
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 8px;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 8px;
+      }
+      
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 8px;
+      }
+      
+      &:-moz-placeholder { /* Firefox 18- */
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 8px;
+      }
     }
 
     .wish-content {
       background: rgba(255, 255, 255, 0.7);
+      padding: 10px;
       color: $text-dark;
       width: 100%;
       height: 40vh;
+      border-radius: 5px;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
     }
 
-
-    .button {
+    .post-button {
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.3));
       float: right;
       margin-top: 10px;
+      transition: 0.2s ease-in-out all !important;
+    }
+
+    .activated {
+      /*opacity: 0.5;*/
+      border-color: transparent;
+      /*background-color: #85929E;*/
+      @include box-shadow(1px, 0px, 1px, rgba(0, 0, 0, 0.1));
     }
   }
 }
