@@ -1,7 +1,7 @@
 <ion-modal-view view-title="Post" id="dashboard-modal-post-modal-location-picker">
 	<ion-header-bar>
 		<button class="button button-clear nav-button" style="color: black;font-size:13px; font-weight: 400;" ng-click="locationPickerCancel()">Cancel</button>
-      <h1 class="title">Pick Your Location</h1>
+      <h1 class="title">{{ selectedAddress }}</h1>
       <button class="button button-clear nav-button" style="color: black;font-size:13px; font-weight: 400;" ng-click="locationPickerDone()">Done</button>
     </ion-header-bar>
 	<ion-content class="padding animated pulse">

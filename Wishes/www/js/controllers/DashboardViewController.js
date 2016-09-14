@@ -1,4 +1,4 @@
-module.controller('DashCtrl', function($scope, $ionicModal) {
+module.controller('DashCtrl', function($scope, $ionicModal, apis) {
 	
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-post.html', {
 	    scope: $scope,
@@ -88,8 +88,23 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 
 		google.maps.event.addListener($scope.map, "dragend", function() {
    			var currentSelectedPoint = $scope.map.getCenter()
+   			apis.reverseGeocoding.get({
+   				latlng: currentSelectedPoint.toUrlValue(),
+   				key: GOOGLE_MAPE_API_KEY
+   			}).success(function(data) {
+   				if (data.status === "OK") {
+   					var array = data.results
+   					if (array.length > 0) {
+   						$scope.selectedAddress = array[0].formatted_address
+   					}
+
+   				} else {
+   					console.log("Google Geocoding Failed");
+   				}
+   			});
 		});
 	}
+
 
 	$scope.thumbnailURL = function() {
 		var selectedPoint = $scope.selectedPoint;
