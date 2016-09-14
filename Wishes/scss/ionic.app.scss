@@ -131,13 +131,18 @@ ion-nav-bar {
  }
 
 #dashboard-modal-post {
-  background-color: $pimary-background-color;
   background: url('../img/background-dashboard.jpg');
   background-size: cover;
   background-position: center;
-  
-  ion-content {
 
+  .wrapper {
+    width: 100%;
+    height: auto;
+    background-color: $pimary-background-color !important;
+  }
+
+  ion-content {
+    /*animation-duration: 0.5s;*/
     .wish-title {
       background-color: transparent;
       color: $text-light;
