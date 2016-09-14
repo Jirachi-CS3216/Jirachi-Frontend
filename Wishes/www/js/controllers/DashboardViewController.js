@@ -85,6 +85,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis) {
 	    };
 
 		$scope.map = new google.maps.Map(document.getElementById("map-modal-post"), mapOptions);
+		$scope.selectedAddress = "Select Meetup Address"
 
 		google.maps.event.addListener($scope.map, "dragend", function() {
    			var currentSelectedPoint = $scope.map.getCenter()
