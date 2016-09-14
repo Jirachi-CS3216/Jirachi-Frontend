@@ -42,15 +42,16 @@ module.controller('DashCtrl', function($scope, $ionicModal) {
 
 	$scope.thumbnailURL = function() {
 		var selectedPoint = new google.maps.LatLng(1.3521,103.8198);
+		var selectedZoom = 13;
 		var imageElement = document.querySelectorAll(".map-wrapper")[0]
-		if (imageElement) {
+		if (imageElement && selectedPoint) {
 			var url = "https://maps.googleapis.com/maps/api/staticmap" + 
-				  "?center=Brooklyn+Bridge,New+York,NY" + 
-				  "&zoom=13" + 
+				  "?center=" + selectedPoint.lat() + "," + selectedPoint.lng() +
+				  "&zoom=" + selectedZoom +
 				  "&size=" + imageElement.clientWidth + "x150" + 
 				  "&scale=2" + 
 				  "&maptype=roadmap" + 
-				  "&markers=red:blue%7Clabel:S%7C40.702147,-74.015794" + 
+				  "&markers=red%7C" + selectedPoint.lat() + "," + selectedPoint.lng() +
 				  "&key=" + GOOGLE_MAPE_API_KEY +
 				  " 2x"
 			return url
