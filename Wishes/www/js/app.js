@@ -103,7 +103,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'SettingsCtrl'
       }
     }
-  });
+  })
+
+  .state('post', {
+    url: '/post',
+    templateUrl: 'templates/post.html',
+    controller: 'PostCtrl'
+  })
+  ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
