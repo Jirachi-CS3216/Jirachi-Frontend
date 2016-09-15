@@ -1,18 +1,14 @@
 <ion-view view-title="Wishes" id="wishes" ng-init="init()">
 	<ion-content class="padding">
 		<div class="button-bar">
-			<a class="button" ng-click="switchTo(0)">I've made</a>
-			<a class="button" ng-click="switchTo(1)">I've fulfilled</a>
+			<a class="button" ng-class="{'button-energized': isSelected(0)}" ng-click="switchTo(0)">I've made</a>
+			<a class="button" ng-class="{'button-energized': isSelected(1)}" ng-click="switchTo(1)">I've accepted</a>
 		</div>
 		<ion-list class="wish-list">
-			<ion-item class="item-icon-right" ng-repeat="wish in wishes" type="item-text-wrap">
+			<ion-item class="item-icon-right animated fadeInUp" ng-repeat="wish in wishes" type="item-text-wrap">
 				<h2>{{wish.title}}</h2>
 				<p>{{wish.description}}</p>
 				<i class="icon ion-chevron-right icon-accessory"></i>
-
-				<ion-option-button class="button-assertive" ng-click="remove(chat)">
-					Delete
-				</ion-option-button>
 			</ion-item>
 		</ion-list>
 	</ion-content>
