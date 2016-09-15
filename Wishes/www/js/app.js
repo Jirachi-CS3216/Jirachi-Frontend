@@ -49,7 +49,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl'
+    controller: 'LoginCtrl',
+    publicAccess: true
   })
 
   // setup an abstract state for the tabs directive  
@@ -125,4 +126,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
+})
+
+
+.run(function($rootScope, $window){
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        if (!toState.publicAccess) {
+          console.log("go login")
+            $window.location.href = '/'
+        }
+    });
 });

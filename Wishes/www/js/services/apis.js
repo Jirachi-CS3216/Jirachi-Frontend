@@ -1,13 +1,3 @@
-'use strict';
-
-/**
- * @ngdoc service
- * @name connectrFrontendApp.session
- * @description
- * # apis
- * Service in the connectrFrontendApp.
- * Wrapper for https.
- */
 serviceModule
 
 
