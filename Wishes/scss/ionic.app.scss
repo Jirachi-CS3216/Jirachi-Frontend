@@ -299,6 +299,10 @@ ion-nav-bar, ion-header-bar {
 #wishes {
 	color: $text-light;
 	background: $pimary-background-color;
+
+  .button-bar {
+    margin-bottom: 20px;
+  }
 }
 
 #leaderboard {
