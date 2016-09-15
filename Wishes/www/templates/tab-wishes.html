@@ -1,5 +1,19 @@
-<ion-view view-title="Wishes" id="wishes">
-  	<ion-content class="padding">
-		Post Page Not Implemented
-  	</ion-content>
+<ion-view view-title="Wishes" id="wishes" ng-init="init()">
+	<ion-content class="padding">
+		<div class="button-bar">
+			<a class="button" ng-click="switchTo(0)">I've made</a>
+			<a class="button" ng-click="switchTo(1)">I've fulfilled</a>
+		</div>
+		<ion-list class="wish-list">
+			<ion-item class="item-icon-right" ng-repeat="wish in wishes" type="item-text-wrap">
+				<h2>{{wish.title}}</h2>
+				<p>{{wish.description}}</p>
+				<i class="icon ion-chevron-right icon-accessory"></i>
+
+				<ion-option-button class="button-assertive" ng-click="remove(chat)">
+					Delete
+				</ion-option-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
 </ion-view>
