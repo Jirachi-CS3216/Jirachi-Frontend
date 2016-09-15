@@ -14,7 +14,7 @@ serviceModule
   .service('apis', function apis($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     
-    var apiHost = 'https://wishessss.tk/api';
+    var apiHost = 'http://wishessss.tk:3000/api/v1';
 
     // explicit falsey values are ok, but null and undefined and empty string are not
     // note not allowing -0, NaN etc.
