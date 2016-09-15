@@ -372,6 +372,17 @@ ion-nav-bar, ion-header-bar {
 #settings {
 	color: $text-light;
 	background: $pimary-background-color;
+
+  button {
+    text-transform: uppercase; 
+    transition: 0.2s ease-in-out all !important;
+    @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+  }
+
+  .activated {
+    border-color: transparent;
+    @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+  }
 }
 
 
