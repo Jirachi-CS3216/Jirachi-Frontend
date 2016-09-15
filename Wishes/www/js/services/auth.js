@@ -1,21 +1,21 @@
 serviceModule.
 
-service('auth', function auth($http, $location, $ionicHistory, $rootScope) {
+service('auth', function auth($http, $location) {
 
-    this.login = function(){};
+    var isLoggedIn = false;
 
-    $rootScope.$on('$routeChangeStart', function(e, curr, prev){
-        console.log("checkAccess");
-        this.checkAccess();
-    });
-
-    this.checkAccess = function() {
-        if(window.localStorage.getItem("password") === "undefined" || window.localStorage.getItem("password") === null) {
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $location.path("/login");
+    this.login = function(data, handler){
+        data = data ? data : {}
+        if (data.username === "admin" && data.password === "admin") {
+            isLoggedIn = true;
+            handler(true);
+        } else {
+            isLoggedIn = false;
+            handler(false);
         }
+    };
+
+    this.isTokenValid = function() {
+        return isLoggedIn;
     }
 })

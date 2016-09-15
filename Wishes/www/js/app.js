@@ -129,12 +129,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 
-.run(function($rootScope, $window){
+.run(function($rootScope, $window, auth){
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-        if (!toState.publicAccess) {
-          event.preventDefault();
-          console.log("go login")
-            $window.location.href = '/'
-        }
+      if (!toState.publicAccess & !auth.isTokenValid()) {
+        event.preventDefault();
+        $window.location.href = '/'
+      }
     });
 });

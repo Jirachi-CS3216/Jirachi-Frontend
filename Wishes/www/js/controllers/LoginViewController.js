@@ -1,5 +1,9 @@
-module.controller('LoginCtrl', function($scope, $state) {
-	$scope.login = function(user) {
-		$state.go('tab.dash');
+module.controller('LoginCtrl', function($scope, $state, auth) {
+	$scope.login = function(data) {
+		auth.login(data, function(succeeded){
+			if (succeeded) {
+				$state.go('tab.dash');
+			}
+		})
   	};
 })
