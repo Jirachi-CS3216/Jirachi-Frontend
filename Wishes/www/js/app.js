@@ -134,6 +134,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       if (!toState.publicAccess & !auth.isTokenValid()) {
         event.preventDefault();
         $window.location.href = '/'
+      } else if (toState.url === '/login' && auth.isTokenValid())  {
+        event.preventDefault();
+        $window.location.href = '/#/tab/dash'
       }
     });
 });
