@@ -96,6 +96,16 @@ ion-nav-bar, ion-header-bar {
     @include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));  
   }
 
+  input {
+    
+  }
+
+  .help-block {
+    color: rgba(255, 0, 0, 0.6);
+    padding-right: 15px;
+    font-size: 14px;
+  }
+
   .title {
     text-align: center;
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);

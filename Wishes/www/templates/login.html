@@ -3,15 +3,21 @@
         <div class="title animated bounceInDown">Wishes</div>
 
         <div class="button-group animated bounceInUp">
-            <div class="list list-inset">
-                <label class="item item-input">
-                    <input type="text" placeholder="Username: First User" ng-model="data.username">
-                </label>
-                <label class="item item-input">
-                    <input type="password" placeholder="Password: Randomguy" ng-model="data.password">
-                </label>
-            </div>
-            <button class="button button-block button-positive" ng-click="login(data)">Sign In</button>
+            <form name="userForm" ng-submit="submitForm(userForm.$valid, data)" novalidate>
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <input name="username" type="text" placeholder="Username: First User" ng-model="data.username" ng-required="true">
+                        <div ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block"> username required</div>
+                    </label>
+                    <label class="item item-input">
+                        <input name="password" type="password" placeholder="Password: Randomguy" ng-model="data.password" ng-required="true">
+                        <div ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block"> password required</div>
+                    </label>
+                </div>
+                <button type="submit" class="button button-block button-positive" ng-disabled="userForm.$invalid">
+                    Sign In
+                </button>
+            </form>
 
 
             <div class="sign-up">
