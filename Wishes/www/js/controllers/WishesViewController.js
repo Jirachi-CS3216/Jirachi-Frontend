@@ -1,8 +1,6 @@
 module.controller('WishesCtrl', function($scope, session) {
 	
-	$scope.$on("$ionicView.beforeEnter", function(event, data){
-	   	$scope.currentUser = session.currentUser();
-	});
+	$scope.session = session;
 
 	$scope.currentWishes = [];
 	$scope.pastWishes = [];

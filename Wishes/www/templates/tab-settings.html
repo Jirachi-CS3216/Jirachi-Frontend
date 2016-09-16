@@ -2,11 +2,11 @@
 	<ion-content>
 		<div class="card profile-card">
 			<img class="img-circle middle-align" ng-src="http://67.media.tumblr.com/1b70e7efd3eba88c15fb122c41d255ca/tumblr_n0valuruRN1r4t05to5_400.jpg">
-			<h2 class="nickname">{{ currentUser.display_name }}</h2>
+			<h2 class="nickname">{{ session.currentUserDisplayName() }}</h2>
 			<p class="continuous-day">You've been helping others continously for 100 days</p>
 			<div class="three-columns">
 				<div class="column-element title-subtitle">
-					<div class="title">{{ currentUser.points }}</div>
+					<div class="title">{{ session.currentUserPoints() }}</div>
 					<div class="subtitle">Points</div>
 				</div>
 				<div class="column-element title-subtitle">

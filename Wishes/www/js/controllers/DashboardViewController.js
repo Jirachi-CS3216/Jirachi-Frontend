@@ -1,8 +1,6 @@
 module.controller('DashCtrl', function($scope, $ionicModal, apis, session) {
 
-	$scope.$on("$ionicView.beforeEnter", function(event, data){
-	   	$scope.currentUser = session.currentUser();
-	});
+	$scope.session = session;
 
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-post.html', {
 	    scope: $scope,

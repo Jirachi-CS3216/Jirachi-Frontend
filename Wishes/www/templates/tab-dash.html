@@ -1,7 +1,7 @@
 <ion-view view-title="Dashboard" id="dashboard" hide-nav-bar="true">
     <ion-content class="padding">
         <div class="dashboard-header">
-            <div>Nice day, {{ currentUser.display_name }}!</div>
+            <div>Nice day, {{ session.currentUserDisplayName() }}!</div>
         </div>
         <div class="cards">
             <div class="card dashboard-card animated flipInX">

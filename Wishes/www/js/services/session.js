@@ -31,4 +31,6 @@ serviceModule.service('session', function session($window /*, $rootScope*/) {
 
     // Read-only getters
     this.currentUser = function () { return _session && _session.currentUser || undefined; };
+    this.currentUserDisplayName = function () { return _session && _session.currentUser && _session.currentUser.display_name || _session.currentUser.username; };
+    this.currentUserPoints = function () { return _session && _session.currentUser && _session.currentUser.points || 0; };
 });

@@ -1,8 +1,6 @@
 module.controller('ActivityCtrl', function($scope, session) {
 
-    $scope.$on("$ionicView.beforeEnter", function(event, data){
-        $scope.currentUser = session.currentUser();
-    });
+    $scope.session = session;
 
     $scope.selectActivity = function(activity) {
         console.log(activity.description);
