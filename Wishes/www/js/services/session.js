@@ -30,5 +30,5 @@ serviceModule.service('session', function session($window /*, $rootScope*/) {
     };
 
     // Read-only getters
-    this.serverToken = function () { return _session && _session.serverToken || ''; };
+    this.currentUser = function () { return _session && _session.currentUser || undefined; };
 });

@@ -130,10 +130,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($rootScope, $window, auth){
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-      if (!toState.publicAccess & !auth.isTokenValid()) {
+      if (!toState.publicAccess & !auth.isUserValid()) {
         event.preventDefault();
         $window.location.href = '/'
-      } else if (toState.url === '/login' && auth.isTokenValid())  {
+      } else if (toState.url === '/login' && auth.isUserValid())  {
         event.preventDefault();
         $window.location.href = '/#/tab/dash'
       }

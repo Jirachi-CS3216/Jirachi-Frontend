@@ -1,4 +1,9 @@
-module.controller('WishesCtrl', function($scope) {
+module.controller('WishesCtrl', function($scope, session) {
+	
+	$scope.$on("$ionicView.beforeEnter", function(event, data){
+	   	$scope.currentUser = session.currentUser();
+	});
+
 	$scope.currentWishes = [];
 	$scope.pastWishes = [];
 	$scope.selectedTab = 0;
