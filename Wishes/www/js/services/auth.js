@@ -1,24 +1,33 @@
 serviceModule.
 
-service('auth', function auth($http, $state, session, $ionicPopup) {
-
+service('auth', function auth($http, $state, $ionicPopup, session, apis) {
     this.login = function(data, handler){
-        data = data ? data : {}
-        if (data.username === "admin" && data.password === "admin") {
+        if (data === undefined) {
 
-            var token = "RANDOM-TOKEN-OIWE983KO39WIO29"
-            var user = {serverToken: token}
-
-            this.setCurrentUser(user);
-            handler(true);
         } else {
-            this.destroyCurrentUser()
-            $ionicPopup.show({
-                title: 'Login Failed',
-                buttons: [{text: 'OK'}]
-            });
-            handler(false);
+            apis.login.post({
+                username: data.username,
+                password: data.password
+            }).success(function(reponse){
+                console.log(reponse);
+            })
         }
+
+        // if (data.username === "admin" && data.password === "admin") {
+
+        //     var token = "RANDOM-TOKEN-OIWE983KO39WIO29"
+        //     var user = {serverToken: token}
+
+        //     this.setCurrentUser(user);
+        //     handler(true);
+        // } else {
+        //     this.destroyCurrentUser()
+        //     $ionicPopup.show({
+        //         title: 'Login Failed',
+        //         buttons: [{text: 'OK'}]
+        //     });
+        //     handler(false);
+        // }
     };
 
     this.logout = function() {

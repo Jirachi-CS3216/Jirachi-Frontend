@@ -47,4 +47,11 @@ serviceModule
             });
         }
     }
+
+    this.login = {
+        post: function(parameters) {
+            return $http.post(buildUrl(apiHost + '/users/login', parameters), {
+            });   
+        }
+    }
   });
