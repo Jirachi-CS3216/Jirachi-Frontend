@@ -53,6 +53,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     publicAccess: true
   })
 
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'SignupCtrl',
+    publicAccess: true
+  })
+
   // setup an abstract state for the tabs directive  
   .state('tab', {
     url: '/tab',
