@@ -6,11 +6,11 @@
             <form name="userForm" ng-submit="submitForm(userForm.$valid, data)" novalidate>
                 <div class="list list-inset">
                     <label class="item item-input">
-                        <input name="username" type="text" placeholder="Username: First User" ng-model="data.username" ng-required="true">
+                        <input name="username" type="text" placeholder="Username" ng-model="data.username" ng-required="true">
                         <div ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block"> username required</div>
                     </label>
                     <label class="item item-input">
-                        <input name="password" type="password" placeholder="Password: Randomguy" ng-model="data.password" ng-required="true">
+                        <input name="password" type="password" placeholder="Password" ng-model="data.password" ng-required="true">
                         <div ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block"> password required</div>
                     </label>
                 </div>
