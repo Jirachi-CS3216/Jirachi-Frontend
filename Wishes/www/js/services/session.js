@@ -30,7 +30,29 @@ serviceModule.service('session', function session($window /*, $rootScope*/) {
     };
 
     // Read-only getters
-    this.currentUser = function () { return _session && _session.currentUser || undefined; };
-    this.currentUserDisplayName = function () { return _session && _session.currentUser && _session.currentUser.display_name || _session.currentUser.username; };
-    this.currentUserPoints = function () { return _session && _session.currentUser && _session.currentUser.points || 0; };
+    this.currentUser = function () {
+        if (!_session || !_session.currentUser) {
+            return undefined
+        }
+
+        return _session.currentUser; 
+    };
+
+    this.currentUserDisplayName = function () {
+        if (!_session || !_session.currentUser) {
+            return undefined
+        } else if (!_session.currentUser.display_name) {
+            return _session.currentUser.username
+        } else {
+            return _session.currentUser.display_name;
+        }
+    };
+
+    this.currentUserPoints = function () {
+        if (!_session || !_session.currentUser || !_session.currentUser.points) {
+            return 0;
+        } else {
+            return _session.currentUser.points
+        }
+    };
 });
