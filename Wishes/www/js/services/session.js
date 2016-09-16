@@ -55,4 +55,20 @@ serviceModule.service('session', function session($window /*, $rootScope*/) {
             return _session.currentUser.points
         }
     };
+
+    this.currentUserPostedWishesCount = function() {
+        if (!_session || !_session.currentUser || !_session.currentUser.posted_wishes_count) {
+            return 0;
+        } else {
+            return _session.currentUser.posted_wishes_count
+        }
+    }
+
+    this.currentUserPickedWishesCount = function() {
+        if (!_session || !_session.currentUser || !_session.currentUser.picked_wishes_count) {
+            return 0;
+        } else {
+            return _session.currentUser.picked_wishes_count
+        }
+    }
 });

@@ -468,7 +468,19 @@ ion-nav-bar, ion-header-bar {
   .profile-card {
     background: url('../img/background-dashboard.jpg');
     padding: 20px;
+    padding-bottom: 5px;
     margin: 0;
+
+    img {
+      margin-top: 10px;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.3));
+    }
+
+    .nickname {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
   }
 
   .setting-card {
@@ -501,9 +513,14 @@ ion-nav-bar, ion-header-bar {
 
 /*Global layouts*/
 .title-subtitle {
+  text-align: center;
   .title {
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 13px; 
   }
 }
 

@@ -2,26 +2,27 @@
 	<ion-content>
 		<div class="card profile-card">
 			<img class="img-circle middle-align" ng-src="http://67.media.tumblr.com/1b70e7efd3eba88c15fb122c41d255ca/tumblr_n0valuruRN1r4t05to5_400.jpg">
-			<h2 class="nickname">{{ session.currentUserDisplayName() }}</h2>
-			<p class="continuous-day">You've been helping others continously for 100 days</p>
-			<div class="row">
-				<div class="col title-subtitle">
-					<div class="title">{{ session.currentUserPoints() }}</div>
-					<div class="subtitle">Points</div>
-				</div>
-				<div class="col title-subtitle">
-					<div class="title">145</div>
-					<div class="subtitle">Wishes</div>
-				</div>
-				<div class="col title-subtitle">
-					<div class="title">146</div>
-					<div class="subtitle">Accepted</div>
-				</div>
-			</div>
-			
+			<div class="nickname">{{ session.currentUserDisplayName() }}</div>
+			<!-- <p class="continuous-day">You've been helping others continously for 100 days</p> -->
 		</div>
 
 		<div class="setting-list">
+			<div class="card setting-card animated fadeInUp">
+				<div class="item row">
+					<div class="col title-subtitle">
+						<div class="title">{{ session.currentUserPoints() }}</div>
+						<div class="subtitle">Points</div>
+					</div>
+					<div class="col title-subtitle">
+						<div class="title">{{ session.currentUserPostedWishesCount() }}</div>
+						<div class="subtitle">Wishes</div>
+					</div>
+					<div class="col title-subtitle">
+						<div class="title">{{ session.currentUserPickedWishesCount() }}</div>
+						<div class="subtitle">Accepted</div>
+					</div>
+				</div>
+			</div>
 			<div class="card setting-card animated fadeInUp">
 				<div class="item">
 					<label class="item item-input item-floating-label">
