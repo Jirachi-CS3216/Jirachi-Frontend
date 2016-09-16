@@ -54,4 +54,11 @@ serviceModule
             });   
         }
     }
+
+    this.signup = {
+        post: function(parameters) {
+            return $http.post(buildUrl(apiHost + '/users/signup', parameters), {
+            });   
+        }   
+    }
   });

@@ -3,7 +3,7 @@
         <div class="title animated bounceInDown">Wishes</div>
 
         <div class="button-group animated bounceInUp">
-            <form name="userForm" novalidate>
+            <form name="userForm" ng-submit="(submitForm(userForm.$valid, data))" novalidate>
                 <div class="list list-inset">
                     <label class="item item-input">
                         <input name="username" type="text" placeholder="Username" ng-model="data.username" ng-required="true">
