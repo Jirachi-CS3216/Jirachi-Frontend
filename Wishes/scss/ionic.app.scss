@@ -449,12 +449,6 @@ ion-nav-bar, ion-header-bar {
 	background: $pimary-background-color;
   text-align: center;
 
-  button {
-    text-transform: uppercase; 
-    transition: 0.2s ease-in-out all !important;
-    @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
-  }
-
   .activated {
     border-color: transparent;
     @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
@@ -476,20 +470,36 @@ ion-nav-bar, ion-header-bar {
     padding: 20px;
     margin: 0;
   }
+
+  .setting-card {
+    border-radius: 5px;
+    text-align: left;
+
+    label {
+      padding: 0;
+      span {
+        padding: 0;
+        font-weight: 800;
+      }
+    }
+  }
+
+  .button-card {
+    background-color: transparent;
+    @include box-shadow(1px, 0px, 3px, transparent);
+
+    button {
+      text-align: center;
+      margin-top: 0;
+      text-transform: uppercase; 
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.3));
+    }
+  }
 }
 
 
 /*Global layouts*/
-.three-columns {
-  display: flex;
-  justify-content: space-around;
-
-  .column-element {
-    flex: 0 33%;
-    text-align: center;
-  }
-}
-
 .title-subtitle {
   .title {
     font-weight: bold;
