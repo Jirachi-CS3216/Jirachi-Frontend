@@ -29,6 +29,10 @@ serviceModule.service('session', function session($window /*, $rootScope*/) {
         saveToDisk(_session);
     };
 
+    this.saveContext = function() {
+        this.save(_session);
+    }
+
     // Read-only getters
     this.currentUser = function () {
         if (!_session || !_session.currentUser) {

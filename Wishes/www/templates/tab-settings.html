@@ -27,19 +27,22 @@
 				<div class="item">
 					<label class="item item-input item-floating-label">
 					    <span class="input-label">Display Name</span>
-					    <input type="text" placeholder="Display Name">
+					    <input type="text" placeholder="Display Name" ng-change="userDisplayNameInputDidChange(displayName)" ng-model="displayName" ng-value="{{ session.currentUser().display_name }}">
+					    <span class="caption">( If no display name is specified, your username will be used instead. )</span>
 					</label>
 				</div>
 				<div class="item">
 					<label class="item item-input item-floating-label">
 					    <span class="input-label">Email</span>
 					    <input type="Email" placeholder="Email">
+					    <span class="caption">( Email is the only way to find your password back if you lose it )</span>
 					</label>
 				</div>
 				<div class="item">
 					<label class="item item-input item-floating-label">
 					    <span class="input-label">Hand Phone</span>
 					    <input type="text" placeholder="Hand Phone">
+					    <span class="caption">( Hand phone helps others to contact you when they pick your wishes. People tend to pick the wishes with hand phone numbers first comparing to those without. )</span>
 					</label>
 				</div>
 			</div>
