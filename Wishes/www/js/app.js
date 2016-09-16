@@ -146,21 +146,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     });
 })
-
-.factory('authInterceptor', function($location, $q, $window) {
-  return {
-    request: function(config) {
-      config.headers = config.headers || {};
-      config.headers['Access-Control-Allow-Headers'] = 'Content-Type';
-      config.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
-      config.headers['Access-Control-Allow-Origin'] = '*';
-      return config;
-    }
-  };
-})
-
-.config(function($httpProvider) {
-  $httpProvider.interceptors.push('authInterceptor');
-})
-
 ;
