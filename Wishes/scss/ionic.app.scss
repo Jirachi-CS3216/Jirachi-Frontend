@@ -68,6 +68,18 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   display: none !important;
 }
 
+.middle-align {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-circle {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
 ion-nav-bar, ion-header-bar {
   @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.1));
 }
@@ -372,6 +384,7 @@ ion-nav-bar, ion-header-bar {
 #settings {
 	color: $text-light;
 	background: $pimary-background-color;
+  text-align: center;
 
   button {
     text-transform: uppercase; 
@@ -383,9 +396,43 @@ ion-nav-bar, ion-header-bar {
     border-color: transparent;
     @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
   }
+
+  .nickname {
+    text-align: center;
+    color: $text-light;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .continuous-day {
+    margin-bottom: 20px;
+  }
+
+  .profile-card {
+    background: url('../img/background-dashboard.jpg');
+    padding: 20px;
+    margin: 0;
+  }
 }
 
 
+/*Global layouts*/
+.three-columns {
+  display: flex;
+  justify-content: space-around;
+
+  .column-element {
+    flex: 0 33%;
+    text-align: center;
+  }
+}
+
+.title-subtitle {
+  .title {
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+}
 
 
 /*Global Animation Options*/
