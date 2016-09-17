@@ -49,22 +49,22 @@ serviceModule
     }
 
     this.login = {
-        post: function(parameters) {
-            return $http.post(buildUrl(apiHost + '/users/login', parameters), {
+        post: function(parameters, data) {
+            return $http.post(buildUrl(apiHost + '/users/login', parameters), data, {
             });   
         }
     }
 
     this.signup = {
-        post: function(parameters) {
-            return $http.post(buildUrl(apiHost + '/users/signup', parameters), {
+        post: function(parameters, data) {
+            return $http.post(buildUrl(apiHost + '/users/signup', parameters), data, {
             });   
         }   
     }
 
     this.updateUserInfo = {
-        put: function(userID, parameters) {
-            return $http.post(buildUrl(apiHost + '/users/' + userID, parameters), {
+        put: function(userID, parameters, data) {
+            return $http.put(buildUrl(apiHost + '/users/' + userID, parameters), data, {
             });
         }
     }

@@ -9,7 +9,7 @@ module.controller('SignupCtrl', function($scope, $state, $ionicHistory, $ionicSc
 
 	$scope.signup = function(data) {
 		$ionicScrollDelegate.$getByHandle('contentScroll').scrollTop(true);
-		apis.signup.post({
+		apis.signup.post({}, {
             username: data.username,
             password: data.password
         }).success(function(response) {

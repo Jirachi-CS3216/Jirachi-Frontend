@@ -5,7 +5,7 @@ service('auth', function auth($http, $state, $ionicPopup, session, apis, $window
         if (data === undefined) {
             handleLoginFailure(handler)
         } else {
-            apis.login.post({
+            apis.login.post({}, {
                 username: data.username,
                 password: data.password
             }).success(function(response){

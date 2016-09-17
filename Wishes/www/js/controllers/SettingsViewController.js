@@ -31,14 +31,20 @@ module.controller('SettingsCtrl', function($scope, auth, session, apis) {
     }
 
     $scope.updateUserInfo = function() {
-        apis.updateUserInfo.put(session.currentUserID(), {
-            user: session.currentUser()
-        }).success(function(data) {
+        apis.updateUserInfo.put(session.currentUserID(), {}, {
+            user: JSON.stringify(session.currentUser())
+        }).success(function(data,status,headers,config) {
             console.log("User Info Updated")
             console.log(data)
-        }).error(function(data) {
+            console.log(status)
+            console.log(headers)
+            console.log(config)
+        }).error(function(data,status,headers,config) {
             console.log("User Info Failed to update")
             console.log(data)
+            console.log(status)
+            console.log(headers)
+            console.log(config)
         })
     }
 })
