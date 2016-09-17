@@ -430,6 +430,17 @@ ion-nav-bar, ion-header-bar {
  	}
 }
 
+
+#dashboard-modal-get {
+  background: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center;
+
+  ion-content {
+    
+  }
+}
+
 #wishes {
 	color: $text-light;
 	background: $pimary-background-color;

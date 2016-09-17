@@ -1,7 +1,6 @@
 module.controller('DashCtrl', function($scope, $ionicModal, apis, session) {
-
 	$scope.session = session;
-
+	//modals for posting wishes
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-post.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
@@ -16,18 +15,38 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session) {
     	$scope.locationPickerModal = modal;
 	});
 
-	$scope.openModal = function() {
+	//modals for getting wishes
+	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-get.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	}).then(function(modal) {
+	    $scope.getModal = modal;
+	});
+
+
+	//methods
+
+	$scope.openPostModal = function() {
 	    $scope.postModal.show();
 	};
 	
-	$scope.closeModal = function() {
+	$scope.closePostModal = function() {
 		$scope.postModal.hide();
+	};
+
+	$scope.openGetModal = function() {
+	    $scope.getModal.show();
+	};
+	
+	$scope.closeGetModal = function() {
+		$scope.getModal.hide();
 	};
 
 	// Cleanup the modal when we're done with it!
 	$scope.$on('$destroy', function() {
 		$scope.postModal.remove();
 		$scope.locationPickerModal.remove();
+		$scope.getModal.remove();
 	});
 
 	$scope.buttonAnimations = {
