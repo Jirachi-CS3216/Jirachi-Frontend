@@ -469,6 +469,26 @@ ion-nav-bar, ion-header-bar {
   .button {
     width: 120px;
   }
+
+  .wish-timeline {
+    text-align: left;
+    .timeline-block {
+      img {
+        border-radius: 0;
+      }
+
+      .timeline-icon {
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-radius: 50%;
+        margin-top: 25px;
+      }
+
+      .item {
+      }
+    }
+  }
 }
 
 #leaderboard {
