@@ -22,7 +22,7 @@
       break;
     }
   }
-
+  var WISHES_animating = false;
   var SwipeableCardView = ionic.views.View.inherit({
     /**
      * Initialize a card with the given options.
@@ -244,7 +244,11 @@
 
     _doDragStart: function(e) {
       e.preventDefault();
+
       if(this.el.currentIndex !== 0) return;
+      if(this.drag === 'false') return;
+      if(WISHES_animating) return;
+
       var width = this.el.offsetWidth;
       var point = window.innerWidth / 2 + this.rotationDirection * (width / 2)
       var distance = Math.abs(point - e.gesture.touches[0].pageX);// - window.innerWidth/2);
@@ -258,13 +262,14 @@
 
       if(this.el.currentIndex !== 0) return;
       if(this.drag === 'false') return;
+      if(WISHES_animating) return;
 
       var o = e.gesture.deltaX / -1000;
 
       this.rotationAngle = Math.atan(o);
 
-      this.x = this.startX + (e.gesture.deltaX * 1.2);
-      this.y = this.startY + (e.gesture.deltaY * 1.2);
+      this.x = this.startX + (e.gesture.deltaX * 0.5);
+      this.y = this.startY + (e.gesture.deltaY * 0.5);
 
       this.el.style.transform = this.el.style.webkitTransform = 'translate3d(' + this.x + 'px, ' + this.y  + 'px, 0) rotate(' + (this.rotationAngle || 0) + 'rad)';
 
@@ -277,7 +282,16 @@
     },
     
     _doDragEnd: function(e) {
+
       if(this.el.currentIndex !== 0) return;
+      if(this.drag === 'false') return;
+      if(WISHES_animating) return;
+
+      var self = this
+      WISHES_animating = true;
+      setTimeout(function() {
+        WISHES_animating = false
+      }, 500);
       this.transitionOut(e);
     }
   });
@@ -424,8 +438,8 @@
 
               .easing({
                 type: 'spring',
-                frequency: 15,
-                friction: 250,
+                frequency: 0,
+                friction: 20,
                 initialForce: false
               })
 
@@ -513,6 +527,10 @@
         });
 
         var bringCardUp = function(card, amt, max, i) {
+          // if (!card) { 
+          //   return
+          // }
+
           var position, newTop;
           position = card.style.transform || card.style.webkitTransform;
           newTop = Math.max(max - 25, Math.min(max, max - (max * Math.abs(amt))));
