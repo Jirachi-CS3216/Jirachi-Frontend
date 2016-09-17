@@ -1,5 +1,15 @@
-<ion-view view-title="WishDetail" id="wish-detail">
+<ion-view view-title="Wish Card" id="wish-detail">
 	<ion-content class="padding">
-		sasdf
+		<div class="wish-card-wrapper">
+			<img ng-src="{{wish.image}}" style="width: 64px; height: 64px" class="middle-align img-circle">
+			<div class="card wish-card">
+				<h3 class="title">
+					{{wish.title}}
+				</h3>
+				<p>
+					{{wish.description}}
+				</p>
+			</div>
+		</div>
 	</ion-content>
 </ion-view>

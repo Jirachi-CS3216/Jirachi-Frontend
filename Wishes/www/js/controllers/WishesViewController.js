@@ -29,6 +29,7 @@ module.controller('WishesCtrl', function($scope, session) {
 
 	$scope.getWishesMade = function() {
 		var wishes =  [{
+			id: 0,
 			title: "I have a little little wish",
 			description: "I wish...for world peace.",
 			time: "2016-09-09 12:32:00",
@@ -36,6 +37,7 @@ module.controller('WishesCtrl', function($scope, session) {
 			isExpired: false
 		},
 		{
+			id: 1,
 			title: "I wish someone can wash my car",
 			description: "As title",
 			time: "2016-09-09 12:32:00",
@@ -43,6 +45,7 @@ module.controller('WishesCtrl', function($scope, session) {
 			isExpired: true
 		},
 		{
+			id: 2,
 			title: "Who can give me the answer for tutorial 8",
 			description: "don't know how to write",
 			time: "2016-09-09 12:32:00",
@@ -54,6 +57,7 @@ module.controller('WishesCtrl', function($scope, session) {
 
 	$scope.getWishesAccepted = function() {
 		var wishes = [{
+			id: 3,
 			title: "I need some hlep guyys",
 			description: "where is lt32",
 			time: "2016-09-09 12:32:00",

@@ -439,6 +439,25 @@ ion-nav-bar, ion-header-bar {
   }
 }
 
+#wish-detail {
+  text-align: center;
+  background: $pimary-background-color;
+  color: $text-dark;
+
+  .wish-card {
+    position: absolute;
+    top: 30px;
+    margin-top: 0px;
+    padding-top: 40px;
+    width: 100%;
+    z-index: -1;
+
+    .title {
+      color: $text-dark;
+    }
+  }
+}
+
 #leaderboard {
 	color: $text-light;
 	background: $pimary-background-color;
