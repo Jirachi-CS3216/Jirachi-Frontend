@@ -3,12 +3,10 @@
 		<div class="card profile-card">
 			<img class="img-circle middle-align" ng-src="http://67.media.tumblr.com/1b70e7efd3eba88c15fb122c41d255ca/tumblr_n0valuruRN1r4t05to5_400.jpg">
 			<div class="nickname">{{ session.currentUserDisplayName() }}</div>
+			<hr>
 			<!-- <p class="continuous-day">You've been helping others continously for 100 days</p> -->
-		</div>
-
-		<div class="setting-list">
-			<div class="card setting-card animated fadeInUp">
-				<div class="item row">
+			<div>
+				<div class="item row user-statistics">
 					<div class="col title-subtitle">
 						<div class="title">{{ session.currentUserPoints() }}</div>
 						<div class="subtitle">Points</div>
@@ -23,26 +21,30 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="setting-list">
+			
 			<div class="card setting-card animated fadeInUp">
 				<div class="item">
 					<label class="item item-input item-floating-label">
-					    <span class="input-label">Display Name</span>
-					    <input type="text" placeholder="Display Name" ng-change="userDisplayNameInputDidChange(displayName)" ng-model="displayName">
-					    <span class="caption">( If no display name is specified, your username will be used instead. )</span>
+						<span class="input-label">Display Name</span>
+						<input type="text" placeholder="Display Name" ng-change="userDisplayNameInputDidChange(displayName)" ng-model="displayName">
+						<span class="caption">*If no display name is specified, your username will be used instead.</span>
 					</label>
 				</div>
 				<div class="item">
 					<label class="item item-input item-floating-label">
-					    <span class="input-label">Email</span>
-					    <input type="Email" placeholder="Email" ng-change="userEmailInputDidChange(email)" ng-model="email">
-					    <span class="caption">( Email is the only way to find your password back if you lose it )</span>
+						<span class="input-label">Email</span>
+						<input type="Email" placeholder="Email" ng-change="userEmailInputDidChange(email)" ng-model="email">
+						<span class="caption">*Email is the only way to find your password back if you lose it</span>
 					</label>
 				</div>
 				<div class="item">
 					<label class="item item-input item-floating-label">
-					    <span class="input-label">Hand Phone</span>
-					    <input type="text" placeholder="Hand Phone" ng-change="userPhoneInputDidChange(phone)" ng-model="phone">
-					    <span class="caption">( Hand phone helps others to contact you when they pick your wishes. People tend to pick the wishes with hand phone numbers first comparing to those without. )</span>
+						<span class="input-label">Hand Phone</span>
+						<input type="text" placeholder="Hand Phone" ng-change="userPhoneInputDidChange(phone)" ng-model="phone">
+						<span class="caption">*People would love to pick your wishes if they can contact you!</span>
 					</label>
 				</div>
 			</div>
