@@ -496,7 +496,7 @@
 
               (function(j) {
                 $timeout(function() {
-                  var top = (j * 25);
+                  var top = (j * 35);
                   var scale = Math.max(0, (1 - (j / 10)));
                   var animation = collide.animation({
                     duration: 800,

@@ -23,61 +23,78 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 	    $scope.getModal = modal;
 	});
 
-  var cardTypes = [
-    { image: 'http://c4.staticflickr.com/4/3924/18886530069_840bc7d2a5_n.jpg' },
-    { image: 'http://c1.staticflickr.com/1/421/19046467146_548ed09e19_n.jpg' },
-    { image: 'http://c1.staticflickr.com/1/278/18452005203_a3bd2d7938_n.jpg' },
-    { image: 'http://c1.staticflickr.com/1/297/19072713565_be3113bc67_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/536/19072713515_5961d52357_n.jpg' },
-    // { image: 'http://c4.staticflickr.com/4/3937/19072713775_156a560e09_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' }
-  ];
+	var wishes = [{ 
+		title: 'Printing@SoC',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nulla purus, placerat sed turpis ac, consectetur cursus nunc. Nunc lorem turpis, faucibus sed neque a, lacinia egestas lacus. Vestibulum sollicitudin molestie hendrerit. Vestibulum consequat ipsum nec leo porttitor, ac elementum libero posuere. Sed placerat rutrum tellus, vestibulum porta nibh rhoncus eget. Etiam sit amet tincidunt felis.',
+		posterHasContact: true,
+		hasMeetupLocation: true,
+		address: "School of Computing, 13 Computing Drive",
+		latitude: 1.30,
+		longitude: 103.77
+	},{ 
+		title: 'Printing@SoC',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nulla purus, placerat sed turpis ac, consectetur cursus nunc. Nunc lorem turpis, faucibus sed neque a, lacinia egestas lacus. Vestibulum sollicitudin molestie hendrerit. Vestibulum consequat ipsum nec leo porttitor, ac elementum libero posuere. Sed placerat rutrum tellus, vestibulum porta nibh rhoncus eget. Etiam sit amet tincidunt felis.',
+		posterHasContact: true,
+		hasMeetupLocation: true,
+		address: "School of Computing, 13 Computing Drive",
+		latitude: 1.28333,
+		longitude: 103.7666
+	},{
+		title: 'Printing@SoC',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nulla purus, placerat sed turpis ac, consectetur cursus nunc. Nunc lorem turpis, faucibus sed neque a, lacinia egestas lacus. Vestibulum sollicitudin molestie hendrerit. Vestibulum consequat ipsum nec leo porttitor, ac elementum libero posuere. Sed placerat rutrum tellus, vestibulum porta nibh rhoncus eget. Etiam sit amet tincidunt felis.',
+		posterHasContact: true,
+		hasMeetupLocation: true,
+		address: "School of Computing, 13 Computing Drive",
+		latitude: 1.28333,
+		longitude: 103.7666
+	}];
 
-  $scope.cards = {
-    master: Array.prototype.slice.call(cardTypes, 0),
-    active: Array.prototype.slice.call(cardTypes, 0),
-    discards: [],
-    liked: [],
-    disliked: []
-  }
+	$scope.cards = {
+		master: Array.prototype.slice.call(wishes, 0),
+		active: Array.prototype.slice.call(wishes, 0),
+		discards: [],
+		liked: [],
+		disliked: []
+	}
 
-  $scope.cardDestroyed = function(index) {
-    $scope.cards.active.splice(index, 1);
-  };
+	$scope.cardDestroyed = function(index) {
+		$scope.cards.active.splice(index, 1);
+	};
 
-  $scope.addCard = function() {
-    var newCard = cardTypes[0];
-    $scope.cards.active.push(angular.extend({}, newCard));
-  }
+	$scope.addCard = function() {
+		var newCard = wishes[0];
+		$scope.cards.active.push(angular.extend({}, newCard));
+	}
 
-  $scope.refreshCards = function() {
-    // Set $scope.cards to null so that directive reloads
-    $scope.cards.active = null;
-    $timeout(function() {
-      $scope.cards.active = Array.prototype.slice.call($scope.cards.master, 0);
-    });
-  }
+	$scope.refreshCards = function() {
+		// Set $scope.cards to null so that directive reloads
+		$scope.cards.active = null;
+		$timeout(function() {
+			$scope.cards.active = Array.prototype.slice.call($scope.cards.master, 0);
+		});
+	}
 
-  $scope.cardSnapBack = function() {
-  	console.log("snapBack");
-  }
+	$scope.cardSnapBack = function() {
+		console.log("snapBack");
+	}
 
-  $scope.$on('removeCard', function(event, element, card) {
-  	console.log('removeCard');
-    var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
-    $scope.cards.discards.push(discarded);
-  });
+	$scope.$on('removeCard', function(event, element, card) {
+		console.log('removeCard');
+		var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
+		$scope.cards.discards.push(discarded);
+	});
 
-  $scope.cardSwipedLeft = function(index) {
-    console.log('LEFT SWIPE');
-    var card = $scope.cards.active[index];
-    $scope.cards.disliked.push(card);
-  };
-  $scope.cardSwipedRight = function(index) {
-    console.log('RIGHT SWIPE');
-    var card = $scope.cards.active[index];
-    $scope.cards.liked.push(card);
-  };
+	$scope.cardSwipedLeft = function(index) {
+		console.log('LEFT SWIPE');
+		var card = $scope.cards.active[index];
+		$scope.cards.disliked.push(card);
+	};
+	
+	$scope.cardSwipedRight = function(index) {
+		console.log('RIGHT SWIPE');
+		var card = $scope.cards.active[index];
+		$scope.cards.liked.push(card);
+	};
 
 
 	//methods
@@ -187,10 +204,17 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 	}
 
 
-	$scope.thumbnailURL = function() {
-		var selectedPoint = $scope.selectedPoint;
-		var selectedZoom = $scope.selectedZoom;
-		var imageElement = document.querySelectorAll(".map-wrapper")[0]
+	$scope.thumbnailURL = function(lat, long) {
+		if (lat !== undefined && long !== undefined) {
+			var selectedPoint = new google.maps.LatLng(lat,long);
+			var selectedZoom = 13;
+			var imageElement = document.querySelectorAll(".map-thumbnail")[0]
+		} else {
+			var selectedPoint = $scope.selectedPoint;
+			var selectedZoom = $scope.selectedZoom;
+			var imageElement = document.querySelectorAll(".map-wrapper")[0]
+		}
+
 		if (imageElement && imageElement.clientWidth !== 0 && selectedPoint) {
 			var url = "https://maps.googleapis.com/maps/api/staticmap" + 
 				  "?center=" + selectedPoint.toUrlValue() +

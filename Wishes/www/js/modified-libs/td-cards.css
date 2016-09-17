@@ -6,17 +6,12 @@ td-cards {
 td-card {
   position: absolute;
   top: 15vh;
-  left: 10vw;
-  width: 80vw;
+  left: 6vw;
+  width: 88vw;
   height: 75vh;
   box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
-  border-radius: 3px;
+  border-radius: 10px;
   background-color: white;
-}
-
-td-card img {
-  max-width: 100%;
-  border-radius: 5px;
 }
 
 .yes-text {
@@ -48,7 +43,7 @@ td-card img {
 }
 
 td-card#end-card {
-  background-color: none;
+  background-color: transparent;
   box-shadow: none;
   border-radius: none;
 }
@@ -69,15 +64,4 @@ td-card#end-card {
 /* DEMO */
 .background-grey {
   background-color: #F7F7F7;
-}
-
-.td-title {
-  position: absolute;
-  top: 70px;
-  width: 100%;
-  text-align: center;
-}
-
-.td-title span {
-  font-weight: bold;
 }

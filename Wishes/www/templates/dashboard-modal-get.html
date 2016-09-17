@@ -8,10 +8,22 @@
 	    </ion-header-bar>
 		<div ng-if="cards.active">
 			<td-cards class="animated pulse">
-				<td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)">
-					<div class="image">
-					<!-- <div class="no-text"><i class="icon ion-thumbsdown"></i></div> -->
-					<!-- <div class="yes-text"><i class="icon ion-thumbsup"></i></div> -->
+				<td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" drag="false">
+					<ion-content class="content-panel">
+						<div class="wish-title">{{ card.title }}</div>
+						<hr>
+						<div class="wish-description">{{ card.description }}</div>
+						<hr ng-show="card.posterHasContact">
+						<div class="wish-contact" ng-show="card.posterHasContact">
+							Contact Available
+						</div>
+						<hr ng-show="card.hasMeetupLocation">
+						<div class="map-thumbnail" ng-click="" ng-show="card.hasMeetupLocation">
+							<div class="address-line">{{ card.address }}</div>
+							<img ng-srcset="{{ thumbnailURL(card.latitude, card.longitude) }}">
+						</div>
+						<div class="blank-space"></div>
+					</ion-content>
 					<div class="row button-line">
 						<div class="col">
 							<button class="button button-assertive button-block" ng-click="onClickTransitionOut(card)">Discard</button>	
@@ -19,7 +31,6 @@
 						<div class="col">
 							<button class="button button-balanced button-block">Accept</button>	
 						</div>
-					</div>
 					</div>
 				</td-card>
 				<td-card id="end-card" drag="false">
