@@ -28,9 +28,9 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
     { image: 'http://c1.staticflickr.com/1/421/19046467146_548ed09e19_n.jpg' },
     { image: 'http://c1.staticflickr.com/1/278/18452005203_a3bd2d7938_n.jpg' },
     { image: 'http://c1.staticflickr.com/1/297/19072713565_be3113bc67_n.jpg' },
-    { image: 'http://c1.staticflickr.com/1/536/19072713515_5961d52357_n.jpg' },
-    { image: 'http://c4.staticflickr.com/4/3937/19072713775_156a560e09_n.jpg' },
-    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' }
+    // { image: 'http://c1.staticflickr.com/1/536/19072713515_5961d52357_n.jpg' },
+    // { image: 'http://c4.staticflickr.com/4/3937/19072713775_156a560e09_n.jpg' },
+    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' }
   ];
 
   $scope.cards = {
@@ -42,19 +42,19 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
   }
 
   $scope.cardDestroyed = function(index) {
-    // $scope.cards.active.splice(index, 1);
+    $scope.cards.active.splice(index, 1);
   };
 
   $scope.addCard = function() {
-    // var newCard = cardTypes[0];
-    // $scope.cards.active.push(angular.extend({}, newCard));
+    var newCard = cardTypes[0];
+    $scope.cards.active.push(angular.extend({}, newCard));
   }
 
   $scope.refreshCards = function() {
     // Set $scope.cards to null so that directive reloads
     $scope.cards.active = null;
     $timeout(function() {
-      // $scope.cards.active = Array.prototype.slice.call($scope.cards.master, 0);
+      $scope.cards.active = Array.prototype.slice.call($scope.cards.master, 0);
     });
   }
 

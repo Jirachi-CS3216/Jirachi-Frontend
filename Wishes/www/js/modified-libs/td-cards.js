@@ -163,6 +163,7 @@
 
       var targetX;
       if(draggable) {
+        this.width = this.el.offsetWidth; 
         targetX = (this.x > 0) ? (this.parentWidth / 2) + (this.width) : - (this.parentWidth + this.width);
       } else {
         targetX = defaults.targetX;
@@ -249,6 +250,7 @@
       var distance = Math.abs(point - e.gesture.touches[0].pageX);// - window.innerWidth/2);
 
       this.touchDistance = distance * 10;
+      this.parentWidth = this.el.parentNode.offsetWidth;
     },
 
     _doDrag: function(e) {
@@ -261,8 +263,8 @@
 
       this.rotationAngle = Math.atan(o);
 
-      this.x = this.startX + (e.gesture.deltaX * 0.8);
-      this.y = this.startY + (e.gesture.deltaY * 0.8);
+      this.x = this.startX + (e.gesture.deltaX * 1.2);
+      this.y = this.startY + (e.gesture.deltaY * 1.2);
 
       this.el.style.transform = this.el.style.webkitTransform = 'translate3d(' + this.x + 'px, ' + this.y  + 'px, 0) rotate(' + (this.rotationAngle || 0) + 'rad)';
 
@@ -273,6 +275,7 @@
         self.onPartialSwipe(self.thresholdAmount);
       });
     },
+    
     _doDragEnd: function(e) {
       if(this.el.currentIndex !== 0) return;
       this.transitionOut(e);
