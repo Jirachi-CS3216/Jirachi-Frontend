@@ -89,8 +89,8 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session) {
 		$scope.map = new google.maps.Map(document.getElementById("map-modal-post"), mapOptions);
 		$scope.selectedAddress = "Select Meetup Address"
 
-		google.maps.event.addListener($scope.map, "dragend", function() {
-   			var currentSelectedPoint = $scope.map.getCenter()
+		function mapDidDrag() {
+			var currentSelectedPoint = $scope.map.getCenter()
    			apis.reverseGeocoding.get({
    				latlng: currentSelectedPoint.toUrlValue(),
    				key: GOOGLE_MAPE_API_KEY
@@ -105,7 +105,10 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session) {
    					console.log("Google Geocoding Failed");
    				}
    			});
-		});
+		}
+
+		google.maps.event.addListener($scope.map, "dragend", mapDidDrag);
+		mapDidDrag();
 	}
 
 
