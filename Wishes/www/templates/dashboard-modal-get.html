@@ -6,17 +6,20 @@
 	            Dismiss
 	        </button>
 	    </ion-header-bar>
-		<!-- <ion-content class="padding animated pulse" no-scroll>
-		</ion-content> -->
-
 		<div ng-if="cards.active">
 			<td-cards class="animated pulse">
 				<td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)">
 					<div class="image">
 					<!-- <div class="no-text"><i class="icon ion-thumbsdown"></i></div> -->
 					<!-- <div class="yes-text"><i class="icon ion-thumbsup"></i></div> -->
-					<div class="discard" ng-click="onClickTransitionOut(card)">DISCARD</div>
-					<img>
+					<div class="row button-line">
+						<div class="col">
+							<button class="button button-assertive button-block" ng-click="onClickTransitionOut(card)">Discard</button>	
+						</div>
+						<div class="col">
+							<button class="button button-balanced button-block">Accept</button>	
+						</div>
+					</div>
 					</div>
 				</td-card>
 				<td-card id="end-card" drag="false">
@@ -25,5 +28,4 @@
 			</td-cards>
 		</div>
 	</div>
-
 </ion-modal-view>
