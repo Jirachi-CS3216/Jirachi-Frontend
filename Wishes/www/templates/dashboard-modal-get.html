@@ -1,4 +1,4 @@
-<ion-modal-view view-title="Get" id="dashboard-modal-get">
+<ion-modal-view view-title="Get" id="dashboard-modal-get" no-scroll>
 	<div class="wrapper">
 		<ion-header-bar>
 	      <h1 class="title">Wishes Picker</h1>
@@ -6,8 +6,37 @@
 	            Dismiss
 	        </button>
 	    </ion-header-bar>
-		<ion-content class="padding animated pulse">
-			
-		</ion-content>
+		<div ng-if="cards.active">
+			<td-cards class="animated pulse">
+				<td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" drag="false">
+					<ion-content class="content-panel">
+						<div class="wish-title">{{ card.title }}</div>
+						<hr>
+						<div class="wish-description">{{ card.description }}</div>
+						<hr ng-show="card.posterHasContact">
+						<div class="wish-contact" ng-show="card.posterHasContact">
+							Contact Available
+						</div>
+						<hr ng-show="card.hasMeetupLocation">
+						<div class="map-thumbnail" ng-click="" ng-show="card.hasMeetupLocation">
+							<div class="address-line">{{ card.address }}</div>
+							<img ng-srcset="{{ thumbnailURL(card.latitude, card.longitude) }}">
+						</div>
+						<div class="blank-space"></div>
+					</ion-content>
+					<div class="row button-line">
+						<div class="col">
+							<button class="button button-assertive button-block" ng-click="onClickTransitionOut(card)">Discard</button>	
+						</div>
+						<div class="col">
+							<button class="button button-balanced button-block">Accept</button>	
+						</div>
+					</div>
+				</td-card>
+				<td-card id="end-card" drag="false">
+					<i class="icon ion-ios-refresh disable-user-behavior" ng-click="refreshCards()"></i>
+				</td-card>
+			</td-cards>
+		</div>
 	</div>
 </ion-modal-view>
