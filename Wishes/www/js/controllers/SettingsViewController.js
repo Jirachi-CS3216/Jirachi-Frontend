@@ -32,7 +32,7 @@ module.controller('SettingsCtrl', function($scope, auth, session, apis) {
 
     $scope.updateUserInfo = function() {
         apis.updateUserInfo.put(session.currentUserID(), {}, {
-            user: JSON.stringify(session.currentUser())
+            user: session.currentUser()
         }).success(function(data,status,headers,config) {
             console.log("User Info Updated")
             console.log(data)
