@@ -19,7 +19,6 @@ service('auth', function auth($http, $state, $ionicPopup, session, apis, $window
     };
 
     function handleLoginFailure(handler) {
-        destroyCurrentUser()
         $ionicPopup.show({
             title: 'Login Failed',
             buttons: [{text: 'OK'}]

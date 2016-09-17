@@ -34,17 +34,13 @@ module.controller('SettingsCtrl', function($scope, auth, session, apis) {
         apis.updateUserInfo.put(session.currentUserID(), {}, {
             user: session.currentUser()
         }).success(function(data,status,headers,config) {
-            console.log("User Info Updated")
-            console.log(data)
-            console.log(status)
-            console.log(headers)
-            console.log(config)
+            if (status === 200) {
+                console.log("User Info Updated")
+            } else {
+                console.log("User Info Failed to update")
+            }
         }).error(function(data,status,headers,config) {
             console.log("User Info Failed to update")
-            console.log(data)
-            console.log(status)
-            console.log(headers)
-            console.log(config)
         })
     }
 })
