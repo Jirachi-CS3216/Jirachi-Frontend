@@ -33,7 +33,7 @@ serviceModule.service('session', function session($window /*, $rootScope*/) {
         this.save(_session);
     }
 
-    // Read-only getters
+
     this.currentUser = function () {
         if (!_session || !_session.currentUser) {
             return undefined
@@ -41,6 +41,14 @@ serviceModule.service('session', function session($window /*, $rootScope*/) {
 
         return _session.currentUser; 
     };
+
+    this.currentUserID = function() {
+        if (!_session || !_session.currentUser || !_session.currentUser.id) {
+            return undefined;
+        } else {
+            return _session.currentUser.id
+        }
+    }
 
     this.currentUserDisplayName = function () {
         if (!_session || !_session.currentUser) {

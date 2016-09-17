@@ -61,4 +61,11 @@ serviceModule
             });   
         }   
     }
+
+    this.updateUserInfo = {
+        put: function(userID, parameters) {
+            return $http.post(buildUrl(apiHost + '/users/' + userID, parameters), {
+            });
+        }
+    }
   });
