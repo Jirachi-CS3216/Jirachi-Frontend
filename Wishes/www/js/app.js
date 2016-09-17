@@ -12,7 +12,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   notAuthenticated: 'auth-not-authenticated',
   notAuthorized: 'auth-not-authorized'
 })
- 
+
 .constant('USER_ROLES', {
   admin: 'admin_role',
   public: 'public_role'
@@ -35,7 +35,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 .config(function($ionicConfigProvider) {
-    $ionicConfigProvider.tabs.position('bottom');
+  $ionicConfigProvider.tabs.position('bottom');
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -128,6 +128,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
+  .state('tab.wish-detail', {
+    url: '/wishes/:wishID',
+    views: {
+      'tab-wishes': {
+        templateUrl: 'templates/wish-detail.html',
+        controller: 'WishDetailCtrl'
+      }
+    }
+  })
   ;
 
   // if none of the above states are matched, use this as the fallback
@@ -136,14 +146,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 .run(function($rootScope, $window, auth){
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-      if (!toState.publicAccess & !auth.isUserValid()) {
-        event.preventDefault();
-        $window.location.href = '/'
-      } else if (toState.url === '/login' && auth.isUserValid())  {
-        event.preventDefault();
-        $window.location.href = '/#/tab/dash'
-      }
-    });
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    if (!toState.publicAccess & !auth.isUserValid()) {
+      event.preventDefault();
+      $window.location.href = '/'
+    } else if (toState.url === '/login' && auth.isUserValid())  {
+      event.preventDefault();
+      $window.location.href = '/#/tab/dash'
+    }
+  });
 })
 ;
