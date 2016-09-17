@@ -16,6 +16,8 @@ $dark:                            #444 !default;
 
 $positive:                        #219aa0 !default;
 $energized:                       #f2d863 !default;
+$unavailable:                     gray !default;
+$busy:                            #bd7f69 !default;
 $text-dark:						  #6c7c93;
 $text-light:					  #ffffff;
 $pimary-background-color:		  #A9DDDD;
@@ -61,6 +63,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .button {
   font-weight: bold;
+}
+
+.button-unavailable {
+  background-color: $unavailable;
+}
+
+.button-busy {
+  background-color: $busy;
 }
 
 .hidden {
@@ -445,9 +455,8 @@ ion-nav-bar, ion-header-bar {
   color: $text-dark;
 
   .wish-card {
-    position: absolute;
     top: 30px;
-    margin-top: 0px;
+    margin-top: -30px;
     padding-top: 40px;
     width: 100%;
     z-index: -1;
@@ -455,6 +464,10 @@ ion-nav-bar, ion-header-bar {
     .title {
       color: $text-dark;
     }
+  }
+
+  .button {
+    width: 120px;
   }
 }
 
