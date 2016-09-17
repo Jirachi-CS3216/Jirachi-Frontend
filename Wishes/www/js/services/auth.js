@@ -1,6 +1,6 @@
 serviceModule.
 
-service('auth', function auth($http, $state, $ionicPopup, session, apis) {
+service('auth', function auth($http, $state, $ionicPopup, session, apis, $window) {
     this.login = function(data, handler){
         if (data === undefined) {
             handleLoginFailure(handler)
@@ -42,7 +42,7 @@ service('auth', function auth($http, $state, $ionicPopup, session, apis) {
 
     destroyCurrentUser = function() {
         session.save(null);
-        $state.go('login');
+        $window.location.reload();
     }
 
     this.isUserValid = function() {

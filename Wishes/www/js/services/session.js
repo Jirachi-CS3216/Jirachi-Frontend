@@ -1,4 +1,4 @@
-serviceModule.service('session', function session($window /*, $rootScope*/) {
+serviceModule.service('session', function session($window) {
     // AngularJS will instantiate a singleton by calling "new" on this function
   
     // window.localStorage key
