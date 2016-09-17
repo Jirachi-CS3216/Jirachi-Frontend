@@ -125,7 +125,8 @@
     },
 
     isUnderThreshold: function() {
-      return Math.abs(this.thresholdAmount) < this.minThreshold;
+      return true;
+      // return Math.abs(this.thresholdAmount) < this.minThreshold;
     },
 
     /**
@@ -268,8 +269,8 @@
 
       this.rotationAngle = Math.atan(o);
 
-      this.x = this.startX + (e.gesture.deltaX * 0.5);
-      this.y = this.startY + (e.gesture.deltaY * 0.5);
+      this.x = this.startX + (e.gesture.deltaX * 0.1);
+      this.y = this.startY + (e.gesture.deltaY * 0.1);
 
       this.el.style.transform = this.el.style.webkitTransform = 'translate3d(' + this.x + 'px, ' + this.y  + 'px, 0) rotate(' + (this.rotationAngle || 0) + 'rad)';
 
@@ -438,8 +439,8 @@
 
               .easing({
                 type: 'spring',
-                frequency: 0,
-                friction: 20,
+                frequency: 15,
+                friction: 150,
                 initialForce: false
               })
 
