@@ -9,6 +9,18 @@
     background-color: $pimary-background-color !important;
   }
 
+  .help-block {
+    color: white;
+    background-color: #E57373;
+    @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
+  }
+
   ion-content {
     .wish-title {
       background-color: transparent;
