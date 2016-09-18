@@ -1,0 +1,118 @@
+#leaderboard {
+	color: $text-light;
+	background: $pimary-background-color;
+
+	.button-bar-wrapper {
+  	margin-top: 20px;
+  	margin-bottom: 30px;
+  	margin-left: 20px;
+  	margin-right: 20px;
+	
+		a, button {
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    }
+
+    a:first-child {
+    	border-top-left-radius: 50px;
+    	border-bottom-left-radius: 50px;
+    }
+
+    a:last-child {
+    	border-top-right-radius: 50px;
+    	border-bottom-right-radius: 50px;
+    }
+
+    .activated {
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+    }
+  }
+
+  $card-row-height: 100px;
+  $card-margin: 20px;
+
+  .leaderboard-card {
+  	.item {
+  		padding: 0px;
+  		height: $card-row-height;
+
+  		.text-content {
+  			position: absolute;
+  			top: $card-margin;
+  			height: $card-row-height - $card-margin * 2;
+				text-align: center;
+
+  			.name {
+  				font-weight: 800;
+  				font-size: 18px;
+  				margin-top: 5px;
+  				margin-bottom: 10px;
+  			}
+  		}
+
+  		.avatar-image {
+  			position: absolute;
+  			width: $card-row-height - $card-margin * 2;
+  			height: $card-row-height - $card-margin * 2;
+  			top: $card-margin;
+	  	}
+
+	  	.rank {
+	  		font-size: 30px;
+	  		background-color: rgba(0, 0, 0, 0.7);
+	  		color: white;
+	  		text-align: center;
+	  		/*border-radius: $card-row-height/2 - $card-margin;*/
+	  		line-height: $card-row-height;
+	  		position: absolute;
+  			width: 80px;
+  			height: $card-row-height;
+	  	}
+  	}
+  }
+
+  .leaderboard-card:nth-child(odd) {
+  	border-radius: 5px;
+  	border-top-right-radius: 200px;
+  	border-bottom-right-radius: 200px;
+  	margin-right: 20px;
+  	margin-left: -40px;
+  	.avatar-image {
+	  	right: $card-margin;
+	  }
+
+	  .rank {
+	  	left: 0px;
+	  	text-align: right;
+	  	padding-right: 12px;
+	  }
+
+	  .text-content {
+	  	left: 90px;
+	  	right: $card-row-height
+	  }
+  }
+
+  .leaderboard-card:nth-child(even) {
+  	border-radius: 5px;
+  	border-top-left-radius: 200px;
+  	border-bottom-left-radius: 200px;
+  	margin-left: 20px;
+  	margin-right: -40px;
+  	.avatar-image {
+	  	left: $card-margin;
+	  }
+
+	  .rank {
+	  	text-align: left;
+	  	padding-left: 12px;
+	  	right: 0px;
+	  }
+
+	  .text-content {
+	  	left: $card-row-height;
+	  	right: 90px;
+	  }
+  }
+}

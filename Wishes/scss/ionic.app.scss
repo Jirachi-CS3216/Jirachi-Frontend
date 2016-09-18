@@ -29,11 +29,18 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 @import 'https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i';
 @import 'https://fonts.googleapis.com/css?family=Dancing+Script:400,700';
+@import 'https://fonts.googleapis.com/css?family=Port+Lligat+Slab';
 
 
 #login-view, #signup-view {
   .title {
     font-family: 'Dancing Script' !important;
+  }
+}
+
+#leaderboard {
+  .rank {
+    font-family: 'Port Lligat Slab' !important;
   }
 }
 
@@ -110,12 +117,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "scss/pages/tab-wishes.scss";
 @import "scss/pages/wish-detail.scss";
 @import "scss/pages/tab-settings.scss";
-
-
-#leaderboard {
-	color: $text-light;
-	background: $pimary-background-color;
-}
+@import "scss/pages/tab-leaderboard.scss";
 
 #dashboard-modal-spinner {
   background-color: rgba(0, 0, 0, 0.8);

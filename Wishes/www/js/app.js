@@ -101,16 +101,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-  
-  .state('tab.chat-detail', {
-    url: '/leaderboard/:chatId',
-    views: {
-      'tab-leaderboard': {
-        templateUrl: 'templates/chat-detail.html',
-        controller: 'ChatDetailCtrl'
-      }
-    }
-  })
 
   .state('tab.wishes', {
     url: '/wishes',
