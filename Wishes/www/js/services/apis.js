@@ -1,7 +1,7 @@
 serviceModule
 
 
-  .service('apis', function apis($http) {
+  .service('apis', function apis($http, session) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     
     var apiHost = 'http://54.254.172.150:3000/api/v1';
@@ -65,6 +65,9 @@ serviceModule
     this.updateUserInfo = {
         put: function(userID, parameters, data) {
             return $http.put(buildUrl(apiHost + '/users/' + userID, parameters), data, {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
             });
         }
     }

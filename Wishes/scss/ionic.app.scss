@@ -97,447 +97,446 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     @include box-shadow(-2px, 0px, 3px, rgba(0, 0, 0, 0.1)); 
   }
 
-  #login-view {
-    background-image: url('../img/background-dashboard.jpg');
-    background-size: cover;
-    background-position: center;
+#login-view {
+  background-image: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center;
 
-    .padding {
-      @include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));  
-    }
-
-    .help-block {
-      color: rgba(255, 0, 0, 0.6);
-      padding-right: 15px;
-      font-size: 14px;
-    }
-
-    .title {
-      text-align: center;
-      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-      color: white;
-      font-weight: 700;
-      font-size: 100px;
-      line-height: calc(100vh - 317px);
-    }
-
-    .button-group {
-      padding: 15px 20px;
-
-      .list {
-        margin: 0;
-        @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
-        border-radius: 5px;
-        z-index: 1;
-      }
-
-      button {
-        text-transform: uppercase; 
-        transition: 0.2s ease-in-out all !important;
-        @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
-      }
-
-      .activated {
-        border-color: transparent;
-        @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
-      }
-
-      .sign-up {
-        margin-top: 30px;
-        ,sign-up-title {
-          text-align: center;
-          text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
-          color: white;
-        }
-      }
-    }
+  .padding {
+    @include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));  
   }
 
-
-  #signup-view {
-    background-image: url('../img/background-dashboard.jpg');
-    background-size: cover;
-    background-position: center;
-
-    .padding {
-      @include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));  
-    }
-
-    .help-block {
-      color: rgba(255, 0, 0, 0.6);
-      padding-right: 15px;
-      font-size: 14px;
-    }
-
-    .title {
-      text-align: center;
-      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-      color: white;
-      font-weight: 700;
-      font-size: 100px;
-      line-height: calc(100vh - 367px);
-    }
-
-    .button-group {
-      padding: 15px 20px;
-
-      .list {
-        margin: 0;
-        @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
-        border-radius: 5px;
-        z-index: 1;
-      }
-
-      button {
-        text-transform: uppercase; 
-        transition: 0.2s ease-in-out all !important;
-        @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
-      }
-
-      .activated {
-        border-color: transparent;
-        @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
-      }
-
-      .sign-up {
-        margin-top: 30px;
-        ,sign-up-title {
-          text-align: center;
-          text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
-          color: white;
-        }
-      }
-    }
+  .help-block {
+    color: rgba(255, 0, 0, 0.6);
+    padding-right: 15px;
+    font-size: 14px;
   }
 
-  #dashboard {
-    background-image: url('../img/background-dashboard.jpg');
-    background-size: cover;
-    background-position: center; 
-
-
-    .padding {
-      @include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));  
-    }
-
-    .dashboard-header {
-      animation-duration: 1.3s;
-      color: $text-light;
-      align-items: center;
-      text-align: center;
-      height: calc(50vh - 120px);
-
-      div {
-        padding: 10px;
-        text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
-        position: relative;
-        top: calc(50% - 25px);
-        font-size: 35px;
-        line-height: 50px;
-        font-weight: 300;
-        white-space: nowrap; 
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-
-    .cards {
-      .dashboard-card {
-        &:nth-of-type(2) {
-          animation-delay: 0.1s;
-        }
-
-        animation-duration: 0.7s;
-        margin-left: 10px;
-        margin-right: 10px;
-        background: rgba(255, 255, 255, 0.7);
-        text-align: center;
-        height: 25vh;
-
-        .item {
-          position: relative;
-          top: calc(50% - 68px);
-          color: $text-dark;
-          background: transparent;
-
-          a, button {
-            width: 150px;
-            margin-top: 30px;
-            text-transform: uppercase; 
-            transition: 0.2s ease-in-out all !important;
-            @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
-          }
-
-          .activated {
-            /*opacity: 0.5;*/
-            border-color: transparent;
-            /*background-color: #85929E;*/
-            @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
-          }
-        }
-      }
-    }
+  .title {
+    text-align: center;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+    color: white;
+    font-weight: 700;
+    font-size: 100px;
+    line-height: calc(100vh - 317px);
   }
 
-  #dashboard-modal-post {
-    background: url('../img/background-dashboard.jpg');
-    background-size: cover;
-    background-position: center;
+  .button-group {
+    padding: 15px 20px;
 
-    .wrapper {
-      width: 100%;
-      height: auto;
-      background-color: $pimary-background-color !important;
+    .list {
+      margin: 0;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+      border-radius: 5px;
+      z-index: 1;
     }
 
-    ion-content {
-      .wish-title {
-        background-color: transparent;
-        color: $text-light;
-        width: 100%;
-        font-size: 2em;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        padding-left: 5px;
-
-        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-          color: rgba(255, 255, 255, 0.5);
-          padding-top: 8px;
-        }
-        &::-moz-placeholder { /* Firefox 19+ */
-          color: rgba(255, 255, 255, 0.5);
-          padding-top: 8px;
-        }
-
-        &:-ms-input-placeholder { /* IE 10+ */
-          color: rgba(255, 255, 255, 0.5);
-          padding-top: 8px;
-        }
-
-        &:-moz-placeholder { /* Firefox 18- */
-          color: rgba(255, 255, 255, 0.5);
-          padding-top: 8px;
-        }
-      }
-
-      .description-wrapper {
-        @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
-        border-radius: 5px;
-        .wish-content {
-          line-height: 1.5em;
-          background: rgba(255, 255, 255, 1);
-          padding: 10px;
-          color: $text-dark;
-          width: 100%;
-          height: 200px;
-          border-radius: 5px;
-        }
-      }
-
-      .location-picker-button {
-        margin-top: 10px;
-        @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
-        width: 100%;
-      }
-
-      .map-wrapper {
-        background-color: $pimary-background-color;
-        @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
-        border-radius: 5px;
-        background-color: white;
-        margin-top: 10px;
-
-        .address-line {
-          padding: 10px;
-          border-bottom: solid 1px rgba(0,0,0, 0.2);
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-          background-color: white;
-        }
-
-        img {
-          border-bottom-right-radius: 5px;
-          border-bottom-left-radius: 5px;
-          margin-bottom: -5px;
-          height: 150px;
-          width: 100%;
-        }
-      }
-
-      .post-button {
-        @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.3));
-        float: right;
-        margin-top: 10px;
-        transition: 0.2s ease-in-out all !important;
-        width: 100%;
-      }
+    button {
+      text-transform: uppercase; 
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
     }
 
     .activated {
-      /*opacity: 0.5;*/
       border-color: transparent;
-      /*background-color: #85929E;*/
-      @include box-shadow(1px, 0px, 1px, rgba(0, 0, 0, 0.1));
-    }
-  }
-
-  #dashboard-modal-post-modal-location-picker {
-    #map-modal-post {
-      height: calc(100vh - 43px);
-      margin: -10px;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
     }
 
-    .map-marker {
-      position: absolute !important;
-      top: 100px;
-      width: 60px;
-      height: 60px;
-      left: calc(50vw - 40px);
-      top: calc(50vh - 51px);
-      z-index: 1;
-      pointer-events:none;
-    }
-  }
-
-  #activity {
-    color: $text-light;
-    background: $pimary-background-color;
-
-    .activity-card {
-      animation-duration: 0.5s;
-      cursor: pointer;
-      transition: 0.2s ease-in-out all !important;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      background: transparent;
-
-      .viewed {
-        background: black;
-        color: white !important;
-        opacity: 0.2;
+    .sign-up {
+      margin-top: 30px;
+      ,sign-up-title {
+        text-align: center;
+        text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+        color: white;
       }
+    }
+  }
+}
+
+
+#signup-view {
+  background-image: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .padding {
+    @include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));  
+  }
+
+  .help-block {
+    color: rgba(255, 0, 0, 0.6);
+    padding-right: 15px;
+    font-size: 14px;
+  }
+
+  .title {
+    text-align: center;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+    color: white;
+    font-weight: 700;
+    font-size: 100px;
+    line-height: calc(100vh - 367px);
+  }
+
+  .button-group {
+    padding: 15px 20px;
+
+    .list {
+      margin: 0;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+      border-radius: 5px;
+      z-index: 1;
+    }
+
+    button {
+      text-transform: uppercase; 
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    }
+
+    .activated {
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+    }
+
+    .sign-up {
+      margin-top: 30px;
+      ,sign-up-title {
+        text-align: center;
+        text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+        color: white;
+      }
+    }
+  }
+}
+
+#dashboard {
+  background-image: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center; 
+
+
+  .padding {
+    @include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));  
+  }
+
+  .dashboard-header {
+    animation-duration: 1.3s;
+    color: $text-light;
+    align-items: center;
+    text-align: center;
+    height: calc(50vh - 120px);
+
+    div {
+      padding: 10px;
+      text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+      position: relative;
+      top: calc(50% - 25px);
+      font-size: 35px;
+      line-height: 50px;
+      font-weight: 300;
+      white-space: nowrap; 
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .cards {
+    .dashboard-card {
+      &:nth-of-type(2) {
+        animation-delay: 0.1s;
+      }
+
+      animation-duration: 0.7s;
+      margin-left: 10px;
+      margin-right: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      height: 25vh;
 
       .item {
+        position: relative;
+        top: calc(50% - 68px);
+        color: $text-dark;
+        background: transparent;
 
-        .dismiss {
-          position: relative;
-          top: 10px;
-          right: 10px;
-
+        a, button {
+          width: 150px;
+          margin-top: 30px;
+          text-transform: uppercase; 
+          transition: 0.2s ease-in-out all !important;
+          @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
         }
 
-        .title {
-          margin-top: 3px;
-          line-height: 1.5em;
-          font-size: 15px;
-        }
-
-        .time {
-          margin-top: 10px;
-          color: #aaaaaa;
-          font-size: 12px;
+        .activated {
+          /*opacity: 0.5;*/
+          border-color: transparent;
+          /*background-color: #85929E;*/
+          @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
         }
       }
     }
   }
+}
 
-  #wishes {
-   color: $text-light;
-   background: $pimary-background-color;
+#dashboard-modal-post {
+  background: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center;
 
+  .wrapper {
+    width: 100%;
+    height: auto;
+    background-color: $pimary-background-color !important;
+  }
 
-   #dashboard-modal-get {
-    background: url('../img/background-dashboard.jpg');
-    background-size: cover;
-    background-position: center;
+  ion-content {
+    .wish-title {
+      background-color: transparent;
+      color: $text-light;
+      width: 100%;
+      font-size: 2em;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      padding-left: 5px;
 
-    .content-panel {
-      padding: 10px;
-      padding-bottom: 77px;
-      top: 0;
-
-      hr {
-        opacity: 0.2;
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 8px;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 8px;
       }
 
-      .scroll-bar {
-        z-index: 0 !important;
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 8px;
       }
 
-      .wish-title {
-        padding-top: 27px;
-        padding-bottom: 30px;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 800;
-      }
-
-      .wish-description {
-        font-size: 14px;
-        font-weight: 300;
-        overflow: hidden;
-        white-space: normal;
-        text-overflow: ellipsis;
-        padding: 10px;
-        /*@include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.3));*/
-        margin-bottom: 10px;
-        border-radius: 5px;
-      }
-
-      .wish-contact {
-        line-height: 50px;
-        text-align: center;
-        background-color: rgba(0, 255, 0, 0.2);
-        @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.2));
-        margin-bottom: 10px;
-        margin-top: 10px;
-        border-radius: 5px; 
-      }
-
-      .blank-space {
-        height: 60px;
-      }
-
-      .map-thumbnail {
-        @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.2));
-        border-radius: 5px;
-        margin-bottom: 10px;
-        margin-top: 10px;
-
-        div {
-          padding: 10px;
-          font-size: 12px;
-        }
-
-        img {
-          border-radius: 0 0 5px 5px;
-          margin-bottom: -5px;
-          z-index: 0;
-        }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 8px;
       }
     }
 
-    .button-line {
-      position: absolute;
-      bottom: 0px;
-      left: 0px;
-      right: 0px;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.95);
-      @include box-shadow(-2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    .description-wrapper {
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
+      border-radius: 5px;
+      .wish-content {
+        line-height: 1.5em;
+        background: rgba(255, 255, 255, 1);
+        padding: 10px;
+        color: $text-dark;
+        width: 100%;
+        height: 200px;
+        border-radius: 5px;
+      }
+    }
 
-      button {
-        margin: 0;
-        text-transform: uppercase; 
-        transition: 0.2s ease-in-out all !important;
-        @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    .location-picker-button {
+      margin-top: 10px;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
+      width: 100%;
+    }
+
+    .map-wrapper {
+      background-color: $pimary-background-color;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.3));
+      border-radius: 5px;
+      background-color: white;
+      margin-top: 10px;
+
+      .address-line {
+        padding: 10px;
+        border-bottom: solid 1px rgba(0,0,0, 0.2);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        background-color: white;
       }
 
-      .activated {
-        border-color: transparent;
-        @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+      img {
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        margin-bottom: -5px;
+        height: 150px;
+        width: 100%;
       }
+    }
+
+    .post-button {
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.3));
+      float: right;
+      margin-top: 10px;
+      transition: 0.2s ease-in-out all !important;
+      width: 100%;
+    }
+  }
+
+  .activated {
+    /*opacity: 0.5;*/
+    border-color: transparent;
+    /*background-color: #85929E;*/
+    @include box-shadow(1px, 0px, 1px, rgba(0, 0, 0, 0.1));
+  }
+}
+
+#dashboard-modal-post-modal-location-picker {
+  #map-modal-post {
+    height: calc(100vh - 43px);
+    margin: -10px;
+  }
+
+  .map-marker {
+    position: absolute !important;
+    top: 100px;
+    width: 60px;
+    height: 60px;
+    left: calc(50vw - 40px);
+    top: calc(50vh - 51px);
+    z-index: 1;
+    pointer-events:none;
+  }
+}
+
+#activity {
+  color: $text-light;
+  background: $pimary-background-color;
+
+  .activity-card {
+    animation-duration: 0.5s;
+    cursor: pointer;
+    transition: 0.2s ease-in-out all !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: transparent;
+
+    .viewed {
+      background: black;
+      color: white !important;
+      opacity: 0.2;
+    }
+
+    .item {
+
+      .dismiss {
+        position: relative;
+        top: 10px;
+        right: 10px;
+
+      }
+
+      .title {
+        margin-top: 3px;
+        line-height: 1.5em;
+        font-size: 15px;
+      }
+
+      .time {
+        margin-top: 10px;
+        color: #aaaaaa;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+#wishes {
+  color: $text-light;
+  background: $pimary-background-color;
+}
+
+#dashboard-modal-get {
+  background: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .content-panel {
+    padding: 10px;
+    padding-bottom: 77px;
+    top: 0;
+
+    hr {
+      opacity: 0.2;
+    }
+
+    .scroll-bar {
+      z-index: 0 !important;
+    }
+
+    .wish-title {
+      padding-top: 27px;
+      padding-bottom: 30px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .wish-description {
+      font-size: 14px;
+      font-weight: 300;
+      overflow: hidden;
+      white-space: normal;
+      text-overflow: ellipsis;
+      padding: 10px;
+      /*@include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.3));*/
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .wish-contact {
+      line-height: 50px;
+      text-align: center;
+      background-color: rgba(0, 255, 0, 0.2);
+      @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.2));
+      margin-bottom: 10px;
+      margin-top: 10px;
+      border-radius: 5px; 
+    }
+
+    .blank-space {
+      height: 60px;
+    }
+
+    .map-thumbnail {
+      @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.2));
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+
+      div {
+        padding: 10px;
+        font-size: 12px;
+      }
+
+      img {
+        border-radius: 0 0 5px 5px;
+        margin-bottom: -5px;
+        z-index: 0;
+      }
+    }
+  }
+
+  .button-line {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+    @include box-shadow(-2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+
+    button {
+      margin: 0;
+      text-transform: uppercase; 
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    }
+
+    .activated {
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
     }
   }
 }

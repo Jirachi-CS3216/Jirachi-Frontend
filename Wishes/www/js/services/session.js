@@ -33,6 +33,14 @@ serviceModule.service('session', function session($window) {
         this.save(_session);
     }
 
+    this.serverToken = function() {
+        if (!_session || !_session.currentUser || !_session.currentUser.auth_token) {
+            return undefined;
+        } else {
+            return _session.currentUser.auth_token
+        }
+    }
+
 
     this.currentUser = function () {
         if (!_session || !_session.currentUser) {
