@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, session) {
+module.controller('WishesCtrl', function($scope, session, apis) {
 	
 	$scope.session = session;
 
@@ -28,6 +28,14 @@ module.controller('WishesCtrl', function($scope, session) {
 	}
 
 	$scope.getWishesMade = function() {
+		//api insertion point
+
+		// apis.wishes.get(session.currentUserID(), {}).success(function(data, status){
+		// 	console.log(data)
+		// 	$scope.filterWishes(data);
+		// })
+
+
 		var wishes =  [{
 			id: 0,
 			title: "I have a little little wish",
