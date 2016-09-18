@@ -71,4 +71,24 @@ serviceModule
             });
         }
     }
+
+    this.wishes = {
+        post: function(parameters, userId, data) {
+            return $http.post(buildUrl(apiHost + '/users/' + userId + '/wishes', parameters), data, {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
+            });   
+        },
+
+        get : function(userId, parameters) {
+            return $http.get(buildUrl(buildUrl(apiHost + '/users/' + userId + '/wishes', parameters), {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
+            });
+        }
+    }
+
+
   });
