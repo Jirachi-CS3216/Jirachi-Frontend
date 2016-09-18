@@ -17,12 +17,13 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 
 	$scope.post = function() {
 		var wish = {}
-		wish.title = $scope.postWishTitle;
-		wish.description = $scope.postWishDescription;
+		wish.title = this.postWishTitle;
+		wish.description = this.postWishDescription;
 		wish.needsMeetup = $scope.selectedPoint !== undefined;
-		if (wish.needMeetup) {
-			wish.latitude = $scope.selectedPoint.lat
-			wish.longitude = $scope.selectedPoint.long
+		if (wish.needsMeetup) {
+			wish.addressLine = $scope.selectedAddress;
+			wish.latitude = $scope.selectedPoint.lat()
+			wish.longitude = $scope.selectedPoint.lng()
 		}
 
 		console.log(wish)
