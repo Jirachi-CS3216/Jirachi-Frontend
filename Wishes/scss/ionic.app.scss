@@ -117,6 +117,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	background: $pimary-background-color;
 }
 
+#dashboard-modal-spinner {
+  background-color: rgba(0, 0, 0, 0.8);
+
+  ion-spinner {
+    position: absolute;
+    left: calc(50vw - 32px);
+    top: calc(48vh - 32px);
+
+    svg {
+      width: 64px;
+      height: 64px;
+      stroke: white;
+      fill: white;
+    }
+  }
+}
 
 /*Global layouts*/
 .title-subtitle {

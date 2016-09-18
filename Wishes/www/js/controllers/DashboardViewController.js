@@ -1,6 +1,13 @@
 module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $timeout, TDCardDelegate) {
 	$scope.session = session;
 	//modals for posting wishes
+	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-spinner.html', {
+	    scope: $scope,
+	    animation: 'fade-in'
+	}).then(function(modal) {
+	    $scope.spinnerModal = modal;
+	});
+
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-post.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
@@ -26,11 +33,15 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 			wish.longitude = $scope.selectedPoint.lng()
 		}
 
+		$scope.spinnerModal.show();
 		apis.wishes.post(session.currentUserID(), {}, wishes).success(function(data, status){
-			console.log(data, status)
+			console.log(data)
+			console.log(status)
+			$scope.spinnerModal.hide();
+			$scope.closePostModal();
+		}).error(function(data, status) {
+			$scope.spinnerModal.hide();
 		})
-
-		console.log(wish)
 	}
 
 	//modals for getting wishes
