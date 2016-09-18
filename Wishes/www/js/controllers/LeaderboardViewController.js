@@ -1,6 +1,7 @@
-module.controller('LeaderboardCtrl', function($scope, Chats, session) {
+module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session) {
     
     $scope.session = session;
+
     $scope.selectedTab = 0;
 
    	$scope.isSelected = function(status) {
@@ -8,12 +9,25 @@ module.controller('LeaderboardCtrl', function($scope, Chats, session) {
 	}
 
 	$scope.switchTo = function(status) {
+		$scope.animateClass[$scope.selectedTab][0] = "fadeOutLeft"
+		$scope.animateClass[$scope.selectedTab][1] = "fadeOutRight"
 		$scope.selectedTab = status;
+		$timeout(function(){
+			var shouldShow = [false, false, false]
+			shouldShow[status] = true
+			$scope.shouldShow = shouldShow
+			$scope.animateClass = [["bounceInLeft", "bounceInRight"], ["bounceInLeft", "bounceInRight"], ["bounceInLeft", "bounceInRight"]]
+			$scope.$apply()
+		}, 500)
 	}
 
-    $scope.byPoints = [{
+	$scope.shouldShow = [true, false, false]
+	$scope.animateClass = [["bounceInLeft", "bounceInRight"], ["bounceInLeft", "bounceInRight"], ["bounceInLeft", "bounceInRight"]]
+
+
+    $scope.haves = [{
       "id": 1,
-      "display_name": "Lazy Guy",
+      "display_name": "Jay",
       "points": 12080
     },
     {
@@ -23,17 +37,17 @@ module.controller('LeaderboardCtrl', function($scope, Chats, session) {
     },
     {
       "id": 3,
-      "display_name": "Lazy Guy",
+      "display_name": "John",
       "points": 9800
     },
     {
       "id": 4,
-      "display_name": "Lazy Guy",
+      "display_name": "Daddy",
       "points": 8400
     },
     {
       "id": 5,
-      "display_name": "Lazy Guy",
+      "display_name": "Who's",
       "points": 6400
     },
     {
@@ -51,5 +65,86 @@ module.controller('LeaderboardCtrl', function($scope, Chats, session) {
       "display_name": "Lazy Guy",
       "points": 4200
     }]
-    $scope.helpers = []
+
+    $scope.helpers = [{
+      "id": 11,
+      "display_name": "Lazy Guy",
+      "counts": 120
+    },
+    {
+      "id": 12,
+      "display_name": "Lazy Guy",
+      "counts": 114
+    },
+    {
+      "id": 13,
+      "display_name": "Lazy Guy",
+      "counts": 98
+    },
+    {
+      "id": 14,
+      "display_name": "Lazy Guy",
+      "counts": 84
+    },
+    {
+      "id": 15,
+      "display_name": "Lazy Guy",
+      "counts": 64
+    },
+    {
+      "id": 16,
+      "display_name": "Lazy Guy",
+      "counts": 46
+    },
+    {
+      "id": 17,
+      "display_name": "Lazy Guy",
+      "counts": 44
+    },
+    {
+      "id": 18,
+      "display_name": "Lazy Guy",
+      "counts": 42
+    }]
+
+    $scope.wishers = [{
+      "id": 11,
+      "display_name": "Lazy Guy",
+      "counts": 120
+    },
+    {
+      "id": 12,
+      "display_name": "Lazy Guy",
+      "counts": 114
+    },
+    {
+      "id": 13,
+      "display_name": "Lazy Guy",
+      "counts": 98
+    },
+    {
+      "id": 14,
+      "display_name": "Lazy Guy",
+      "counts": 84
+    },
+    {
+      "id": 15,
+      "display_name": "Lazy Guy",
+      "counts": 64
+    },
+    {
+      "id": 16,
+      "display_name": "Lazy Guy",
+      "counts": 46
+    },
+    {
+      "id": 17,
+      "display_name": "Lazy Guy",
+      "counts": 44
+    },
+    {
+      "id": 18,
+      "display_name": "Lazy Guy",
+      "counts": 42
+    }]
 })
