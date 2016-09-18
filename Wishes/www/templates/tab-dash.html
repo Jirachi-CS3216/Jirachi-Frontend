@@ -9,7 +9,7 @@
                     <div>
                         You haven't made any wish today...
                     </div>
-                    <a on-touch="buttonDidTouch('SELF')" class="button button-energized" ng-class="buttonAnimations.SELF" ng-click="openModal()">
+                    <a on-touch="buttonDidTouch('SELF')" class="button button-energized" ng-class="buttonAnimations.SELF" ng-click="openPostModal()">
                         I Wish ...
                     </a>
                 </div>
@@ -19,7 +19,7 @@
                     <div>
                         Listened to other's wishes...
                     </div>
-                    <a on-touch="buttonDidTouch('OTHER')" class="button button-energized" ng-class="buttonAnimations.OTHER">
+                    <a on-touch="buttonDidTouch('OTHER')" class="button button-energized" ng-class="buttonAnimations.OTHER" ng-click="openGetModal()">
                         Show Me
                     </a>
                 </div>

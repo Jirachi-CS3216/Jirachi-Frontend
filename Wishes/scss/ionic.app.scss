@@ -444,7 +444,107 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
    color: $text-light;
    background: $pimary-background-color;
 
-   .button-bar {
+
+#dashboard-modal-get {
+  background: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .content-panel {
+    padding: 10px;
+    padding-bottom: 77px;
+    top: 0;
+
+    hr {
+      opacity: 0.2;
+    }
+
+    .scroll-bar {
+      z-index: 0 !important;
+    }
+
+    .wish-title {
+      padding-top: 27px;
+      padding-bottom: 30px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .wish-description {
+      font-size: 14px;
+      font-weight: 300;
+      overflow: hidden;
+      white-space: normal;
+      text-overflow: ellipsis;
+      padding: 10px;
+      /*@include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.3));*/
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .wish-contact {
+      line-height: 50px;
+      text-align: center;
+      background-color: rgba(0, 255, 0, 0.2);
+      @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.2));
+      margin-bottom: 10px;
+      margin-top: 10px;
+      border-radius: 5px; 
+    }
+
+    .blank-space {
+      height: 60px;
+    }
+
+    .map-thumbnail {
+      @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.2));
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+
+      div {
+        padding: 10px;
+        font-size: 12px;
+      }
+
+      img {
+        border-radius: 0 0 5px 5px;
+        margin-bottom: -5px;
+        z-index: 0;
+      }
+    }
+  }
+
+  .button-line {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+    @include box-shadow(-2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+
+    button {
+      margin: 0;
+      text-transform: uppercase; 
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    }
+
+    .activated {
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+    }
+  }
+}
+
+#wishes {
+	color: $text-light;
+	background: $pimary-background-color;
+
+  .button-bar {
     margin-bottom: 20px;
   }
 }
