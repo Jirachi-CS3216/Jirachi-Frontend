@@ -13,23 +13,28 @@ module.controller('SignupCtrl', function($scope, $state, $ionicHistory, $ionicSc
             username: data.username,
             password: data.password
         }).success(function(response) {
-        	$ionicHistory.nextViewOptions({
-			    disableAnimate: true
-			});
-			$ionicPopup.show({
-	            title: 'Sign up Successfully',
-	            buttons: [{
-	            	text: 'Go to Login Page',
-	            	onTap: function(e) {
-			          $state.go('login');
-			        }
-	            }]
-	        });
+        	if (response.error) {
+        		console.log(response)
+        		$ionicPopup.show({
+		            title: 'Username Already Existed!',
+		            buttons: [{text: 'OK'}]
+		        });
+        	} else {
+        		$ionicHistory.nextViewOptions({
+				    disableAnimate: true
+				});
+				$ionicPopup.show({
+		            title: 'Sign up Successfully',
+		            buttons: [{
+		            	text: 'Go to Login Page',
+		            	onTap: function(e) {
+				          $state.go('login');
+				        }
+		            }]
+		        });
+        	}
         }).error(function(response) {
-        	$ionicPopup.show({
-	            title: 'Username Already Existed!',
-	            buttons: [{text: 'OK'}]
-	        });
+      		console.log(response)  	
         })
   	};
 
