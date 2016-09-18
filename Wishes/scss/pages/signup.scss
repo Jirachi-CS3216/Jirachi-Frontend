@@ -1,0 +1,55 @@
+#signup-view {
+  background-image: url('../img/background-dashboard.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .padding {
+    @include gradient-background(top, transparent, rgba(0, 0, 0, 0.4));  
+  }
+
+  .help-block {
+    color: rgba(255, 0, 0, 0.6);
+    padding-right: 15px;
+    font-size: 14px;
+  }
+
+  .title {
+    text-align: center;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+    color: white;
+    font-weight: 700;
+    font-size: 100px;
+    line-height: calc(100vh - 367px);
+  }
+
+  .button-group {
+    padding: 15px 20px;
+
+    .list {
+      margin: 0;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+      border-radius: 5px;
+      z-index: 1;
+    }
+
+    button {
+      text-transform: uppercase; 
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    }
+
+    .activated {
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+    }
+
+    .sign-up {
+      margin-top: 30px;
+      ,sign-up-title {
+        text-align: center;
+        text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+        color: white;
+      }
+    }
+  }
+}
