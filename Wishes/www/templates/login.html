@@ -10,8 +10,10 @@
                         <div ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block"> username required</div>
                     </label>
                     <label class="item item-input">
-                        <input name="password" type="password" placeholder="Password" ng-model="data.password" ng-required="true">
-                        <div ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block"> password required</div>
+                        <input name="password" type="password" placeholder="Password" ng-model="data.password" ng-required="true" ng-minlength="6" ng-maxlength="72">
+                        <div ng-show="userForm.password.$error.minlength" class="help-block">too short</div>
+                        <div ng-show="userForm.password.$error.maxlength" class="help-block">too long</div>
+                        <div ng-show="!userForm.password.$error.minlength && !userForm.password.$error.maxlength && userForm.password.$invalid && !userForm.password.$pristine" class="help-block"> password required</div>
                     </label>
                 </div>
                 <button type="submit" class="button button-block button-positive" ng-disabled="userForm.$invalid">
