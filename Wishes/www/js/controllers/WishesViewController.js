@@ -6,25 +6,17 @@ module.controller('WishesCtrl', function($scope, session, apis) {
 	$scope.pastWishes = [];
 	$scope.selectedTab = 0;
 
-	$scope.init = function() {
-		$scope.getWishesMade();
-	}
+	$scope.$on("$ionicView.beforeEnter", function(event, data){
+   		$scope.getWishesMade();
+		$scope.getWishesAccepted();
+	});
 
 	$scope.isSelected = function(status) {
 		return status == $scope.selectedTab;
 	}
 
 	$scope.switchTo = function(status) {
-		switch(status) {
-			case 0:
-			$scope.getWishesMade();
-			$scope.selectedTab = 0;
-			break;
-			case 1:
-			$scope.getWishesAccepted();
-			$scope.selectedTab = 1;
-			break;
-		}
+		$scope.selectedTab = status;
 	}
 
 	$scope.getWishesMade = function() {
@@ -60,23 +52,29 @@ module.controller('WishesCtrl', function($scope, session, apis) {
 			isFulfilled: false,
 			isExpired: true
 		}];
-		$scope.filterWishes(wishes);
+		
+		$scope.myWishes = wishes
 	}
 
 	$scope.getWishesAccepted = function() {
-		var wishes = [{
+		var wishes = [
+		{
 			id: 3,
 			title: "I need some hlep guyys",
 			description: "where is lt32",
 			time: "2016-09-09 12:32:00",
 			isFulfilled: false,
 			isExpired: false
-		}];
-		$scope.filterWishes(wishes);
+		}
+		];
+		$scope.othersWishes = wishes
 	}
 
-	$scope.filterWishes = function(wishes) {
-		$scope.currentWishes = wishes.filter(function(wish) {return !wish.isExpired;})
-		$scope.pastWishes = wishes.filter(function(wish) {return wish.isExpired;})
+	$scope.expiredFilter = {
+		isExpired: true
+	}
+
+	$scope.currentFilter = {
+		isExpired: false	
 	}
 })

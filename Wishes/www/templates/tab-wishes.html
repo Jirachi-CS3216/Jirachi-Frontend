@@ -1,24 +1,58 @@
 <ion-view view-title="Wishes" id="wishes" ng-init="init()">
 	<ion-content class="padding">
-	<div class="button-bar-wrapper middle-align">
+		<div class="button-bar-wrapper middle-align">
 			<div class="button-bar">
 				<a class="button" ng-class="{'button-energized': isSelected(0)}" ng-click="switchTo(0)">I've made</a>
 				<a class="button" ng-class="{'button-energized': isSelected(1)}" ng-click="switchTo(1)">I've accepted</a>
 			</div>
 		</div>
-		<ion-item-group class="wish-list">
-			<ion-item-divider light>current wishes</ion-item-divider>
-			<ion-item class="item-icon-right" ng-repeat="wish in currentWishes" type="item-text-wrap" href="#/tab/wishes/{{wish.id}}">
-				<h2>{{wish.title}}</h2>
-				<p>{{wish.description}}</p>
-				<i class="icon ion-chevron-right icon-accessory"></i>
-			</ion-item>
-			<ion-item-divider light>past wishes</ion-item-divider>
-			<ion-item class="item-icon-right" ng-repeat="wish in pastWishes" type="item-text-wrap" href="#/tab/wishes/{{wish.id}}">
-				<h2>{{wish.title}}</h2>
-				<p>{{wish.description}}</p>
-				<i class="icon ion-chevron-right icon-accessory"></i>
-			</ion-item>
-		</ion-item-group>
+
+		<div class="my-wishes" ng-show="isSelected(0) && myWishes.length !== 0">
+			<div class="current-wishes" ng-show="(myWishes|filter:currentFilter).length != 0">
+				<div class="wish-group-header animated fadeInUp">current wishes</div>
+				<div class="card wish-card animated fadeInUp" ng-repeat="wish in myWishes | filter: currentFilter" style="animation-delay:{{$index * 0.05}}s">
+					<div class="item item-text-wrap item-icon-right">
+						<h2>{{wish.title}}</h2>
+						<p>{{wish.description}}</p>
+						<i class="icon ion-chevron-right icon-accessory"></i>
+					</div>
+		        </div>
+			</div>
+
+			<div class="past-wishes" ng-show="(myWishes|filter:expiredFilter).length != 0">
+				<div class="wish-group-header animated fadeInUp">past wishes</div>
+				<div class="card wish-card animated fadeInUp" ng-repeat="wish in myWishes | filter: expiredFilter" style="animation-delay:{{ $index * 0.05 + myWishes.length * 0.05 }}s">
+					<div class="item item-text-wrap item-icon-right">
+						<h2>{{wish.title}}</h2>
+						<p>{{wish.description}}</p>
+						<i class="icon ion-chevron-right icon-accessory"></i>
+					</div>
+		        </div>
+			</div>
+		</div>
+
+		<div class="other-wishes" ng-show="isSelected(1) && othersWishes.length !== 0">
+			<div class="current-wishes" ng-show="(othersWishes|filter:currentFilter).length != 0">
+				<div class="wish-group-header animated fadeInUp">current wishes</div>
+				<div class="card wish-card animated fadeInUp" ng-repeat="wish in othersWishes | filter: currentFilter" style="animation-delay:{{$index * 0.05}}s">
+					<div class="item item-text-wrap item-icon-right">
+						<h2>{{wish.title}}</h2>
+						<p>{{wish.description}}</p>
+						<i class="icon ion-chevron-right icon-accessory"></i>
+					</div>
+		        </div>
+			</div>
+
+			<div class="past-wishes" ng-show="(othersWishes|filter:expiredFilter).length != 0">
+				<div class="wish-group-header animated fadeInUp">past wishes</div>
+				<div class="card wish-card animated fadeInUp">
+					<div class="item item-text-wrap item-icon-right" ng-repeat="wish in othersWishes | filter: expiredFilter" style="animation-delay:{{ $index * 0.05 + othersWishes.length * 0.05 }}s">
+						<h2>{{wish.title}}</h2>
+						<p>{{wish.description}}</p>
+						<i class="icon ion-chevron-right icon-accessory"></i>
+					</div>
+		        </div>
+			</div>
+		</div>
 	</ion-content>
 </ion-view>
