@@ -2,9 +2,37 @@
   color: $text-light;
   background: $pimary-background-color;
 
+  .wish-group-header {
+  	margin-top: 20px;
+  	padding: 5px;
+  	font-weight: 300;
+  	font-size: 17px;
+  }
+
   .wish-card  {
   	margin-top: 10px;
   	margin-bottom: 10px;
   	border-radius: 5px;
+
+  	.title {
+  		font-size: 17px;
+  		text-overflow:ellipsis;
+    	overflow:hidden;
+    	white-space:nowrap;
+  	}
+
+  	.time {
+  		margin-top: 10px;
+  		margin-bottom: 5px;
+  		font-size: 12px;
+  	}
+
+  	.description {
+  		color: gray;
+  		font-size: 13px;
+  		text-overflow:ellipsis;
+    	overflow:hidden;
+    	white-space:nowrap;
+  	}
   }
 }

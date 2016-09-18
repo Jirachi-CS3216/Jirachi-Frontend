@@ -12,8 +12,10 @@
 				<div class="wish-group-header animated fadeInUp">current wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in myWishes | filter: currentFilter" style="animation-delay:{{$index * 0.05}}s">
 					<div class="item item-text-wrap item-icon-right">
-						<h2>{{wish.title}}</h2>
-						<p>{{wish.description}}</p>
+						<!-- <i class="icon ion-checkmark-circled icon"></i> -->
+						<div class="title">{{wish.title}}</div>
+						<div class="time">{{wish.time}}</div>
+						<div class="description">{{wish.description}}</div>
 						<i class="icon ion-chevron-right icon-accessory"></i>
 					</div>
 		        </div>
@@ -23,8 +25,10 @@
 				<div class="wish-group-header animated fadeInUp">past wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in myWishes | filter: expiredFilter" style="animation-delay:{{ $index * 0.05 + myWishes.length * 0.05 }}s">
 					<div class="item item-text-wrap item-icon-right">
-						<h2>{{wish.title}}</h2>
-						<p>{{wish.description}}</p>
+						<!-- <i class="icon ion-checkmark-circled icon"></i> -->
+						<div class="title">{{wish.title}}</div>
+						<div class="time">{{wish.time}}</div>
+						<div class="description">{{wish.description}}</div>
 						<i class="icon ion-chevron-right icon-accessory"></i>
 					</div>
 		        </div>
@@ -36,8 +40,10 @@
 				<div class="wish-group-header animated fadeInUp">current wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in othersWishes | filter: currentFilter" style="animation-delay:{{$index * 0.05}}s">
 					<div class="item item-text-wrap item-icon-right">
-						<h2>{{wish.title}}</h2>
-						<p>{{wish.description}}</p>
+						<!-- <i class="icon ion-checkmark-circled icon"></i> -->
+						<div class="title">{{wish.title}}</div>
+						<div class="time">{{wish.time}}</div>
+						<div class="description">{{wish.description}}</div>
 						<i class="icon ion-chevron-right icon-accessory"></i>
 					</div>
 		        </div>
@@ -47,8 +53,10 @@
 				<div class="wish-group-header animated fadeInUp">past wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp">
 					<div class="item item-text-wrap item-icon-right" ng-repeat="wish in othersWishes | filter: expiredFilter" style="animation-delay:{{ $index * 0.05 + othersWishes.length * 0.05 }}s">
-						<h2>{{wish.title}}</h2>
-						<p>{{wish.description}}</p>
+						<!-- <i class="icon ion-checkmark-circled icon"></i> -->
+						<div class="title">{{wish.title}}</div>
+						<div class="time">{{wish.time}}</div>
+						<div class="description">{{wish.description}}</div>
 						<i class="icon ion-chevron-right icon-accessory"></i>
 					</div>
 		        </div>
