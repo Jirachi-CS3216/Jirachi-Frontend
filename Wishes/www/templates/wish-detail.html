@@ -16,7 +16,7 @@
 		</a>
 		<div class="wish-timeline">
 
-			<div class="timeline-block row">
+			<div class="timeline-block row" ng-repeat="activity in activities">
 				<div class="col col-10">
 					<div class="timeline-icon middle-align">
 					</div>
@@ -25,45 +25,12 @@
 				</div>
 				<div class="col col-90">
 					<div class="item item-avatar timeline-card ">
-						<img ng-src="{{wish.image}}">
-						<p>time</p>
-						<h2 class="description">descripttttioondescripttttioondescripttttioon</h2>
+						<img ng-src="{{activity.image}}">
+						<p>{{activity.time}}</p>
+						<h3 class="description">{{activity.description}}</h3>
 					</div>
 				</div>
 			</div>
-
-			<div class="timeline-block row">
-				<div class="col col-10">
-					<div class="timeline-icon middle-align">
-					</div>
-					<div class="timeline-line middle-align">
-					</div>
-				</div>
-				<div class="col col-90">
-					<div class="item item-avatar timeline-card ">
-						<img ng-src="{{wish.image}}">
-						<p>time</p>
-						<h2>descripttttioon</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="timeline-block row">
-				<div class="col col-10">
-					<div class="timeline-icon middle-align">
-					</div>
-					<div class="timeline-line middle-align">
-					</div>
-				</div>
-				<div class="col col-90">
-					<div class="item item-avatar timeline-card ">
-						<img ng-src="{{wish.image}}">
-						<p>time</p>
-						<h2>descripttttioon</h2>
-					</div>
-				</div>
-			</div>
-
 		</div>
 	</ion-content>
 </ion-view>
