@@ -581,7 +581,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         height: 20px;
         border-radius: 50%;
         margin-top: 25px;
-        background-color: white;
+        background-color: $energized;
+        border-style: solid;
+        border-width: 1px;
+        border-color: white;
       }
 
       .timeline-line {
@@ -591,7 +594,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         left: 18px;
         height: 100%;
         width: 1px;
-        background: red;
+        background: white;
+        z-index: -1;
       }
 
       .description {

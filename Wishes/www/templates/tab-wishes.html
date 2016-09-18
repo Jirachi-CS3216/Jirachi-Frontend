@@ -6,13 +6,13 @@
 		</div>
 		<ion-item-group class="wish-list">
 			<ion-item-divider light>current wishes</ion-item-divider>
-			<ion-item class="item-icon-right" ng-repeat="wish in currentWishes" type="item-text-wrap">
+			<ion-item class="item-icon-right" ng-repeat="wish in currentWishes" type="item-text-wrap" href="#/tab/wishes/{{wish.id}}">
 				<h2>{{wish.title}}</h2>
 				<p>{{wish.description}}</p>
 				<i class="icon ion-chevron-right icon-accessory"></i>
 			</ion-item>
 			<ion-item-divider light>past wishes</ion-item-divider>
-			<ion-item class="item-icon-right" ng-repeat="wish in pastWishes" type="item-text-wrap">
+			<ion-item class="item-icon-right" ng-repeat="wish in pastWishes" type="item-text-wrap" href="#/tab/wishes/{{wish.id}}">
 				<h2>{{wish.title}}</h2>
 				<p>{{wish.description}}</p>
 				<i class="icon ion-chevron-right icon-accessory"></i>
