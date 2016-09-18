@@ -1,4 +1,8 @@
 module.controller('WishDetailCtrl', function($scope, $stateParams) {
+	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+	  viewData.enableBack = true;
+	}); 
+
 	$scope.wish = {
 		id: 0,
 		title: "I have a little little wish",

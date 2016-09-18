@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, session, apis) {
+module.controller('WishesCtrl', function($scope, $location, session, apis) {
 	
 	$scope.session = session;
 
@@ -68,6 +68,10 @@ module.controller('WishesCtrl', function($scope, session, apis) {
 		}
 		];
 		$scope.othersWishes = wishes
+	}
+
+	$scope.cardDidClick =function(wish) {
+		$location.path("/tab/wishes/" + wish.id)
 	}
 
 	$scope.expiredFilter = {
