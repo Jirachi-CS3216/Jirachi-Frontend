@@ -1,7 +1,7 @@
 <ion-view view-title="Settings" id="settings">
 	<ion-content>
 		<div class="card profile-card animated fadeInDown">
-			<img class="img-circle middle-align" ng-src="http://67.media.tumblr.com/1b70e7efd3eba88c15fb122c41d255ca/tumblr_n0valuruRN1r4t05to5_400.jpg">
+			<img class="img-circle middle-align" ng-src="./img/avatars/{{ session.currentUserID()%8 }}.svg">
 			<div class="nickname">{{ session.currentUserDisplayName() }}</div>
 			<hr>
 			<!-- <p class="continuous-day">You've been helping others continously for 100 days</p> -->
