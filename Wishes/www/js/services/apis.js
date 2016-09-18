@@ -73,7 +73,7 @@ serviceModule
     }
 
     this.wishes = {
-        post: function(parameters, userId, data) {
+        post: function(userId, parameters, data) {
             return $http.post(buildUrl(apiHost + '/users/' + userId + '/wishes', parameters), data, {
                 headers: {
                     'Authorization': 'Token "' + session.serverToken() + '"'

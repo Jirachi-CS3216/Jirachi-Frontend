@@ -19,12 +19,16 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 		var wish = {}
 		wish.title = this.postWishTitle;
 		wish.description = this.postWishDescription;
-		wish.needsMeetup = $scope.selectedPoint !== undefined;
-		if (wish.needsMeetup) {
-			wish.addressLine = $scope.selectedAddress;
+		wish.needs_meetup = $scope.selectedPoint !== undefined;
+		if (wish.needs_meetup) {
+			wish.address_line = $scope.selectedAddress;
 			wish.latitude = $scope.selectedPoint.lat()
 			wish.longitude = $scope.selectedPoint.lng()
 		}
+
+		apis.wishes.post(session.currentUserID(), {}, wishes).success(function(data, status){
+			console.log(data, status)
+		})
 
 		console.log(wish)
 	}
