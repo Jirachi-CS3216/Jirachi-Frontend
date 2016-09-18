@@ -9,13 +9,13 @@
 		<ion-content class="padding animated pulse">
 			<div class="row">
 				<div class="col">
-					<input type="text" class="wish-title" placeholder="Give my wish a title">
+					<input type="text" class="wish-title" placeholder="Give my wish a title" ng-model="postWishTitle">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<div class="description-wrapper">
-						<textarea placeholder="I wish..." class="wish-content"></textarea>
+						<textarea placeholder="I wish..." class="wish-content" ng-model="postWishDescription"></textarea>
 					</div>
 				</div>
 			</div>
@@ -32,11 +32,11 @@
 			</div>
 			<div class="row">
 				<div class="col col-75">
-					<button class="button button-balanced location-picker-button" ng-click="showLocationPicker()" ng-class="isElementVisible('select-address-button')">Need Physical Meetup?</button>
-					<button class="button button-assertive location-picker-button" ng-click="removeAddress()" ng-class="isElementVisible('remove-address-button')">Remove Meetup Address</button>
+					<button class="button button-balanced location-picker-button" ng-click="showLocationPicker()" ng-show="!selectedPoint">Need Physical Meetup?</button>
+					<button class="button button-assertive location-picker-button" ng-click="removeAddress()" ng-show="selectedPoint">Remove Meetup Address</button>
 				</div>
 				<div class="col col-25">
-					<button class="button button-energized post-button">Post!</button>
+					<button class="button button-energized post-button" ng-click="post()">Post!</button>
 				</div>
 			</div>
 		</ion-content>

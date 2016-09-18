@@ -36,6 +36,8 @@ service('auth', function auth($http, $state, $ionicPopup, session, apis, $window
     }
 
     setCurrentUser = function(data) {
+        delete data.password;
+        delete data.password_digest;
         session.save({ currentUser: data });
     }
 

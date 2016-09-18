@@ -15,6 +15,19 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
     	$scope.locationPickerModal = modal;
 	});
 
+	$scope.post = function() {
+		var wish = {}
+		wish.title = $scope.postWishTitle;
+		wish.description = $scope.postWishDescription;
+		wish.needsMeetup = $scope.selectedPoint !== undefined;
+		if (wish.needMeetup) {
+			wish.latitude = $scope.selectedPoint.lat
+			wish.longitude = $scope.selectedPoint.long
+		}
+
+		console.log(wish)
+	}
+
 	//modals for getting wishes
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-get.html', {
 	    scope: $scope,
@@ -130,15 +143,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 	$scope.buttonDidTouch = function(key) {
 		$scope.buttonAnimations.key = "animated pulse"
 	}
-
-	$scope.isElementVisible = function(name) {
-		if ($scope.selectedPoint) {
-			return name !== 'select-address-button' ? "" : "hidden"
-		} else {
-			return name === 'select-address-button' ? "" : "hidden"
-		}
-	}
-
 
 	// Map
 
