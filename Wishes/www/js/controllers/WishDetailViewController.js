@@ -14,6 +14,11 @@ module.controller('WishDetailCtrl', function($scope, $stateParams) {
 		image: "http://67.media.tumblr.com/1b70e7efd3eba88c15fb122c41d255ca/tumblr_n0valuruRN1r4t05to5_400.jpg",
 		time: "today 09:20",
 		description: "You've taken the wish"
+	},
+	{
+		image: "http://67.media.tumblr.com/1b70e7efd3eba88c15fb122c41d255ca/tumblr_n0valuruRN1r4t05to5_400.jpg",
+		time: "today 09:20",
+		description: "You've taken the wish"
 	}];
 
 	$scope.getWishStatus = function() {
