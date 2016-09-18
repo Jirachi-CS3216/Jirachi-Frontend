@@ -7,38 +7,50 @@
 	        </button>
 	    </ion-header-bar>
 		<ion-content class="padding animated pulse">
-			<div class="row">
-				<div class="col">
-					<input type="text" class="wish-title" placeholder="Give my wish a title" ng-model="postWishTitle">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="description-wrapper">
-						<textarea placeholder="I wish..." class="wish-content" ng-model="postWishDescription"></textarea>
+			<form name="wishForm" ng-submit="post()">
+				<div class="row">
+					<div class="col">
+						<input name="title" type="text" class="wish-title" placeholder="Give my wish a title" ng-model="postWishTitle" ng-required="true">
 					</div>
 				</div>
-			</div>
-			<div class="row" ng-show="selectedPoint">
-				<div class="col">
-					<div class="map-wrapper" ng-click="showLocationPicker()">
-						<div class="address-line">
-							{{ selectedAddress }}
+				<div ng-show="wishForm.title.$invalid && !wishForm.title.$pristine" class="row">
+					<div class="col help-block">
+						title required
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="description-wrapper">
+							<textarea name="description" placeholder="I wish..." class="wish-content" ng-model="postWishDescription" ng-required="true"></textarea>
 						</div>
-						<img ng-srcset="{{thumbnailURL()}}">
-						<!-- <div id="map-modal-post" data-tap-disabled="true"></div> -->
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col col-75">
-					<button class="button button-balanced location-picker-button" ng-click="showLocationPicker()" ng-show="!selectedPoint">Need Physical Meetup?</button>
-					<button class="button button-assertive location-picker-button" ng-click="removeAddress()" ng-show="selectedPoint">Remove Meetup Address</button>
+				<div ng-show="wishForm.description.$invalid && !wishForm.description.$pristine" class="row">
+					<div class="col help-block">
+						description required
+					</div>
 				</div>
-				<div class="col col-25">
-					<button class="button button-energized post-button" ng-click="post()">Post!</button>
+				<div class="row" ng-show="selectedPoint">
+					<div class="col">
+						<div class="map-wrapper" ng-click="showLocationPicker()">
+							<div class="address-line">
+								{{ selectedAddress }}
+							</div>
+							<img ng-srcset="{{thumbnailURL()}}">
+							<!-- <div id="map-modal-post" data-tap-disabled="true"></div> -->
+						</div>
+					</div>
 				</div>
-			</div>
+				<div class="row">
+					<div class="col col-75">
+						<button class="button button-balanced location-picker-button" ng-click="showLocationPicker()" ng-show="!selectedPoint">Need Physical Meetup?</button>
+						<button class="button button-assertive location-picker-button" ng-click="removeAddress()" ng-show="selectedPoint">Remove Meetup Address</button>
+					</div>
+					<div class="col col-25">
+						<button type="submit" class="button button-energized post-button" ng-disabled="wishForm.$invalid">Post!</button>
+					</div>
+				</div>
+			</form>
 		</ion-content>
 	</div>
 </ion-modal-view>
