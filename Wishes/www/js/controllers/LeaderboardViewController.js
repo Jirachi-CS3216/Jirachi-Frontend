@@ -9,20 +9,20 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session) 
 	}
 
 	$scope.switchTo = function(status) {
-		$scope.animateClass[$scope.selectedTab][0] = "fadeOutLeft"
-		$scope.animateClass[$scope.selectedTab][1] = "fadeOutRight"
+		$scope.animateClass[$scope.selectedTab][0] = "fadeOutLeft animation-duration-short"
+		$scope.animateClass[$scope.selectedTab][1] = "fadeOutRight animation-duration-short"
 		$scope.selectedTab = status;
 		$timeout(function(){
 			var shouldShow = [false, false, false]
 			shouldShow[status] = true
 			$scope.shouldShow = shouldShow
-			$scope.animateClass = [["bounceInLeft", "bounceInRight"], ["bounceInLeft", "bounceInRight"], ["bounceInLeft", "bounceInRight"]]
+			$scope.animateClass = [["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"]]
 			$scope.$apply()
-		}, 500)
+		}, 300)
 	}
 
 	$scope.shouldShow = [true, false, false]
-	$scope.animateClass = [["bounceInLeft", "bounceInRight"], ["bounceInLeft", "bounceInRight"], ["bounceInLeft", "bounceInRight"]]
+	$scope.animateClass = [["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"]]
 
 
     $scope.haves = [{
