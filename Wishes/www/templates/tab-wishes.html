@@ -7,7 +7,7 @@
 			</div>
 		</div>
 
-		<div class="my-wishes" ng-show="isSelected(0) && myWishes.length !== 0">
+		<div class="my-wishes" ng-show="isSelected(0) && myWishes.length !== 0 && !isMyWishesLoading">
 			<div class="current-wishes" ng-show="(myWishes|filter:currentFilter).length != 0">
 				<div class="wish-group-header animated fadeInUp">current wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in myWishes | filter: currentFilter" style="animation-delay:{{$index * 0.05}}s">

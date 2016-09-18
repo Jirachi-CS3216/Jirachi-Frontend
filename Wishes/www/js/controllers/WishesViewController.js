@@ -1,13 +1,16 @@
-module.controller('WishesCtrl', function($scope, $location, session, apis) {
+module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis) {
 	
 	$scope.session = session;
-
-	$scope.currentWishes = [];
-	$scope.pastWishes = [];
 	$scope.selectedTab = 0;
+	$scope.isMyWishesLoading = true;
+	$scope.isOthersWishesLoading = true;
+	$scope.myWishes = []
+	$scope.othersWishes = []
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
+		$scope.isMyWishesLoading = true;
    		$scope.getWishesMade();
+   		$scope.isOthersWishesLoading = true;
 		$scope.getWishesAccepted();
 	});
 
@@ -53,7 +56,10 @@ module.controller('WishesCtrl', function($scope, $location, session, apis) {
 			isExpired: true
 		}];
 		
-		$scope.myWishes = wishes
+		if (wishes.length !== $scope.myWishes.length) {
+			$scope.myWishes = wishes
+		}
+		$scope.isMyWishesLoading = false
 	}
 
 	$scope.getWishesAccepted = function() {
@@ -67,7 +73,11 @@ module.controller('WishesCtrl', function($scope, $location, session, apis) {
 			isExpired: false
 		}
 		];
-		$scope.othersWishes = wishes
+
+		if (wishes.length !== $scope.othersWishes.length) {
+			$scope.othersWishes = wishes
+		}
+		$scope.isOthersWishesLoading = false
 	}
 
 	$scope.cardDidClick =function(wish) {
