@@ -9,6 +9,31 @@
   	font-size: 17px;
   }
 
+  .button-bar-wrapper {
+  	margin-top: 20px;
+  	margin-left: 20px;
+  	margin-right: 20px;
+	a, button {
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    }
+
+    a:first-child {
+    	border-top-left-radius: 50px;
+    	border-bottom-left-radius: 50px;
+    }
+
+    a:last-child {
+    	border-top-right-radius: 50px;
+    	border-bottom-right-radius: 50px;
+    }
+
+    .activated {
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+    }
+  }
+
   .wish-card  {
   	margin-top: 10px;
   	margin-bottom: 10px;
