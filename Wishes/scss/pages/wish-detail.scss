@@ -1,0 +1,88 @@
+#wish-detail {
+  text-align: center;
+  background: $pimary-background-color;
+  color: $text-dark;
+
+  .wish-card {
+    top: 30px;
+    margin-top: -30px;
+    padding-top: 40px;
+    width: 100%;
+    z-index: -1;
+
+    .title {
+      color: $text-dark;
+    }
+  }
+
+  .button {
+    width: 120px;
+  }
+
+  .wish-timeline {
+    margin-top: 25px;
+    text-align: left;
+
+    .timeline-block {
+      position: relative;
+      
+      img {
+        border-radius: 0;
+      }
+
+      .timeline-icon {
+        position: absolute;
+        left: 9px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-top: 25px;
+        background-color: $energized;
+        border-style: solid;
+        border-width: 1px;
+        border-color: white;
+      }
+
+      .timeline-line {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 18px;
+        height: 100%;
+        width: 1px;
+        background: white;
+        z-index: -1;
+      }
+
+      .description {
+        white-space: normal;
+      }
+
+      .timeline-card {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+
+    .timeline-block:first-child {
+      .timeline-line {
+        top: 50%;
+        height: 50%;
+      }
+    }
+
+    .timeline-block:last-child {
+      .timeline-line {
+        top: 0;
+        height: 50%;
+      }
+    }
+
+    .timeline-block:only-child {
+      .timeline-line {
+        top: 0;
+        height: 0%;
+      }
+    }
+  }
+}

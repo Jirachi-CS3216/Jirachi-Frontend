@@ -1,0 +1,83 @@
+#settings {
+	color: $text-light;
+	background: $pimary-background-color;
+  text-align: center;
+
+  .activated {
+    border-color: transparent;
+    @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+  }
+
+  .nickname {
+    text-align: center;
+    color: $text-light;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .user-statistics {
+    background: transparent;
+    color: white;
+  }
+
+  hr {
+    margin-bottom: 5px;
+    margin-top: 25px;
+    opacity: 0.2;
+  }
+
+  .continuous-day {
+    margin-bottom: 20px;
+  }
+
+  .profile-card {
+    background: url('../img/background-dashboard.jpg');
+    padding: 20px;
+    padding-bottom: 5px;
+    margin: 0;
+
+    img {
+      margin-top: 10px;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.3));
+    }
+
+    .nickname {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+  }
+
+  .setting-card {
+    border-radius: 5px;
+    text-align: left;
+
+    label {
+      padding: 0;
+      span {
+        padding: 0;
+        font-weight: 800;
+      }
+
+      .caption {
+        font-weight: 400;
+        font-size: 12px;
+        color: gray;
+        white-space: normal;
+      }
+    }
+  }
+
+  .button-card {
+    background-color: transparent;
+    @include box-shadow(1px, 0px, 3px, transparent);
+
+    button {
+      text-align: center;
+      margin-top: 0;
+      text-transform: uppercase; 
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.3));
+    }
+  }
+}
