@@ -82,7 +82,7 @@ serviceModule
         },
 
         get : function(userId, parameters) {
-            return $http.get(buildUrl(buildUrl(apiHost + '/users/' + userId + '/wishes', parameters), {
+            return $http.get(buildUrl(apiHost + '/users/' + userId + '/wishes', parameters), {
                 headers: {
                     'Authorization': 'Token "' + session.serverToken() + '"'
                 }
