@@ -71,52 +71,66 @@
   	}
   }
 
-  .leaderboard-card:nth-child(odd) {
-  	border-radius: 5px;
-  	border-top-right-radius: 200px;
-  	border-bottom-right-radius: 200px;
-  	margin-right: 20px;
-  	margin-left: -40px;
-  	.avatar-image {
-	  	right: $card-margin;
-	  }
+  .wrapper:nth-child(odd) {
+    .leaderboard-card {
+    	border-radius: 5px;
+    	border-top-right-radius: 200px;
+    	border-bottom-right-radius: 200px;
+    	margin-right: 20px;
+    	margin-left: -40px;
+    	.avatar-image {
+  	  	right: $card-margin;
+  	  }
 
-	  .rank {
-	  	left: 0px;
-	  	padding-left: 50px;
-	  	padding-right: 12px;
-	  }
+  	  .rank {
+  	  	left: 0px;
+  	  	padding-left: 50px;
+  	  	padding-right: 12px;
+  	  }
 
-	  .text-content {
-	  	left: 90px;
-	  	right: $card-row-height
-	  }
+  	  .text-content {
+  	  	left: 90px;
+  	  	right: $card-row-height
+  	  }
+    }
   }
 
-  .leaderboard-card:nth-child(even) {
-  	border-radius: 5px;
-  	border-top-left-radius: 200px;
-  	border-bottom-left-radius: 200px;
-  	margin-left: 20px;
-  	margin-right: -40px;
-  	.avatar-image {
-	  	left: $card-margin;
-	  }
+  .wrapper:nth-child(even) {
+    .leaderboard-card {
+    	border-radius: 5px;
+    	border-top-left-radius: 200px;
+    	border-bottom-left-radius: 200px;
+    	margin-left: 20px;
+    	margin-right: -40px;
+    	.avatar-image {
+  	  	left: $card-margin;
+  	  }
 
-	  .rank {
-	  	padding-right: 60px;
-	  	padding-left: 12px;
-	  	right: 0px;
-	  }
+  	  .rank {
+  	  	padding-right: 60px;
+  	  	padding-left: 12px;
+  	  	right: 0px;
+  	  }
 
-	  .text-content {
-	  	left: $card-row-height;
-	  	right: 90px;
-	  }
+  	  .text-content {
+  	  	left: $card-row-height;
+  	  	right: 90px;
+  	  }
+    }
   }
 
-  .leaderboard-card.current-user .item {
-      background-color: #fff6db;
+  .wrapper.current-user .item {
+    background-color: #fff6db;
+  }
+
+  .wrapper.extra-user {
+  }
+
+  .wrapper.extra-user::before {
+    content: "......";
+    display: inline-block;
+    text-align: center;
+    font-size: 8em;
   }
 }
 

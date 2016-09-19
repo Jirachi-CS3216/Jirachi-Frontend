@@ -9,25 +9,26 @@
             </div>
         </div>
 
-
         <div class="haves" ng-show="shouldShow[0]">
-            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }} ng-class:{ 'current-user': isCurrentUser(thisGuy.id) };" ng-repeat="thisGuy in haves" ng-class="animateClass[0][$index % 2]">
-                <div class="item">
-                    <div>
+            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= leaderboardLength };" ng-repeat="thisGuy in haves" >
+                <div class="card animated leaderboard-card {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }}" ng-class="animateClass[0][$index % 2]">
+                    <div class="item">
                         <div>
-                            <img class="avatar-image" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 1">
-                            <div class="rank background-one" ng-show="$index % 2 === 0">
-                                {{ $index + 1 }} 
+                            <div>
+                                <img class="avatar-image" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 1">
+                                <div class="rank background-one" ng-show="$index % 2 === 0">
+                                    {{ thisGuy.ranking ? thisGuy.ranking : $index + 1 }} 
+                                </div>
                             </div>
-                        </div>
-                        <div class="text-content">
-                            <div class="name">{{ isCurrentUser(thisGuy.id) ? "YOU" : thisGuy.display_name }}</div>
-                            <div class="points">{{ thisGuy.points }} points</div>
-                        </div>
-                        <div>
-                            <img class="avatar-image pull-right" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 0">
-                            <div class="rank background-one" ng-show="$index % 2 === 1">
-                                {{ $index + 1 }} 
+                            <div class="text-content">
+                                <div class="name">{{ isCurrentUser(thisGuy) ? "YOU" : thisGuy.display_name }}</div>
+                                <div class="points">{{ thisGuy.points }} points</div>
+                            </div>
+                            <div>
+                                <img class="avatar-image pull-right" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 0">
+                                <div class="rank background-one" ng-show="$index % 2 === 1">
+                                    {{ thisGuy.ranking ? thisGuy.ranking : $index + 1 }}  
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,48 +37,52 @@
         </div>
 
         <div class="helpers" ng-show="shouldShow[1]">
-            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }} ng-class:{ 'current-user': isCurrentUser(thisGuy.id) };" ng-repeat="thisGuy in helpers" ng-class="animateClass[1][$index % 2]">
-                <div class="item">
-                    <div>
+            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= leaderboardLength };" ng-repeat="thisGuy in helpers" >
+                <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }}"  ng-class="animateClass[1][$index % 2]">
+                    <div class="item">
                         <div>
-                            <img class="avatar-image" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 1">
-                            <div class="rank background-two" ng-show="$index % 2 === 0">
-                                {{ $index + 1 }} 
+                            <div>
+                                <img class="avatar-image" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 1">
+                                <div class="rank background-two" ng-show="$index % 2 === 0">
+                                    {{ $index + 1 }} 
+                                </div>
                             </div>
-                        </div>
-                        <div class="text-content">
-                            <div class="name">{{ isCurrentUser(thisGuy.id) ? "YOU" : thisGuy.display_name }}</div>
-                            <div class="points">{{ thisGuy.counts }} helps</div>
-                        </div>
-                        <div>
-                            <img class="avatar-image pull-right" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 0">
-                            <div class="rank background-two" ng-show="$index % 2 === 1">
-                                {{ $index + 1 }} 
+                            <div class="text-content">
+                                <div class="name">{{ isCurrentUser(thisGuy) ? "YOU" : thisGuy.display_name }}</div>
+                                <div class="points">{{ thisGuy.counts }} helps</div>
+                            </div>
+                            <div>
+                                <img class="avatar-image pull-right" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 0">
+                                <div class="rank background-two" ng-show="$index % 2 === 1">
+                                    {{ thisGuy.ranking ? thisGuy.ranking : $index + 1 }}  
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>   
             </div>
         </div>
 
         <div class="wishers" ng-show="shouldShow[2]">
-            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }} ng-class:{ 'current-user': isCurrentUser(thisGuy.id) };" ng-repeat="thisGuy in wishers" ng-class="animateClass[2][$index % 2]">
-                <div class="item">
-                    <div>
+            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= leaderboardLength };" ng-repeat="thisGuy in wishers" >
+                <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }}" ng-class="animateClass[2][$index % 2]">
+                    <div class="item">
                         <div>
-                            <img class="avatar-image" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 1">
-                            <div class="rank background-three" ng-show="$index % 2 === 0">
-                                {{ $index + 1 }} 
+                            <div>
+                                <img class="avatar-image" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 1">
+                                <div class="rank background-three" ng-show="$index % 2 === 0">
+                                    {{ $index + 1 }} 
+                                </div>
                             </div>
-                        </div>
-                        <div class="text-content">
-                            <div class="name">{{ isCurrentUser(thisGuy.id) ? "YOU" : thisGuy.display_name }}</div>
-                            <div class="points">{{ thisGuy.counts }} wishes</div>
-                        </div>
-                        <div>
-                            <img class="avatar-image pull-right" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 0">
-                            <div class="rank background-three" ng-show="$index % 2 === 1">
-                                {{ $index + 1 }} 
+                            <div class="text-content">
+                                <div class="name">{{ isCurrentUser(thisGuy) ? "YOU" : thisGuy.display_name }}</div>
+                                <div class="points">{{ thisGuy.counts }} wishes</div>
+                            </div>
+                            <div>
+                                <img class="avatar-image pull-right" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 0">
+                                <div class="rank background-three" ng-show="$index % 2 === 1">
+                                    {{ thisGuy.ranking ? thisGuy.ranking : $index + 1 }}  
+                                </div>
                             </div>
                         </div>
                     </div>
