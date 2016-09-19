@@ -1,29 +1,4 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-*/
-
-$positive:                        #219aa0 !default;
-$energized:                       #f2d863 !default;
-$unavailable:                     gray !default;
-$busy:                            #bd7f69 !default;
-$text-dark:						  #6c7c93;
-$text-light:					  #ffffff;
-$pimary-background-color:		  #A9DDDD;
-
-// The path for our ionicons font files, relative to the built CSS in www/css
-$ionicons-font-path: "../lib/ionic/fonts" !default;
+@import "scss/base/variables.scss";
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
@@ -31,93 +6,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import 'https://fonts.googleapis.com/css?family=Dancing+Script:400,700';
 @import 'https://fonts.googleapis.com/css?family=Port+Lligat+Slab';
 
+@import "scss/base/_mixins.scss";
+@import "scss/pages/_login.scss";
+@import "scss/pages/_signup.scss";
+@import "scss/pages/_tab-dash.scss";
+@import "scss/pages/_dashboard-modal-post.scss";
+@import "scss/pages/_dashboard-modal-get.scss";
+@import "scss/pages/_tab-activity.scss";
+@import "scss/pages/_tab-wishes.scss";
+@import "scss/pages/_wish-detail.scss";
+@import "scss/pages/_tab-settings.scss";
+@import "scss/pages/_tab-leaderboard.scss";
 
-#login-view, #signup-view {
-  .title {
-    font-family: 'Dancing Script' !important;
-  }
-}
-
-#leaderboard {
-  .rank {
-    font-family: 'Port Lligat Slab' !important;
-  }
-}
-
-
-* {
-  font-family: 'Lato' !important;
-}
-
-@mixin gradient-background($direction, $color1, $color2) {
- background: $color2; /* For browsers that do not support gradients */
- background: -webkit-linear-gradient($direction, $color1, $color2); /* For Safari 5.1 to 6.0 */
- background: -o-linear-gradient($direction, color1, $color2); /* For Opera 11.1 to 12.0 */
- background: -moz-linear-gradient($direction, $color1, $color2); /* For Firefox 3.6 to 15 */
- background: linear-gradient(to $direction, $color1, $color2); /* Standard syntax */
-}
-
-@mixin box-shadow($left, $top, $blur, $color, $inset: false) {
-  @if $inset {
-    -webkit-box-shadow:inset $top $left $blur $color;
-    -moz-box-shadow:inset $top $left $blur $color;
-    box-shadow:inset $top $left $blur $color;
-    } @else {
-      -webkit-box-shadow: $top $left $blur $color;
-      -moz-box-shadow: $top $left $blur $color;
-      box-shadow: $top $left $blur $color;
-    }
-  }
-
-
-
-  .button {
-    font-weight: bold;
-  }
-
-  .button-unavailable {
-    background-color: $unavailable;
-  }
-
-  .button-busy {
-    background-color: $busy;
-  }
-
-  .hidden {
-    display: none !important;
-  }
-
-  .middle-align {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .img-circle {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-  }
-
-  ion-nav-bar, ion-header-bar {
-    @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.1));
-  }
-
-  .tab-nav {
-    @include box-shadow(-2px, 0px, 3px, rgba(0, 0, 0, 0.1)); 
-  }
-
-
-@import "scss/pages/login.scss";
-@import "scss/pages/signup.scss";
-@import "scss/pages/tab-dash.scss";
-@import "scss/pages/dashboard-modal-post.scss";
-@import "scss/pages/dashboard-modal-get.scss";
-@import "scss/pages/tab-activity.scss";
-@import "scss/pages/tab-wishes.scss";
-@import "scss/pages/wish-detail.scss";
-@import "scss/pages/tab-settings.scss";
-@import "scss/pages/tab-leaderboard.scss";
+@import "scss/base/_layouts.scss";
+@import "scss/base/_animations.scss";
+@import "scss/components/_button.scss";
+@import "scss/components/_nav.scss";
 
 #dashboard-modal-spinner {
   background-color: rgba(0, 0, 0, 0.8);
@@ -136,38 +40,5 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
-/*Global layouts*/
-.title-subtitle {
-  text-align: center;
-  .title {
-    font-weight: bold;
-    font-size: 18px;
-  }
-
-  .subtitle {
-    font-size: 13px; 
-  }
-}
 
 
-/*Global Animation Options*/
-
-.scale-in {
-  transform: scale(0.5);
-  opacity: 0;
-}
-.scale-in.ng-enter,
-.scale-in > .ng-enter {
-  transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
-}
-
-.scale-in.ng-enter-active,
-.scale-in > .ng-enter-active {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.scale-in.ng-leave,
-.scale-in > .ng-leave {
-  transition: all ease-in-out 250ms;
-}

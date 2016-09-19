@@ -1,0 +1,31 @@
+* {
+  font-family: 'Lato' !important;
+}  
+
+.title-subtitle {
+	text-align: center;
+	.title {
+		font-weight: bold;
+		font-size: 18px;
+	}
+
+	.subtitle {
+		font-size: 13px; 
+	}
+}
+
+.hidden {
+	display: none !important;
+}
+
+.middle-align {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.img-circle {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+}
