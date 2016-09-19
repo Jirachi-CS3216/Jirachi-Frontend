@@ -15,10 +15,11 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, session) {
 		updated_at:"2016-09-19T11:11:26.000Z",
 
 		//not yet existing attributes
+		assignee_contact_number: "88888888",
 		assignee_display_name: "Jay Chow",
 		picked_at:"2016-09-20T11:11:26.000Z",
 		fulfilled_at:"2016-09-21T11:11:26.000Z",
-		// confirmed_at:"2016-09-21T14:11:26.000Z"
+		confirmed_at:"2016-09-21T14:11:26.000Z"
 	};
 
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
@@ -48,7 +49,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, session) {
 			})
 		}
 
-		if (wish.confirmed_at) {
+		if (wish.assigned_to && wish.fulfilled_at && wish.confirmed_at) {
 			$scope.activities.push({
 				image: "./img/avatars/" + wish.user_id % 8  + ".svg",
 				description: "Fulfillment Confirmed!",
