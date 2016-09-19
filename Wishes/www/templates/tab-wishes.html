@@ -7,7 +7,11 @@
 			</div>
 		</div>
 
-		<div class="my-wishes" ng-show="isSelected(0) && myWishes.length !== 0 && !isMyWishesLoading">
+		<div class="my-wishes" ng-show="isSelected(0) && !isMyWishesLoading">
+			<div class="wishes-placeholder" ng-if="myWishes.length == 0">
+				<p>You have not made any wishes yet...</p>
+				<a class="button button-energized middle-align" href="/#/tab/dashboard"> Blow the dandelion! </a>
+			</div>
 			<div class="current-wishes" ng-show="(myWishes|filter:currentFilter).length != 0">
 				<div class="wish-group-header animated fadeInUp">current wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in myWishes | filter: currentFilter" style="animation-delay:{{$index * 0.05}}s">
@@ -34,7 +38,11 @@
 			</div>
 		</div>
 
-		<div class="other-wishes" ng-show="isSelected(1) && othersWishes.length !== 0">
+		<div class="other-wishes" ng-show="isSelected(1)">
+			<div class="wishes-placeholder" ng-if="othersWishes.length == 0">
+				<p>You have not picked any wishes yet...</p>
+				<a class="button button-energized middle-align" href="/#/tab/dashboard"> Go and grab one!</a>
+			</div>
 			<div class="current-wishes" ng-show="(othersWishes|filter:currentFilter).length != 0">
 				<div class="wish-group-header animated fadeInUp">current wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in othersWishes | filter: currentFilter" style="animation-delay:{{$index * 0.05}}s">
