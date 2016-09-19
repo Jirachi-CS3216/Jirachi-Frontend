@@ -1,0 +1,7 @@
+ion-nav-bar, ion-header-bar {
+	@include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.1));
+}
+
+.tab-nav {
+	@include box-shadow(-2px, 0px, 3px, rgba(0, 0, 0, 0.1)); 
+}

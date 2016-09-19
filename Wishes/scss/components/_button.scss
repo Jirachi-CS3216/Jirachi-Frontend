@@ -1,0 +1,11 @@
+.button {
+	font-weight: bold;
+}
+
+.button-unavailable {
+	background-color: $unavailable;
+}
+
+.button-busy {
+	background-color: $busy;
+}
