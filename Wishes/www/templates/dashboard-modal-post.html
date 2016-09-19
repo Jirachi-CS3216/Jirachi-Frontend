@@ -10,10 +10,15 @@
 			<form name="wishForm">
 				<div class="row">
 					<div class="col">
-						<input name="title" type="text" class="wish-title" placeholder="Give my wish a title" ng-model="postWishTitle" ng-required="true">
+						<input name="title" type="text" class="wish-title" placeholder="Give my wish a title" ng-model="postWishTitle" ng-required="true" ng-minlength="5">
 					</div>
 				</div>
-				<div ng-show="wishForm.title.$invalid && !wishForm.title.$pristine" class="row">
+				<div ng-show="wishForm.title.$error.minlength" class="row">
+					<div class="col help-block">
+						title is too short
+					</div>
+				</div>
+				<div ng-show="!wishForm.title.$error.minlength && wishForm.title.$invalid && !wishForm.title.$pristine" class="row">
 					<div class="col help-block">
 						title required
 					</div>
