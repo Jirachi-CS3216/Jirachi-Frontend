@@ -18,7 +18,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, session) {
 		assignee_display_name: "Jay Chow",
 		picked_at:"2016-09-20T11:11:26.000Z",
 		fulfilled_at:"2016-09-21T11:11:26.000Z",
-		confirmed_at:"2016-09-21T14:11:26.000Z"
+		// confirmed_at:"2016-09-21T14:11:26.000Z"
 	};
 
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {

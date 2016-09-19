@@ -19,10 +19,6 @@
     }
   }
 
-  .button {
-    width: 120px;
-  }
-
   .wish-timeline {
     margin-top: 25px;
     margin-right: 10px;
@@ -82,9 +78,9 @@
         .timeline-line {
           content: '';
           position: absolute;
-          top: -25px;
+          top: -35px;
           left: 24px;
-          height: 200px;
+          height: 100px;
           width: 3px;
           background: white;
           z-index: -1000;
@@ -117,5 +113,19 @@
         height: 0%;
       }
     }*/
+  }
+
+  .wish-action {
+    a, button {
+      margin-top: 20px;
+      text-transform: uppercase;
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
+    }
+
+    .activated {
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+    }
   }
 }
