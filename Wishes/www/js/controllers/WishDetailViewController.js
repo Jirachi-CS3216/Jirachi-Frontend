@@ -15,7 +15,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, session) {
 		updated_at:"2016-09-19T11:11:26.000Z",
 
 		//not yet existing attributes
-		assignee_contact_number: "88888888",
+		assignee_contact: "88888888",
 		assignee_display_name: "Jay Chow",
 		picked_at:"2016-09-20T11:11:26.000Z",
 		fulfilled_at:"2016-09-21T11:11:26.000Z",

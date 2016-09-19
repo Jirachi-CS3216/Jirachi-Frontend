@@ -13,13 +13,27 @@
 				</div>
 			</div>
 		</div>
+		<div class="wish-assignee" ng-show="wish.assigned_to != session.currentUserID()">
+			<hr>
+			<div class="block-title">Wish Picker</div>
+			<div class="card timeline-card">
+				<div class="item item-avatar">
+					<img class="avatar" ng-src="./img/avatars/{{ wish.assigned_to % 8 }}.svg">
+					<div class="description"> {{ wish.assignee_display_name }}</div>
+				</div>
+				<div class="item item-icon-left" ng-show="wish.assignee_contact !== ''">
+					<i class="icon ion-ios-telephone"></i>
+					<div class="contact">HP: {{ wish.assignee_contact }}</div>
+				</div>
+			</div>
+		</div>
 		<div class="wish-timeline">
+			<hr>
+			<div class="block-title">Activities</div>
 			<div class="timeline-block" ng-repeat="activity in activities">
 				<div class="line-wrapper">
-					<div class="timeline-icon">
-					</div>
-					<div class="timeline-line">
-					</div>
+					<div class="timeline-icon"></div>
+					<div class="timeline-line" ng-show="$index !== 0"></div>
 				</div>
 				<div class="card-wrapper">
 					<div class="card timeline-card">
@@ -32,7 +46,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="wish-action">
+		<div class="wish-action" ng-show="(activities.length === 2 && session.currentUserID() === wish.assigned_to) || (activities.length === 3 && session.currentUserID() === wish.user_id)">
 			<button class="button button-balanced button-block" ng-show="activities.length === 2 && session.currentUserID() === wish.assigned_to">
 				Mark as Fulfilled
 			</button>
@@ -40,6 +54,7 @@
 			<button class="button button-balanced button-block" ng-show="activities.length === 3 && session.currentUserID() === wish.user_id">
 				Confirm Fulfillment
 			</button>
+
 		</div>
 	</ion-content>
 </ion-view>

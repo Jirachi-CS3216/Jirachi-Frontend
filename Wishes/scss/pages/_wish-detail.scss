@@ -1,10 +1,28 @@
 #wish-detail {
-  text-align: center;
   background: $pimary-background-color;
   color: $text-dark;
 
+  hr {
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.4;
+    margin-top: 40px;
+    border-color: white;
+    border-width: 0.5;
+  }
+
+  .block-title {
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    font-size: 17px;
+    font-weight: 400;
+  }
+
   .wish-card {
+    text-align: center;
     margin: 10px;
+    margin-top: 30px;
     padding: 30px 20px;
     border-radius: 10px;
 
@@ -16,6 +34,25 @@
     }
 
     .description {
+    }
+  }
+
+  .wish-assignee {
+    .card {
+      text-align: right;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 10px;
+
+      .description {
+        line-height: 40px;
+        font-weight: 800;
+        font-size: 25px;
+      }
+
+      .contact {
+        font-size: 15px; 
+      }
     }
   }
 
@@ -92,27 +129,6 @@
         white-space: normal;
       }
     }
-
-/*    .timeline-block:first-child {
-      .timeline-line {
-        top: 50%;
-        height: 50%;
-      }
-    }
-
-    .timeline-block:last-child {
-      .timeline-line {
-        top: 0;
-        height: 50%;
-      }
-    }
-
-    .timeline-block:only-child {
-      .timeline-line {
-        top: 0;
-        height: 0%;
-      }
-    }*/
   }
 
   .wish-action {
