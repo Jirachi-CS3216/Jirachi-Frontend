@@ -31,53 +31,53 @@
     }
 
     a:first-child {
-     border-top-left-radius: 50px;
-     border-bottom-left-radius: 50px;
-   }
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+    }
 
-   a:last-child {
-     border-top-right-radius: 50px;
-     border-bottom-right-radius: 50px;
-   }
+    a:last-child {
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
 
    .activated {
-    border-color: transparent;
-    @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+    }
   }
-}
 
-.wish-card  {
- margin-top: 10px;
- margin-bottom: 10px;
- border-radius: 5px;
+  .wish-card  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 
- .ion-heart {
-  color: #ef473a;
- }
+    .ion-heart {
+      color: #ef473a;
+    }
 
- .ion-checkmark-circled {
-  color: #33cd5f;
- }
+    .ion-checkmark-circled {
+      color: #33cd5f;
+    }
 
- .title {
-  font-size: 17px;
-  text-overflow:ellipsis;
-  overflow:hidden;
-  white-space:nowrap;
-}
+    .title {
+      font-size: 17px;
+      text-overflow:ellipsis;
+      overflow:hidden;
+      white-space:nowrap;
+    }
 
-.time {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  font-size: 12px;
-}
+    .time {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
 
-.description {
-  color: gray;
-  font-size: 13px;
-  text-overflow:ellipsis;
-  overflow:hidden;
-  white-space:nowrap;
-}
-}
+    .description {
+      color: gray;
+      font-size: 13px;
+      text-overflow:ellipsis;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+  }
 }
