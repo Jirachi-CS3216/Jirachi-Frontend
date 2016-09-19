@@ -31,7 +31,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			if (myWishes.length !== $scope.myWishes.length) {
 				myWishes.forEach(function(wish){
 					var expiredDate = new Date(wish.created_at)
-					wish.createData = expiredDate;
+					wish.time = expiredDate;
 					expiredDate.setDate(expiredDate.getDate() + 20)
 					var now = Date.now()
 					wish.isExpired = now > expiredDate
@@ -49,6 +49,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			if (othersWishes.length !== $scope.othersWishes.length) {
 				othersWishes.forEach(function(wish){
 					var expiredDate = new Date(wish.created_at)
+					wish.time = expiredDate;
 					expiredDate.setDate(expiredDate.getDate() + 20)
 					var now = Date.now()
 					wish.isExpired = now > expiredDate

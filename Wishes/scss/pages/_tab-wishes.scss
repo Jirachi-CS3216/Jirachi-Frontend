@@ -3,11 +3,23 @@
   background: $pimary-background-color;
 
   .wishes-placeholder {
-    margin-top: 25px;
+    margin-top: 40px;
     text-align: center;
-    .button {
-      width: 50%;
+    
+    a, button {
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+      text-transform: uppercase;
+      transition: 0.2s ease-in-out all !important;
+      @include box-shadow(2px, 0px, 3px, rgba(0, 0, 0, 0.15));
     }
+
+    .activated {
+      border-color: transparent;
+      @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
+    }
+
     p {
       font-size: 17px;
     }
@@ -40,7 +52,7 @@
       border-bottom-right-radius: 50px;
     }
 
-   .activated {
+    .activated {
       border-color: transparent;
       @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
     }

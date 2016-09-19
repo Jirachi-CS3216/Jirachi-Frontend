@@ -10,7 +10,7 @@
 		<div class="my-wishes" ng-show="isSelected(0) && !isMyWishesLoading">
 			<div class="wishes-placeholder" ng-if="myWishes.length == 0">
 				<p>You have not made any wishes yet...</p>
-				<a class="button button-energized middle-align" href="/#/tab/dashboard"> Blow the dandelion! </a>
+				<a class="button button-balanced middle-align" href="/#/tab/dashboard"> Blow the dandelion! </a>
 			</div>
 			<div class="current-wishes" ng-show="(myWishes|filter:currentFilter).length != 0">
 				<div class="wish-group-header animated fadeInUp">current wishes</div>
@@ -18,7 +18,7 @@
 					<div class="item item-text-wrap item-icon-right">
 						<i ng-if="getWishStatus(wish) == 'picked'" class="icon ion-heart icon"></i>
 						<div class="title">{{wish.title}}</div>
-						<div class="time">{{wish.time}}</div>
+						<div class="time">{{wish.time | date:'medium'}}</div>
 						<div class="description">{{wish.description}}</div>
 					</div>
 				</div>
@@ -31,7 +31,7 @@
 						<i ng-if="getWishStatus(wish) == 'expired'" class="icon ion-heart-broken icon"></i>
 						<i ng-if="getWishStatus(wish) == 'fulfilled'" class="icon ion-checkmark-circled icon"></i>
 						<div class="title">{{wish.title}}</div>
-						<div class="time">{{wish.time}}</div>
+						<div class="time">{{wish.time | date:'medium'}}</div>
 						<div class="description">{{wish.description}}</div>
 					</div>
 				</div>
@@ -41,7 +41,7 @@
 		<div class="other-wishes" ng-show="isSelected(1)">
 			<div class="wishes-placeholder" ng-if="othersWishes.length == 0">
 				<p>You have not picked any wishes yet...</p>
-				<a class="button button-energized middle-align" href="/#/tab/dashboard"> Go and grab one!</a>
+				<a class="button button-balanced middle-align" href="/#/tab/dashboard"> Go and grab one!</a>
 			</div>
 			<div class="current-wishes" ng-show="(othersWishes|filter:currentFilter).length != 0">
 				<div class="wish-group-header animated fadeInUp">current wishes</div>
@@ -49,7 +49,7 @@
 					<div class="item item-text-wrap item-icon-right">
 						<!-- <i class="icon ion-checkmark-circled icon"></i> -->
 						<div class="title">{{wish.title}}</div>
-						<div class="time">{{wish.time}}</div>
+						<div class="time">{{wish.time | date:'medium'}}</div>
 						<div class="description">{{wish.description}}</div>
 						<i ng-if="getWishStatus(wish) == 'picked'" class="icon ion-heart icon"></i>
 					</div>
@@ -62,7 +62,7 @@
 					<div class="item item-text-wrap item-icon-right" ng-repeat="wish in othersWishes | filter: expiredFilter" style="animation-delay:{{ $index * 0.05 + othersWishes.length * 0.05 }}s">
 						<!-- <i class="icon ion-checkmark-circled icon"></i> -->
 						<div class="title">{{wish.title}}</div>
-						<div class="time">{{wish.time}}</div>
+						<div class="time">{{wish.time | date:'medium'}}</div>
 						<div class="description">{{wish.description}}</div>
 						<i class="icon ion-chevron-right icon-accessory"></i>
 					</div>
