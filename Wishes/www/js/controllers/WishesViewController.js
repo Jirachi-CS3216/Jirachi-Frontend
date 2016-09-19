@@ -25,44 +25,35 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 	$scope.getWishesMade = function() {
 		//api insertion point
 
-		// apis.wishes.get(session.currentUserID(), {}).success(function(data, status){
-		// 	console.log(data)
-		// 	$scope.filterWishes(data);
-		// })
+		apis.wishes.get(session.currentUserID(), {}).success(function(data, status){
+			var myWishes = data.self
+			if (myWishes.length !== $scope.myWishes.length) {
+				myWishes.forEach(function(wish){
+					var expiredDate = new Date(myWishes.created_at)
+					expiredDate.setDate(expiredDate.getDate() + 20)
+					var now = Date.now()
+					wish.isExpired = now > expiredDate
+				})
+
+				$scope.myWishes = myWishes;
+			}
+
+			$scope.isMyWishesLoading = false
 
 
-		var wishes =  [{
-			id: 0,
-			title: "I have a little little wish",
-			description: "I wish...for world peace.",
-			time: "2016-09-09 12:32:00",
-			isPicked: true,
-			isFulfilled: false,
-			isExpired: false
-		},
-		{
-			id: 1,
-			title: "I wish someone can wash my car",
-			description: "As title",
-			time: "2016-09-09 12:32:00",
-			isPicked: true,
-			isFulfilled: true,
-			isExpired: true
-		},
-		{
-			id: 2,
-			title: "Who can give me the answer for tutorial 8",
-			description: "don't know how to write",
-			time: "2016-09-09 12:32:00",
-			isPicked: false,
-			isFulfilled: false,
-			isExpired: true
-		}];
-		
-		if (wishes.length !== $scope.myWishes.length) {
-			$scope.myWishes = wishes
-		}
-		$scope.isMyWishesLoading = false
+
+		})
+
+
+		//  {
+		// 	id: 0,
+		// 	title: "I have a little little wish",
+		// 	description: "I wish...for world peace.",
+		// 	time: "2016-09-09 12:32:00",
+		// 	isPicked: true,
+		// 	isFulfilled: false,
+		// 	isExpired: false
+		// }
 	}
 
 	$scope.getWishesAccepted = function() {
