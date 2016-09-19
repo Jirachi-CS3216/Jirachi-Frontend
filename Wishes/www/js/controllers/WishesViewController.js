@@ -62,20 +62,10 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 
 			$scope.isOthersWishesLoading = false
 		})
-
-
-		//  {
-		// 	id: 0,
-		// 	title: "I have a little little wish",
-		// 	description: "I wish...for world peace.",
-		// 	time: "2016-09-09 12:32:00",
-		// 	isPicked: true,
-		// 	isFulfilled: false,
-		// 	isExpired: false
-		// }
 	}
 
 	$scope.cardDidClick =function(wish) {
+		session.selectedWish = wish;
 		$location.path("/tab/wishes/" + wish.id)
 	}
 

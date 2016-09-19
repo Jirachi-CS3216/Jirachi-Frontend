@@ -1,33 +1,33 @@
 <ion-view view-title="Wish Card" id="wish-detail">
 	<ion-content class="padding">
 		<div class="wish-card-wrapper">
-			<img ng-src="{{wish.image}}" style="width: 64px; height: 64px" class="middle-align img-circle">
 			<div class="card wish-card">
-				<h3 class="title">
+				<div class="title">
 					{{wish.title}}
-				</h3>
-				<p>
+				</div>
+				<!-- <a class="button" ng-class="getStatusBtnClass()">
+					{{getStatusBtnText()}}
+				</a> -->
+				<div class="description">
 					{{wish.description}}
-				</p>
+				</div>
 			</div>
 		</div>
-		<a class="button" ng-class="getStatusBtnClass()">
-			{{getStatusBtnText()}}
-		</a>
 		<div class="wish-timeline">
-
-			<div class="timeline-block row animated fadeInUp" ng-repeat="activity in activities">
-				<div class="col col-10">
-					<div class="timeline-icon middle-align">
+			<div class="timeline-block" ng-repeat="activity in activities">
+				<div class="line-wrapper">
+					<div class="timeline-icon">
 					</div>
-					<div class="timeline-line middle-align">
+					<div class="timeline-line">
 					</div>
 				</div>
-				<div class="col col-90">
-					<div class="item item-avatar timeline-card ">
-						<img ng-src="{{activity.image}}">
-						<p>{{activity.time}}</p>
-						<h3 class="description">{{activity.description}}</h3>
+				<div class="card-wrapper">
+					<div class="card timeline-card">
+						<div class="item item-avatar">
+							<img class="avatar" ng-src="{{ activity.image }}">
+							<div class="description"> {{ activity.description }}</div>
+							<div class="time">{{ activity.time | date:'medium'}}</div>
+						</div>
 					</div>
 				</div>
 			</div>
