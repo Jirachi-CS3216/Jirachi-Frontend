@@ -9,9 +9,8 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
 		$scope.isMyWishesLoading = true;
-   		$scope.getWishesMade();
-   		$scope.isOthersWishesLoading = true;
-		$scope.getWishesAccepted();
+		$scope.isOthersWishesLoading = true;
+   		$scope.getWishes();
 	});
 
 	$scope.isSelected = function(status) {
@@ -22,7 +21,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 		$scope.selectedTab = status;
 	}
 
-	$scope.getWishesMade = function() {
+	$scope.getWishes = function() {
 		//api insertion point
 
 		apis.wishes.get(session.currentUserID(), {}).success(function(data, status){
@@ -32,6 +31,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			if (myWishes.length !== $scope.myWishes.length) {
 				myWishes.forEach(function(wish){
 					var expiredDate = new Date(wish.created_at)
+					wish.createData = expiredDate;
 					expiredDate.setDate(expiredDate.getDate() + 20)
 					var now = Date.now()
 					wish.isExpired = now > expiredDate
@@ -72,25 +72,6 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 		// 	isFulfilled: false,
 		// 	isExpired: false
 		// }
-	}
-
-	$scope.getWishesAccepted = function() {
-		var wishes = [
-		{
-			id: 3,
-			title: "I need some hlep guyys",
-			description: "where is lt32",
-			time: "2016-09-09 12:32:00",
-			isPicked: true,
-			isFulfilled: false,
-			isExpired: false
-		}
-		];
-
-		if (wishes.length !== $scope.othersWishes.length) {
-			$scope.othersWishes = wishes
-		}
-		$scope.isOthersWishesLoading = false
 	}
 
 	$scope.cardDidClick =function(wish) {
