@@ -12,26 +12,25 @@
 				<div class="wish-group-header animated fadeInUp">current wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in myWishes | filter: currentFilter" style="animation-delay:{{$index * 0.05}}s">
 					<div class="item item-text-wrap item-icon-right">
-						<!-- <i class="icon ion-checkmark-circled icon"></i> -->
+						<i ng-if="getWishStatus(wish) == 'picked'" class="icon ion-heart icon"></i>
 						<div class="title">{{wish.title}}</div>
 						<div class="time">{{wish.time}}</div>
 						<div class="description">{{wish.description}}</div>
-						<i class="icon ion-chevron-right icon-accessory"></i>
 					</div>
-		        </div>
+				</div>
 			</div>
 
 			<div class="past-wishes" ng-show="(myWishes|filter:expiredFilter).length != 0">
 				<div class="wish-group-header animated fadeInUp">past wishes</div>
 				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in myWishes | filter: expiredFilter" style="animation-delay:{{ $index * 0.05 + myWishes.length * 0.05 }}s">
 					<div class="item item-text-wrap item-icon-right">
-						<!-- <i class="icon ion-checkmark-circled icon"></i> -->
+						<i ng-if="getWishStatus(wish) == 'expired'" class="icon ion-heart-broken icon"></i>
+						<i ng-if="getWishStatus(wish) == 'fulfilled'" class="icon ion-checkmark-circled icon"></i>
 						<div class="title">{{wish.title}}</div>
 						<div class="time">{{wish.time}}</div>
 						<div class="description">{{wish.description}}</div>
-						<i class="icon ion-chevron-right icon-accessory"></i>
 					</div>
-		        </div>
+				</div>
 			</div>
 		</div>
 
@@ -44,9 +43,9 @@
 						<div class="title">{{wish.title}}</div>
 						<div class="time">{{wish.time}}</div>
 						<div class="description">{{wish.description}}</div>
-						<i class="icon ion-chevron-right icon-accessory"></i>
+						<i ng-if="getWishStatus(wish) == 'picked'" class="icon ion-heart icon"></i>
 					</div>
-		        </div>
+				</div>
 			</div>
 
 			<div class="past-wishes" ng-show="(othersWishes|filter:expiredFilter).length != 0">
@@ -59,7 +58,7 @@
 						<div class="description">{{wish.description}}</div>
 						<i class="icon ion-chevron-right icon-accessory"></i>
 					</div>
-		        </div>
+				</div>
 			</div>
 		</div>
 	</ion-content>

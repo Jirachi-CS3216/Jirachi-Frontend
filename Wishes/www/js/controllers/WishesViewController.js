@@ -36,6 +36,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			title: "I have a little little wish",
 			description: "I wish...for world peace.",
 			time: "2016-09-09 12:32:00",
+			isPicked: true,
 			isFulfilled: false,
 			isExpired: false
 		},
@@ -44,6 +45,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			title: "I wish someone can wash my car",
 			description: "As title",
 			time: "2016-09-09 12:32:00",
+			isPicked: true,
 			isFulfilled: true,
 			isExpired: true
 		},
@@ -52,6 +54,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			title: "Who can give me the answer for tutorial 8",
 			description: "don't know how to write",
 			time: "2016-09-09 12:32:00",
+			isPicked: false,
 			isFulfilled: false,
 			isExpired: true
 		}];
@@ -69,6 +72,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			title: "I need some hlep guyys",
 			description: "where is lt32",
 			time: "2016-09-09 12:32:00",
+			isPicked: true,
 			isFulfilled: false,
 			isExpired: false
 		}
@@ -90,5 +94,17 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 
 	$scope.currentFilter = {
 		isExpired: false	
+	}
+
+	$scope.getWishStatus = function(wish) {
+		if (wish.isFulfilled) {
+			return "fulfilled";
+		} else if (wish.isExpired) {
+			return "expired";
+		} else if (wish.isPicked) {
+			return "picked";
+		} else {
+			return "available";
+		}
 	}
 })
