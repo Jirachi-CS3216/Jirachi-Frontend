@@ -35,11 +35,18 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 
 		$scope.spinnerModal.show();
 		apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
+			$scope.spinnerModal.hide();
+			if (!error) {
+				$scope.closePostModal();
+			} else {
+				console.log("Wish created failed")
+				console.log(data)
+				console.log(status)
+			}
+		}).error(function(data, status) {
+			console.log("Wish created failed")
 			console.log(data)
 			console.log(status)
-			$scope.spinnerModal.hide();
-			$scope.closePostModal();
-		}).error(function(data, status) {
 			$scope.spinnerModal.hide();
 		})
 	}

@@ -26,13 +26,17 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 		//api insertion point
 
 		apis.wishes.get(session.currentUserID(), {}).success(function(data, status){
+			console.log(data)
+
 			var myWishes = data.self
 			if (myWishes.length !== $scope.myWishes.length) {
 				myWishes.forEach(function(wish){
-					var expiredDate = new Date(myWishes.created_at)
+					var expiredDate = new Date(wish.created_at)
 					expiredDate.setDate(expiredDate.getDate() + 20)
 					var now = Date.now()
 					wish.isExpired = now > expiredDate
+					wish.isPicked =  !(!wish.assigned_to) //cast to boolean
+					wish.isFulfilled = wish.fulfill_status === "fulfilled"
 				})
 
 				$scope.myWishes = myWishes;
@@ -41,7 +45,21 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			$scope.isMyWishesLoading = false
 
 
+			var othersWishes = data.others
+			if (othersWishes.length !== $scope.othersWishes.length) {
+				othersWishes.forEach(function(wish){
+					var expiredDate = new Date(wish.created_at)
+					expiredDate.setDate(expiredDate.getDate() + 20)
+					var now = Date.now()
+					wish.isExpired = now > expiredDate
+					wish.isPicked =  !(!wish.assigned_to) //cast to boolean
+					wish.isFulfilled = wish.fulfill_status === "fulfilled"
+				})
 
+				$scope.othersWishes = othersWishes;
+			}
+
+			$scope.isOthersWishesLoading = false
 		})
 
 
