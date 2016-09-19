@@ -11,7 +11,7 @@
 
 
         <div class="haves" ng-show="shouldShow[0]">
-            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }}" ng-repeat="thisGuy in haves" ng-class="animateClass[0][$index % 2]">
+            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }} ng-class:{ 'current-user': isCurrentUser(thisGuy.id) };" ng-repeat="thisGuy in haves" ng-class="animateClass[0][$index % 2]">
                 <div class="item">
                     <div>
                         <div>
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="text-content">
-                            <div class="name">{{ thisGuy.display_name }}</div>
+                            <div class="name">{{ isCurrentUser(thisGuy.id) ? "YOU" : thisGuy.display_name }}</div>
                             <div class="points">{{ thisGuy.points }} points</div>
                         </div>
                         <div>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="helpers" ng-show="shouldShow[1]">
-            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }}" ng-repeat="thisGuy in helpers" ng-class="animateClass[1][$index % 2]">
+            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }} ng-class:{ 'current-user': isCurrentUser(thisGuy.id) };" ng-repeat="thisGuy in helpers" ng-class="animateClass[1][$index % 2]">
                 <div class="item">
                     <div>
                         <div>
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="text-content">
-                            <div class="name">{{ thisGuy.display_name }}</div>
+                            <div class="name">{{ isCurrentUser(thisGuy.id) ? "YOU" : thisGuy.display_name }}</div>
                             <div class="points">{{ thisGuy.counts }} helps</div>
                         </div>
                         <div>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="wishers" ng-show="shouldShow[2]">
-            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }}" ng-repeat="thisGuy in wishers" ng-class="animateClass[2][$index % 2]">
+            <div class="card leaderboard-card animated {{ $index % 2 === 0 ? 'bounceInLeft' : 'bounceInRight' }} ng-class:{ 'current-user': isCurrentUser(thisGuy.id) };" ng-repeat="thisGuy in wishers" ng-class="animateClass[2][$index % 2]">
                 <div class="item">
                     <div>
                         <div>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="text-content">
-                            <div class="name">{{ thisGuy.display_name }}</div>
+                            <div class="name">{{ isCurrentUser(thisGuy.id) ? "YOU" : thisGuy.display_name }}</div>
                             <div class="points">{{ thisGuy.counts }} wishes</div>
                         </div>
                         <div>

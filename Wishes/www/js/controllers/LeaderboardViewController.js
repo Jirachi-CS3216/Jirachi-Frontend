@@ -2,6 +2,8 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session) 
     
     $scope.session = session;
 
+    $scope.currentUserID = $scope.session.currentUserID();
+
     $scope.selectedTab = 0;
 
    	$scope.isSelected = function(status) {
@@ -23,7 +25,6 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session) 
 
 	$scope.shouldShow = [true, false, false]
 	$scope.animateClass = [["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"]]
-
 
     $scope.haves = [{
       "id": 1,
@@ -147,4 +148,8 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session) 
       "display_name": "Lazy Guy",
       "counts": 42
     }]
+
+  $scope.isCurrentUser = function(userID) {
+    return userID === $scope.currentUserID;
+  }
 })
