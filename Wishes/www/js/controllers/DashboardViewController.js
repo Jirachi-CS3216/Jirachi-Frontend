@@ -34,7 +34,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 		}
 
 		$scope.spinnerModal.show();
-		apis.wishes.post(session.currentUserID(), {}, wishes).success(function(data, status){
+		apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
 			console.log(data)
 			console.log(status)
 			$scope.spinnerModal.hide();
