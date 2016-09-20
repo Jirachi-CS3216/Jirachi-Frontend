@@ -35,28 +35,28 @@
 				<div class="item">
 					<label class="item item-input item-floating-label">
 						<span class="input-label">Display Name</span>
-						<input type="text" placeholder="Display Name" ng-change="userDisplayNameInputDidChange(displayName)" ng-model="displayName" ng-model-options="{debounce:1000}">
+						<input type="text" placeholder="Display Name" ng-change="userDisplayNameInputDidChange(displayName)" ng-model="displayName" ng-model-options="{debounce:1000}" ng-disabled="networkDown">
 						<span class="caption">*If no display name is specified, your username will be used instead.</span>
 					</label>
 				</div>
 				<div class="item">
 					<label class="item item-input item-floating-label">
 						<span class="input-label">Email</span>
-						<input type="Email" placeholder="Email" ng-change="userEmailInputDidChange(email)" ng-model="email" ng-model-options="{debounce:1000}">
+						<input type="Email" placeholder="Email" ng-change="userEmailInputDidChange(email)" ng-model="email" ng-model-options="{debounce:1000}" ng-disabled="networkDown">
 						<span class="caption">*Email is the only way to find your password back if you lose it</span>
 					</label>
 				</div>
 				<div class="item">
 					<label class="item item-input item-floating-label">
 						<span class="input-label">Hand Phone</span>
-						<input type="text" placeholder="Hand Phone" ng-change="userPhoneInputDidChange(phone)" ng-model="phone" ng-model-options="{debounce:1000}">
+						<input type="text" placeholder="Hand Phone" ng-change="userPhoneInputDidChange(phone)" ng-model="phone" ng-model-options="{debounce:1000}" ng-disabled="networkDown">
 						<span class="caption">*People would love to pick your wishes if they can contact you!</span>
 					</label>
 				</div>
 			</div>
 
 			<div class="card setting-card animated fadeInUp button-card animated fadeInUp" style="animation-delay: 0.4s">	
-				<button class="button button-balanced button-block card setting-card" ng-click="updatePassword()">Update Password</button>
+				<button class="button button-balanced button-block card setting-card" ng-click="updatePassword()" ng-disabled="networkDown">Update Password</button>
 				<button class="button button-assertive button-block card setting-card" ng-click="logout()">Sign Out</button>
 			</div>
 		</div>

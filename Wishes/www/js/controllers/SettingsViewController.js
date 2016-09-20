@@ -1,4 +1,4 @@
-module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, auth, session, apis) {
+module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, auth, session, apis, indicator) {
 	
 	$scope.session = session;
 
@@ -9,12 +9,27 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
         $scope.spinnerModal = modal;
     });
 
+    function verifyNetworkStatus(message) {
+        apis.updateUserInfo.get(session.currentUserID(), {}).success(function(data, status){
+            $scope.networkDown = (status !== 200)
+            if (status !== 200) {
+                loadStoredDetails()
+                indicator.showNetworkDownIndicator($scope, message)
+            }
+        })
+    }
+
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
-   		$scope.displayName = session.currentUser().display_name
-   		$scope.email = session.currentUser().email
-   		$scope.phone = session.currentUser().phone
+   		loadStoredDetails()
+        verifyNetworkStatus("Network unavailable, user details editing is disabled.")
         $scope.getLastestUserInfo()
 	});
+
+    function loadStoredDetails() {
+        $scope.displayName = session.currentUser().display_name
+        $scope.email = session.currentUser().email
+        $scope.phone = session.currentUser().phone
+    }
 
     $scope.updatePasswordData = {};
     $scope.setForm = function(form) {
@@ -122,6 +137,8 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
     }
 
     $scope.updateUserInfo = function() {
+        verifyNetworkStatus("Network unavailable, changes will not be persisted")
+
         apis.updateUserInfo.put(session.currentUserID(), {}, {
             user: session.currentUser()
         }).success(function(data,status,headers,config) {
