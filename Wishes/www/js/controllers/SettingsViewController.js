@@ -65,6 +65,7 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
                             $scope.spinnerModal.hide();
                             if (status === 200 && !data.error) {
                                 $scope.showPopupWithTitle("Password updated successfully!")
+                                $scope.updatePasswordData = {}
                             } else {
                                 console.log(data)
                                 $scope.showPopupWithTitle(data.error)
