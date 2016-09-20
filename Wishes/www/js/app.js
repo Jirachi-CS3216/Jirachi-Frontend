@@ -21,14 +21,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   }
 })
 
-.constant('AUTH_EVENTS', {
-  notAuthenticated: 'auth-not-authenticated',
-  notAuthorized: 'auth-not-authorized'
-})
-
-.constant('USER_ROLES', {
-  admin: 'admin_role',
-  public: 'public_role'
+.constant('SERVER_EVENTS', {
+  notAuthenticated: 'not-authenticated',
+  notAuthorized: 'not-authorized',
+  notFound: 'not-found'
 })
 
 .run(function($ionicPlatform) {
@@ -159,4 +155,68 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   });
 })
-;
+
+.service('wicache', function wicache($window) {
+  var LOCAL_STORAGE_CACHE_ID = 'Wicache';
+  this.data = {}
+
+  this.cacheResponse = function(response, keyObjects) {
+    var key = JSON.stringify(keyObjects);
+    this.data[key] = response;
+    this.save();
+  }
+
+  this.response = function(keyObjects) {
+    var key = JSON.stringify(keyObjects);
+    return this.data[key]
+  }
+
+  this.save = function() {
+    if (this.data) {
+      $window.localStorage[LOCAL_STORAGE_CACHE_ID] = JSON.stringify(this.data);
+    }
+  }
+
+  this.clear = function() {
+    delete $window.localStorage[LOCAL_STORAGE_CACHE_ID];
+  }
+})
+
+.factory('ResponseInterceptor', function ($rootScope, $q, wicache, SERVER_EVENTS) {
+  return {
+    response: function(response) {
+      console.log(response)
+      var config = response.config
+      if (!config.disableWicache) {
+        wicache.cacheResponse(response, {
+          method: config.method,
+          url: config.url,
+        })
+      }
+
+      return response;
+    }, 
+
+    responseError: function (response) {
+      if ((response.status === 404 || response.status === -1) && response.config.disableWicache !== true) {
+        //fetch from cache
+        var config = response.config
+        var newResponse = wicache.response({
+          method: config.method,
+          url: config.url,
+        });
+        return newResponse
+      } else {
+        $rootScope.$broadcast({
+          401: SERVER_EVENTS.notAuthenticated,
+          403: SERVER_EVENTS.notAuthorized
+        }[response.status], response);
+        return $q.reject(response);
+      }
+    }
+  };
+})
+
+.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('ResponseInterceptor');
+});

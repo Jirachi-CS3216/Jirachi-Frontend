@@ -42,6 +42,7 @@ serviceModule
     }
 
     this.reverseGeocoding = {
+
         get: function(parameters) {
             return $http.get(buildUrl('https://maps.googleapis.com/maps/api/geocode/json', parameters), {
             });
@@ -51,6 +52,7 @@ serviceModule
     this.login = {
         post: function(parameters, data) {
             return $http.post(buildUrl(apiHost + '/users/login', parameters), data, {
+                disableWicache: true
             });   
         }
     }
@@ -58,6 +60,7 @@ serviceModule
     this.signup = {
         post: function(parameters, data) {
             return $http.post(buildUrl(apiHost + '/users/signup', parameters), data, {
+                disableWicache: true
             });   
         }   
     }
@@ -73,6 +76,7 @@ serviceModule
 
         put: function(userID, parameters, data) {
             return $http.put(buildUrl(apiHost + '/users/' + userID, parameters), data, {
+                disableWicache: true,
                 headers: {
                     'Authorization': 'Token "' + session.serverToken() + '"'
                 }
@@ -83,6 +87,7 @@ serviceModule
     this.wishes = {
         post: function(userId, parameters, data) {
             return $http.post(buildUrl(apiHost + '/users/' + userId + '/wishes', parameters), data, {
+                disableWicache: true,
                 headers: {
                     'Authorization': 'Token "' + session.serverToken() + '"'
                 }
@@ -97,6 +102,4 @@ serviceModule
             });
         }
     }
-
-
-  });
+});

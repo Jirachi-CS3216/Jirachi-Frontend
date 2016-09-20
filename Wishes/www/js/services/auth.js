@@ -1,6 +1,6 @@
 serviceModule.
 
-service('auth', function auth($http, $state, $ionicPopup, session, apis, $window) {
+service('auth', function auth($http, $state, $ionicPopup, session, apis, $window, wicache) {
     this.login = function(data, handler){
         if (data === undefined) {
             handleLoginFailure(handler)
@@ -43,6 +43,7 @@ service('auth', function auth($http, $state, $ionicPopup, session, apis, $window
 
     destroyCurrentUser = function() {
         session.save(null);
+        wicache.clear();
         $window.location.reload();
     }
 
