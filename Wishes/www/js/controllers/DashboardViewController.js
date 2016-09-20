@@ -1,6 +1,24 @@
-module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, session, $timeout, TDCardDelegate) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, TDCardDelegate) {
 	$scope.session = session;
 	//modals for posting wishes
+
+
+	$scope.$on("$ionicView.beforeEnter", function(event, data){
+   		verifyNetworkStatus();
+	});
+
+    function verifyNetworkStatus() {
+    	apis.updateUserInfo.get(session.currentUserID(), {}).success(function(data, status){
+			$scope.networkDown = (status !== 200)
+			if (status !== 200) {
+				$scope.locationPickerModal.hide()
+				$scope.postModal.hide()
+				$scope.getModal.hide()
+				indicator.showNetworkDownIndicator($scope, "Network unavailable, posting and picking wishes are disabled.")
+			}
+	    })
+    }
+
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-spinner.html', {
 	    scope: $scope,
 	    animation: 'fade-in'
@@ -161,6 +179,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, s
 	//methods
 
 	$scope.openPostModal = function() {
+		verifyNetworkStatus()
 	    $scope.postModal.show();
 	};
 	
@@ -169,6 +188,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, s
 	};
 
 	$scope.openGetModal = function() {
+		verifyNetworkStatus()
 	    $scope.getModal.show();
 	};
 	
