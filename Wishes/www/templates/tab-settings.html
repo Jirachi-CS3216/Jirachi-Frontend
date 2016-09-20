@@ -28,6 +28,12 @@
 			<div class="card setting-card animated fadeInUp">
 				<div class="item">
 					<label class="item item-input item-floating-label">
+						<span class="input-label has-input">Username</span>
+						<input type="text" placeholder="Username" ng-value="session.currentUser().username" disabled style="background: transparent">
+					</label>
+				</div>
+				<div class="item">
+					<label class="item item-input item-floating-label">
 						<span class="input-label">Display Name</span>
 						<input type="text" placeholder="Display Name" ng-change="userDisplayNameInputDidChange(displayName)" ng-model="displayName" ng-model-options="{debounce:1000}">
 						<span class="caption">*If no display name is specified, your username will be used instead.</span>
