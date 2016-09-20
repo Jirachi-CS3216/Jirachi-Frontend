@@ -13,7 +13,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="wish-assignee" ng-show="wish.assigned_to != session.currentUserID()">
+		<div class="wish-assignee" ng-show="wish.assigned_to && wish.assigned_to != session.currentUserID()">
 			<hr>
 			<div class="block-title">Wish Picker</div>
 			<div class="card timeline-card">

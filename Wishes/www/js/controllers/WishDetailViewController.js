@@ -23,9 +23,8 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, session) {
 	};
 
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
-		console.log(session.selectedWish)
+		var wish = session.selectedWish;
 		$scope.wish = wish;
-		console.log(session.selectedWish)
 
 		$scope.activities = [{
 			image: "./img/avatars/" + wish.user_id % 8  + ".svg",
