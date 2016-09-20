@@ -130,10 +130,11 @@
   }
 
   .wrapper.extra-user::before {
-    content: "......";
+    content: "\00a0 • • • • • •";
     display: inline-block;
     text-align: center;
-    font-size: 8em;
+    font-size: 3em;
+    line-height: 2em;
   }
 }
 
