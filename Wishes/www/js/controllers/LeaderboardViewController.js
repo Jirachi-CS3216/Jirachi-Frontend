@@ -1,4 +1,4 @@
-module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, SERVER_EVENTS) {
+module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, SERVER_EVENTS, indicator) {
 
     $scope.session = session;
 
@@ -9,15 +9,7 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
     $scope.selectedTab = 0;
 
     $scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
-        var alertPopup = $ionicPopup.show({
-            title: 'User Session Expired!',
-            buttons:[{
-              text: "OK",
-              onTap: function(){
-                auth.logout()
-              }
-            }]
-        });
+        indicator.showSessionExpiredIndicator()
     });
 
   $scope.$on("$ionicView.beforeEnter", function(event){

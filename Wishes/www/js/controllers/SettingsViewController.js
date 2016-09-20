@@ -3,15 +3,7 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
 	$scope.session = session;
 
     $scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
-        var alertPopup = $ionicPopup.show({
-            title: 'User Session Expired!',
-            buttons:[{
-                text: "OK",
-                onTap: function(){
-                    auth.logout()
-                }
-            }]
-        });
+        indicator.showSessionExpiredIndicator()
     });
 
     $ionicModal.fromTemplateUrl('../../templates/dashboard-modal-spinner.html', {

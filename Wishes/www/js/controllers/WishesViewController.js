@@ -14,15 +14,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 	});
 
 	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
-        var alertPopup = $ionicPopup.show({
-            title: 'User Session Expired!',
-            buttons:[{
-            	text: "OK",
-            	onTap: function(){
-            		auth.logout()
-            	}
-            }]
-        });
+        indicator.showSessionExpiredIndicator()
     });
 
 	$scope.isSelected = function(status) {

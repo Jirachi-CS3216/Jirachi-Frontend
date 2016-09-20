@@ -1,4 +1,4 @@
-module.controller('WishDetailCtrl', function($scope, $stateParams, session) {
+module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, session, $state) {
 
 	$scope.session = session;
 
@@ -24,6 +24,16 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, session) {
 
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
 		var wish = session.selectedWish;
+		if (!wish) {
+			$ionicHistory.nextViewOptions({
+				disableAnimate: true,
+				disableBack: true,
+				historyRoot: true
+			});
+			$state.go("tab.wishes");
+			return;
+		}
+
 		$scope.wish = wish;
 
 		$scope.activities = [{

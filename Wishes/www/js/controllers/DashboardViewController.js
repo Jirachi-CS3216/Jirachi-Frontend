@@ -1,16 +1,8 @@
-module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, auth, SERVER_EVENTS) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS) {
 	$scope.session = session;
 	
 	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
-        var alertPopup = $ionicPopup.show({
-            title: 'User Session Expired!',
-            buttons:[{
-            	text: "OK",
-            	onTap: function(){
-            		auth.logout()
-            	}
-            }]
-        });
+        indicator.showSessionExpiredIndicator()
     });
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){

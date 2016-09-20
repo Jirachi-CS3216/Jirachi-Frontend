@@ -1,6 +1,6 @@
 serviceModule.
 
-service('indicator', function indicator($ionicPopup) {
+service('indicator', function indicator($ionicPopup, auth) {
 
 
 
@@ -13,6 +13,19 @@ service('indicator', function indicator($ionicPopup) {
             title: t,
             scope: scope,
             buttons: [{ text: 'OK' }]
+        });
+    }
+
+    this.showSessionExpiredIndicator = function(scope) {
+        var alertPopup = $ionicPopup.show({
+            title: 'User Session Expired!',
+            scope: scope,
+            buttons:[{
+                text: "OK",
+                onTap: function(){
+                    auth.logout()
+                }
+            }]
         });
     }
 })
