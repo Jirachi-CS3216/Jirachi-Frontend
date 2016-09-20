@@ -185,7 +185,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .factory('ResponseInterceptor', function ($rootScope, $q, wicache, SERVER_EVENTS) {
   return {
     response: function(response) {
-      console.log(response)
       var config = response.config
       if (!config.disableWicache) {
         wicache.cacheResponse(response, {
@@ -199,7 +198,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
     responseError: function (response) {
       if ((response.status === 404 || response.status === -1) && response.config.disableWicache !== true) {
-        //fetch from cache
+        console.log("network down: fetching from cache")
         var config = response.config
         var newResponse = wicache.response({
           method: config.method,
