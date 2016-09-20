@@ -204,7 +204,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           method: config.method,
           url: config.url,
         });
-        return newResponse
+        if (newResponse) {
+          newResponse.status = 299
+          return newResponse 
+        } else {
+          return $q.reject(response);  
+        }
       } else {
         $rootScope.$broadcast({
           401: SERVER_EVENTS.notAuthenticated,

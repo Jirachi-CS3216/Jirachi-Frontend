@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis) {
+module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator) {
 	
 	$scope.session = session;
 	$scope.selectedTab = 0;
@@ -24,8 +24,12 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 	$scope.getWishes = function() {
 		//api insertion point
 
-		apis.wishes.get(session.currentUserID(), {}).success(function(data, status){
-			console.log(data)
+		apis.wishes.get(session.currentUserID(), {}).success(function(data, status, statusText, config){
+
+			if (status === 299) {
+				indicator.showNetworkDownIndicator();
+			}
+
 
 			var myWishes = data.self
 			if (myWishes.length !== $scope.myWishes.length) {
