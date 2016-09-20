@@ -1,38 +1,31 @@
 <ion-modal-view view-title="Post" id="dashboard-modal-post">
 	<div class="wrapper">
 		<ion-header-bar>
-	      <h1 class="title">Wish Composer</h1>
-	      <button class="button button-clear nav-button" style="color: black;font-size:13px; font-weight: 400;" ng-click="closePostModal()">
-	            Dismiss
-	        </button>
-	    </ion-header-bar>
+			<h1 class="title">Wish Composer</h1>
+			<button class="button button-clear nav-button" style="color: black;font-size:13px; font-weight: 400;" ng-click="closePostModal()">
+				Dismiss
+			</button>
+		</ion-header-bar>
 		<ion-content class="padding animated pulse">
 			<form name="wishForm">
 				<div class="row">
 					<div class="col">
 						<input name="title" type="text" class="wish-title" placeholder="Give my wish a title" ng-model="postWishTitle" ng-required="true" ng-minlength="5">
+						<p class="help" ng-if="wishForm.title.$error.minlength">*title is too short</p>
+						<p class="help" ng-if="!wishForm.title.$error.minlength && wishForm.title.$invalid && !wishForm.title.$pristine">*title required</p>
+						<br class="help" ng-if="wishForm.title.$pristine || !wishForm.title.$error.minlength && !wishForm.title.$invalid">
 					</div>
 				</div>
-				<div ng-show="wishForm.title.$error.minlength" class="row">
-					<div class="col help-block">
-						title is too short
-					</div>
-				</div>
-				<div ng-show="!wishForm.title.$error.minlength && wishForm.title.$invalid && !wishForm.title.$pristine" class="row">
-					<div class="col help-block">
-						title required
-					</div>
+				<div class="row">
+					
 				</div>
 				<div class="row">
 					<div class="col">
 						<div class="description-wrapper">
 							<textarea name="description" placeholder="I wish..." class="wish-content" ng-model="postWishDescription" ng-required="true"></textarea>
 						</div>
-					</div>
-				</div>
-				<div ng-show="wishForm.description.$invalid && !wishForm.description.$pristine" class="row">
-					<div class="col help-block">
-						description required
+						<p class="help" ng-if="wishForm.description.$invalid && !wishForm.description.$pristine">*description required</p>
+						<br class="help" ng-if="!wishForm.description.$invalid || wishForm.description.$pristine">
 					</div>
 				</div>
 				<div class="row" ng-show="selectedPoint">

@@ -1,5 +1,5 @@
 * {
-  font-family: 'Lato' !important;
+	font-family: 'Lato' !important;
 }  
 
 .title-subtitle {
@@ -28,4 +28,20 @@
 	border-radius: 50%;
 	width: 100px;
 	height: 100px;
+}
+
+.popup-container .popup {
+	text-align: center;
+
+	.popup-head {
+		background-color: $pimary-background-color;
+		h3 {
+			color: white;
+			font-size: 1.2em;
+		}
+	}
+	
+	.button {
+		@extend .button-balanced;
+	}
 }
