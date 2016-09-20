@@ -119,6 +119,22 @@
     }
   }
 
+  $gold-color: #f4d15d;
+  $silver-color: #c5c5c5;
+  $bronze-color: #dfaf87;
+
+  .wrapper:nth-child(1) .rank {
+    background-color: $gold-color;
+  }
+
+  .wrapper:nth-child(2) .rank {
+    background-color: $silver-color;
+  }
+
+  .wrapper:nth-child(3) .rank {
+    background-color: $bronze-color;
+  }
+
   .wrapper.current-user .item {
     background-color: #fff6db;
   }
