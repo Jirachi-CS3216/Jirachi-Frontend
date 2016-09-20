@@ -13,7 +13,9 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
         apis.updateUserInfo.get(session.currentUserID(), {}).success(function(data, status){
             $scope.networkDown = (status !== 200)
             if (status !== 200) {
-                loadStoredDetails()
+                if ($scope.popup) {
+                    $scope.popup.close();
+                }
                 indicator.showNetworkDownIndicator($scope, message)
             }
         })
@@ -36,8 +38,9 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
         $scope.passform = form;
     }
     $scope.updatePassword = function() {
+        verifyNetworkStatus("Network unavailable, user details editing is disabled.")
         $scope.updatePasswordButtonPressed = false;
-        $ionicPopup.show({
+        $scope.popup = $ionicPopup.show({
             title: 'Update Password',
             subtitle: '',
             scope: $scope,
