@@ -13,6 +13,16 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="wish-location" ng-show="wish.needs_meetup">
+			<hr>
+			<div class="block-title">Meetup Location</div>
+			<div class="map-thumbnail" ng-click="">
+				<div class="address-line">{{ wish.address }}</div>
+				<img ng-srcset="{{ thumbnailURL(wish.latitude, wish.longitude) }}">
+			</div>
+		</div>
+
 		<div class="wish-assignee" ng-show="wish.assigned_to && wish.assigned_to != session.currentUserID()">
 			<hr>
 			<div class="block-title">Wish Picker</div>

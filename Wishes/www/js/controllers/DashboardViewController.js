@@ -136,6 +136,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, s
 
 	$scope.acceptWish = function(card) {
 		console.log(card)
+		
 	}
 
 	$scope.$on('removeCard', function(event, element, card) {

@@ -96,4 +96,25 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, session) {
 			return "button-energized";
 		}
 	}
+
+	$scope.thumbnailURL = function(lat, long) {
+		var selectedPoint = new google.maps.LatLng(lat,long);
+		var selectedZoom = 13;
+		var imageElement = document.querySelectorAll(".map-thumbnail")[0]
+
+		if (imageElement && imageElement.clientWidth !== 0 && selectedPoint) {
+			var url = "https://maps.googleapis.com/maps/api/staticmap" + 
+				  "?center=" + selectedPoint.toUrlValue() +
+				  "&zoom=" + selectedZoom +
+				  "&size=" + imageElement.clientWidth + "x150" + 
+				  "&scale=2" + 
+				  "&maptype=roadmap" + 
+				  "&markers=red%7C" + selectedPoint.toUrlValue() +
+				  "&key=" + GOOGLE_MAPE_API_KEY +
+				  " 2x"
+			return url
+		} else {
+			return ""
+		}
+	}
 })

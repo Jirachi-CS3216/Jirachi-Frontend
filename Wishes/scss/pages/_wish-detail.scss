@@ -56,6 +56,29 @@
     }
   }
 
+  .wish-location {
+    .map-thumbnail {
+      background-color: white;
+      margin-left: 10px;
+      margin-right: 10px;
+      @include box-shadow(0px, 0px, 5px, rgba(0, 0, 0, 0.2));
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+
+      div {
+        padding: 10px;
+        font-size: 12px;
+      }
+
+      img {
+        border-radius: 0 0 5px 5px;
+        margin-bottom: -5px;
+        z-index: 0;
+      }
+    }
+  }
+
   .wish-timeline {
     margin-top: 25px;
     margin-right: 10px;
