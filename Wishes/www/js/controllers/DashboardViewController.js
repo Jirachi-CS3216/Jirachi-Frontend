@@ -1,4 +1,4 @@
-module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $timeout, TDCardDelegate) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, session, $timeout, TDCardDelegate) {
 	$scope.session = session;
 	//modals for posting wishes
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-spinner.html', {
@@ -28,7 +28,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 		wish.description = this.postWishDescription;
 		wish.needs_meetup = $scope.selectedPoint !== undefined;
 		if (wish.needs_meetup) {
-			wish.address_line = $scope.selectedAddress;
+			wish.address = $scope.selectedAddress;
 			wish.latitude = $scope.selectedPoint.lat()
 			wish.longitude = $scope.selectedPoint.lng()
 		}
@@ -36,8 +36,28 @@ module.controller('DashCtrl', function($scope, $ionicModal, apis, session, $time
 		$scope.spinnerModal.show();
 		apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
 			$scope.spinnerModal.hide();
-			if (!error) {
-				$scope.closePostModal();
+			if (!data.error) {
+				$ionicPopup.show({
+		            title: 'Wish Posted',
+		            template: 'You wish has been posted to the community. You may check the status in My Wishes section',
+		            buttons: [{
+		            	text: 'OK',
+		            	onTap: function(e) {
+				          $scope.closePostModal();
+				        }
+		            }]
+		        });
+			} else if (data.error.points) {
+				$ionicPopup.show({
+		            title: 'Not Enough Points',
+		            template: 'Each wish cost 100 points and you do not have enough points in your accounts. Try to pick and fulfill others\' wishes to earn points.',
+		            buttons: [{
+		            	text: 'OK',
+		            	onTap: function(e) {
+				          $scope.closePostModal();
+				        }
+		            }]
+		        });
 			} else {
 				console.log("Wish created failed")
 				console.log(data)
