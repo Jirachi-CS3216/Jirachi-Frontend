@@ -1,7 +1,17 @@
-module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, TDCardDelegate) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, auth, SERVER_EVENTS) {
 	$scope.session = session;
-	//modals for posting wishes
-
+	
+	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
+        var alertPopup = $ionicPopup.show({
+            title: 'User Session Expired!',
+            buttons:[{
+            	text: "OK",
+            	onTap: function(){
+            		auth.logout()
+            	}
+            }]
+        });
+    });
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
    		verifyNetworkStatus("Network unavailable, posting and picking wishes are disabled.");

@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator) {
+module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS) {
 	
 	$scope.session = session;
 	$scope.selectedTab = 0;
@@ -12,6 +12,18 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 		$scope.isOthersWishesLoading = true;
    		$scope.getWishes();
 	});
+
+	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
+        var alertPopup = $ionicPopup.show({
+            title: 'User Session Expired!',
+            buttons:[{
+            	text: "OK",
+            	onTap: function(){
+            		auth.logout()
+            	}
+            }]
+        });
+    });
 
 	$scope.isSelected = function(status) {
 		return status == $scope.selectedTab;

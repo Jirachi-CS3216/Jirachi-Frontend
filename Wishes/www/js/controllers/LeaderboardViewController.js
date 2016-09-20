@@ -1,12 +1,24 @@
-module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session) {
+module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, SERVER_EVENTS) {
 
-  $scope.session = session;
+    $scope.session = session;
 
-  $scope.currentUser = $scope.session.currentUser();
-  $scope.currentUserID = $scope.session.currentUserID();
-  $scope.leaderboardLength = 8;
+    $scope.currentUser = $scope.session.currentUser();
+    $scope.currentUserID = $scope.session.currentUserID();
+    $scope.leaderboardLength = 8;
 
-  $scope.selectedTab = 0;
+    $scope.selectedTab = 0;
+
+    $scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
+        var alertPopup = $ionicPopup.show({
+            title: 'User Session Expired!',
+            buttons:[{
+              text: "OK",
+              onTap: function(){
+                auth.logout()
+              }
+            }]
+        });
+    });
 
   $scope.$on("$ionicView.beforeEnter", function(event){
     if(!$scope.isUserInLeaderboard($scope.haves)) {
