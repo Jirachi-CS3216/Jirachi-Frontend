@@ -6,7 +6,16 @@ module.controller('SettingsCtrl', function($scope, auth, session, apis) {
    		$scope.displayName = session.currentUser().display_name
    		$scope.email = session.currentUser().email
    		$scope.phone = session.currentUser().phone
+        $scope.getLastestUserInfo()
 	});
+
+    $scope.getLastestUserInfo = function() {
+        apis.updateUserInfo.get(session.currentUserID(), {}).success(function(data, status){
+            delete data.password;
+            delete data.password_digest;
+            session.save({ currentUser: data });
+        })
+    }
 
     $scope.logout = function() {
     	auth.logout();

@@ -63,6 +63,14 @@ serviceModule
     }
 
     this.updateUserInfo = {
+        get: function(userID, parameters){
+            return $http.get(buildUrl(apiHost + '/users/' + userID, parameters), {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
+            });
+        },
+
         put: function(userID, parameters, data) {
             return $http.put(buildUrl(apiHost + '/users/' + userID, parameters), data, {
                 headers: {
