@@ -6,8 +6,10 @@
     background: rgba(255, 255, 255, 0.2);
     opacity: 0.4;
     margin-top: 40px;
-    border-color: white;
-    border-width: 0.5;
+    height: 0.5px;
+    border: 0;
+    border-top: 0.5px solid #fff;
+    padding: 0; 
   }
 
   .block-title {
