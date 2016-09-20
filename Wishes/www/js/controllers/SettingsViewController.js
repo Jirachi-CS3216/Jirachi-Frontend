@@ -69,10 +69,12 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
                             } else {
                                 console.log(data)
                                 $scope.showPopupWithTitle(data.error)
+                                $scope.updatePasswordData = {}
                             }
                         }).error(function(data,status,headers,config) {
                             $scope.spinnerModal.hide();
                             $scope.showPopupWithTitle("Password updated failed. Please try again later.")
+                            $scope.updatePasswordData = {}
                         })
                     }
                 }
