@@ -134,6 +134,10 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, s
 		console.log("snapBack");
 	}
 
+	$scope.acceptWish = function(card) {
+		console.log(card)
+	}
+
 	$scope.$on('removeCard', function(event, element, card) {
 		console.log('removeCard');
 		var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
