@@ -8,6 +8,13 @@
 
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.contrib.ui.tinderCards2'])
 
+.run(function ($rootScope) {
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        ga('set', 'page', toState.url);
+        ga('send', 'pageview');
+    });
+})
+
 .directive('noScroll', function($document) {
 
   return {
