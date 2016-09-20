@@ -4,17 +4,17 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
-   		verifyNetworkStatus();
+   		verifyNetworkStatus("Network unavailable, posting and picking wishes are disabled.");
 	});
 
-    function verifyNetworkStatus() {
+    function verifyNetworkStatus(message) {
     	apis.updateUserInfo.get(session.currentUserID(), {}).success(function(data, status){
 			$scope.networkDown = (status !== 200)
 			if (status !== 200) {
 				$scope.locationPickerModal.hide()
 				$scope.postModal.hide()
 				$scope.getModal.hide()
-				indicator.showNetworkDownIndicator($scope, "Network unavailable, posting and picking wishes are disabled.")
+				indicator.showNetworkDownIndicator($scope, message)
 			}
 	    })
     }
@@ -82,6 +82,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				console.log(status)
 			}
 		}).error(function(data, status) {
+			verifyNetworkStatus("Network Unavailable")
 			console.log("Wish created failed")
 			console.log(data)
 			console.log(status)
