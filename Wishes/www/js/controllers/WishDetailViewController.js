@@ -1,4 +1,4 @@
-module.controller('WishDetailCtrl', function($scope, $location, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis) {
+module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis) {
 
 	$scope.session = session;
 
@@ -210,11 +210,11 @@ module.controller('WishDetailCtrl', function($scope, $location, $stateParams, $i
 	}
 
 	$scope.mapThumbnailDidClick = function() {
-		$location.path($scope.nativeMapURL())
+		window.location = $scope.nativeMapURL()
 	}
 
 	$scope.nativeMapURL = function() {
-		return "http://maps.apple.com/?ll=" + $scope.wish.longitude + "," + $scope.wish.latitude
+		return "comgooglemapsurl://maps.google.com/?q=" + $scope.wish.latitude + "," + $scope.wish.longitude + "&zoom=16&views=traffic"
 	}
 
 	$scope.thumbnailURL = function(lat, long) {
