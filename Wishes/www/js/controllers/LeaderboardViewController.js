@@ -1,13 +1,11 @@
 module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator) {
 
+  $scope.spinnerShouldShow = true;
   $scope.session = session;
 
   $scope.currentUser = $scope.session.currentUser();
   $scope.currentUserID = $scope.session.currentUserID();
   $scope.leaderboardLength = 10;
-  $scope.isHavesLoading = true;
-  $scope.isHelpersLoading = true;
-  $scope.isWishersLoading = true;
   $scope.haves = [];
   $scope.helpers = [];
   $scope.wishers = [];
@@ -26,10 +24,10 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
     //api insertion point
 
     apis.leaderboard.get({}).success(function(data, status, statusText, config){
+      $scope.spinnerShouldShow = false;
       if (status === 299) {
         indicator.showNetworkDownIndicator();
       }
-
       $scope.haves = data.by_points;
       $scope.helpers = data.by_fulfill_wishes_count;
       $scope.wishers = data.by_wishes_count;
@@ -97,4 +95,10 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
   $scope.isUserInLeaderboard = function (array) {
     return array.filter($scope.isCurrentUser).length > 0;
   }
+
+  $scope.cloak = "cloak"
+  $scope.$on('$viewContentLoaded', function(){
+    $scope.cloak = ""
+  });
+
 })

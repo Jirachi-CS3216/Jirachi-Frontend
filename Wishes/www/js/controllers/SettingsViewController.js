@@ -1,8 +1,6 @@
 module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, apis, indicator, SERVER_EVENTS) {
 	
 	$scope.session = session;
-    $scope.spinnerShouldShow = false;
-    console.log($scope.spinnerShouldShow)
     $scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
         indicator.showSessionExpiredIndicator()
     });
@@ -20,7 +18,6 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
     }
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
-        $scope.spinnerShouldShow = false;
    		loadStoredDetails()
         verifyNetworkStatus("Network unavailable, user details editing is disabled.")
         $scope.getLastestUserInfo()
@@ -73,13 +70,11 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
                         e.preventDefault();
                         console.log("invalid input")
                     } else {
-                        $scope.spinnerShouldShow = true;
                         apis.updateUserInfo.put(session.currentUserID(), {}, {
                             username: session.currentUser().username,
                             old_password: $scope.updatePasswordData.oldPassword,
                             new_password: $scope.updatePasswordData.newPassword
                         }).success(function(data,status,headers,config) {
-                            $scope.spinnerShouldShow = false;
                             if (status === 200 && !data.error) {
                                 $scope.showPopupWithTitle("Password updated successfully!")
                                 $scope.updatePasswordData = {}
@@ -89,7 +84,6 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
                                 $scope.updatePasswordData = {}
                             }
                         }).error(function(data,status,headers,config) {
-                            $scope.spinnerShouldShow = false;
                             $scope.showPopupWithTitle("Password updated failed. Please try again later.")
                             $scope.updatePasswordData = {}
                         })
