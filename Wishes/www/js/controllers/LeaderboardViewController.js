@@ -41,9 +41,9 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
   $scope.insertCurrentUser = function() {
     if(!$scope.isUserInLeaderboard($scope.haves)) {
       $scope.haves.push({
-        "id": $scope.currentUserID,
-        "display_name": $scope.session.currentUserDisplayName(),
-        "points": 100,
+        "id": session.currentUserID(),
+        "display_name": session.currentUserDisplayName(),
+        "points": session.currentUserPoints(),
         "ranking": 1250
       });
     }
