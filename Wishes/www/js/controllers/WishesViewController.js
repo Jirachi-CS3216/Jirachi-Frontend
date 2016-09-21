@@ -43,7 +43,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 					wish.time = expiredDate;
 					expiredDate.setDate(expiredDate.getDate() + 20)
 					var now = Date.now()
-					wish.isExpired = now > expiredDate
+					wish.isExpired = now > expiredDate || (wish.fulfill_status === "Wish-er marked as fulfilled" || wish.fulfill_status === "Wish-er marked as unfulfilled")
 					wish.isPicked =  !(!wish.assigned_to) //cast to boolean
 					wish.isFulfilled = wish.fulfill_status === "fulfilled"
 				})
@@ -61,7 +61,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 					wish.time = expiredDate;
 					expiredDate.setDate(expiredDate.getDate() + 20)
 					var now = Date.now()
-					wish.isExpired = now > expiredDate
+					wish.isExpired = now > expiredDate || (wish.fulfill_status === "Wish-er marked as fulfilled" || wish.fulfill_status === "Wish-er marked as unfulfilled")
 					wish.isPicked =  !(!wish.assigned_to) //cast to boolean
 					wish.isFulfilled = wish.fulfill_status === "fulfilled"
 				})
