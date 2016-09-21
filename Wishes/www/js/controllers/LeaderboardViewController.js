@@ -5,9 +5,9 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
   $scope.currentUser = $scope.session.currentUser();
   $scope.currentUserID = $scope.session.currentUserID();
   $scope.leaderboardLength = 10;
-  $scope.isHavesLoading = false;
-  $scope.isHelpersLoading = false;
-  $scope.isWishersLoading = false;
+  $scope.isHavesLoading = true;
+  $scope.isHelpersLoading = true;
+  $scope.isWishersLoading = true;
   $scope.haves = [];
   $scope.helpers = [];
   $scope.wishers = [];
@@ -15,9 +15,6 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
   $scope.selectedTab = 0;
 
   $scope.$on("$ionicView.beforeEnter", function(event, data){
-    $scope.isHavesLoading = true;
-    $scope.isHelpersLoading = true;
-    $scope.isWishersLoading = true;
     $scope.getLeaderboards();
   });
 
@@ -29,21 +26,13 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
     //api insertion point
 
     apis.leaderboard.get({}).success(function(data, status, statusText, config){
-
-      console.log(data)
-
       if (status === 299) {
         indicator.showNetworkDownIndicator();
       }
 
       $scope.haves = data.by_points;
-      $scope.isHavesLoading = false;
-
       $scope.helpers = data.by_fulfill_wishes_count;
-      $scope.isHelpersLoading = false;
-
       $scope.wishers = data.by_wishes_count;
-      $scope.isWishersLoading = false;
 
       $scope.insertCurrentUser();
     }) 

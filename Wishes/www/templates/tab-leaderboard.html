@@ -9,8 +9,8 @@
             </div>
         </div>
 
-        <div class="haves" ng-show="shouldShow[0] && !isHavesLoading">
-            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= leaderboardLength };" ng-repeat="thisGuy in haves" >
+        <div class="haves" ng-show="shouldShow[0]">
+            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= leaderboardLength };" ng-repeat="thisGuy in haves track by thisGuy.id" >
                 <div class="card animated leaderboard-card" ng-class="animateClass[0][$index % 2]">
                     <div class="item">
                         <div>
@@ -36,8 +36,8 @@
             </div>
         </div>
 
-        <div class="helpers" ng-show="shouldShow[1] && !isHelpersLoading">
-            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= helpers.length };" ng-repeat="thisGuy in helpers" >
+        <div class="helpers" ng-show="shouldShow[1]">
+            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= helpers.length };" ng-repeat="thisGuy in helpers track by thisGuy.id" >
                 <div class="card leaderboard-card animated"  ng-class="animateClass[1][$index % 2]">
                     <div class="item">
                         <div>
@@ -63,8 +63,8 @@
             </div>
         </div>
 
-        <div class="wishers" ng-show="shouldShow[2] && !isWishersLoading">
-            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= leaderboardLength };" ng-repeat="thisGuy in wishers" >
+        <div class="wishers" ng-show="shouldShow[2]">
+            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= leaderboardLength };" ng-repeat="thisGuy in wishers track by thisGuy.id" >
                 <div class="card leaderboard-card animated" ng-class="animateClass[2][$index % 2]">
                     <div class="item">
                         <div>
