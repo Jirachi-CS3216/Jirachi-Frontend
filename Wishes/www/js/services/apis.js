@@ -102,4 +102,14 @@ serviceModule
             });
         }
     }
+
+    this.randomWishes = {
+        get: function(userId, parameters) {
+            return $http.get(buildUrl(apiHost + '/users/' + userId + '/getRandomWishes', parameters), {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
+            });
+        }
+    }
 });

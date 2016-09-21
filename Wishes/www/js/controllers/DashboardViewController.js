@@ -193,10 +193,30 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 	$scope.openGetModal = function() {
 		verifyNetworkStatus()
-		navigator.geolocation.getCurrentPosition(function(position) {
+		$scope.spinnerModal.show()
+		navigator.geolocation.getCurrentPosition(function (position) {
+			console.log("location get: ")
+			console.log(position)
 	      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	      	$scope.spinnerModal.hide();
-	    });
+	      	apis.randomWishes.get(session.currentUserID(), {
+	      		latitude: position.coords.latitude,
+	      		longitude: position.coords.longitude
+	      	}).success(function(data, status) {
+	      		$scope.spinnerModal.hide()
+	      		console.log("get random wishes successfully")
+	      		console.log(data, status)
+	      	}).error(function(data, status) {
+				$scope.spinnerModal.hide()
+	      		console.log(data, status)
+	      	})
+		}, function(err) {
+			$scope.spinnerModal.hide()
+			console.log("failed to get current location")
+			$ionicPopup.show({
+				title: "Failed to get user location.",
+				buttons:[{title: "OK"}]
+			})
+		});
 	    $scope.getModal.show();
 	};
 	
