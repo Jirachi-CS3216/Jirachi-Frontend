@@ -101,31 +101,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	    $scope.getModal = modal;
 	});
 
-	var wishes = [{ 
-		title: 'Printing@SoC',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nulla purus, placerat sed turpis ac, consectetur cursus nunc. Nunc lorem turpis, faucibus sed neque a, lacinia egestas lacus. Vestibulum sollicitudin molestie hendrerit. Vestibulum consequat ipsum nec leo porttitor, ac elementum libero posuere. Sed placerat rutrum tellus, vestibulum porta nibh rhoncus eget. Etiam sit amet tincidunt felis.',
-		posterHasContact: true,
-		hasMeetupLocation: true,
-		address: "School of Computing, 13 Computing Drive",
-		latitude: 1.30,
-		longitude: 103.77
-	},{ 
-		title: 'Printing@SoC',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nulla purus, placerat sed turpis ac, consectetur cursus nunc. Nunc lorem turpis, faucibus sed neque a, lacinia egestas lacus. Vestibulum sollicitudin molestie hendrerit. Vestibulum consequat ipsum nec leo porttitor, ac elementum libero posuere. Sed placerat rutrum tellus, vestibulum porta nibh rhoncus eget. Etiam sit amet tincidunt felis.',
-		posterHasContact: true,
-		hasMeetupLocation: true,
-		address: "School of Computing, 13 Computing Drive",
-		latitude: 1.28333,
-		longitude: 103.7666
-	},{
-		title: 'Printing@SoC',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nulla purus, placerat sed turpis ac, consectetur cursus nunc. Nunc lorem turpis, faucibus sed neque a, lacinia egestas lacus. Vestibulum sollicitudin molestie hendrerit. Vestibulum consequat ipsum nec leo porttitor, ac elementum libero posuere. Sed placerat rutrum tellus, vestibulum porta nibh rhoncus eget. Etiam sit amet tincidunt felis.',
-		posterHasContact: true,
-		hasMeetupLocation: true,
-		address: "School of Computing, 13 Computing Drive",
-		latitude: 1.28333,
-		longitude: 103.7666
-	}];
+	var wishes = [];
 
 	$scope.cards = {
 		master: Array.prototype.slice.call(wishes, 0),
@@ -148,6 +124,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		// Set $scope.cards to null so that directive reloads
 		$scope.cards.active = null;
 		$timeout(function() {
+			$scope.cards.master = Array.prototype.slice.call(wishes, 0);
 			$scope.cards.active = Array.prototype.slice.call($scope.cards.master, 0);
 		});
 	}
@@ -158,7 +135,11 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 	$scope.acceptWish = function(card) {
 		console.log(card)
-		
+		apis.wish.get(card.id, {}).success(function(data, status) {
+      		console.log(data);
+      	}).error(function(data, status) {
+			
+      	})
 	}
 
 	$scope.$on('removeCard', function(event, element, card) {
@@ -196,14 +177,16 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		$scope.getModal.show();
 	    $scope.spinnerModal.show()
 		navigator.geolocation.getCurrentPosition(function (position) {
-			console.log("location get: ")
-			console.log(position)
+			
 	      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	      	apis.randomWishes.get(session.currentUserID(), {
 	      		latitude: position.coords.latitude,
 	      		longitude: position.coords.longitude
 	      	}).success(function(data, status) {
 	      		$scope.spinnerModal.hide()
+	      		wishes = data;
+	      		$scope.refreshCards();	
+	      		
 	      		console.log("get random wishes successfully")
 	      		console.log(data, status)
 	      	}).error(function(data, status) {

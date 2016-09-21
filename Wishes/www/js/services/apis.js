@@ -84,6 +84,16 @@ serviceModule
         }
     }
 
+    this.wish = {
+        get: function(wishID, parameters) {
+            return $http.get(buildUrl(apiHost + '/wishes/' + wishID, parameters), {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
+            });
+        }
+    }
+
     this.wishes = {
         post: function(userId, parameters, data) {
             return $http.post(buildUrl(apiHost + '/users/' + userId + '/wishes', parameters), data, {
