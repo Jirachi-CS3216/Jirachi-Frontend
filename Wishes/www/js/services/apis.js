@@ -4,7 +4,7 @@ serviceModule
   .service('apis', function apis($http, session) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     
-    var apiHost = 'http://54.254.172.150:3000/api/v1';
+    var apiHost = 'https://wishesbackend.tk/api/v1';
 
     // explicit falsey values are ok, but null and undefined and empty string are not
     // note not allowing -0, NaN etc.
@@ -106,6 +106,17 @@ serviceModule
     this.randomWishes = {
         get: function(userId, parameters) {
             return $http.get(buildUrl(apiHost + '/users/' + userId + '/getRandomWishes', parameters), {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
+            });
+        }
+    }
+
+
+    this.leaderboard = {
+        get: function(parameters) {
+            return $http.get(buildUrl(apiHost + '/leaderboard', parameters), {
                 headers: {
                     'Authorization': 'Token "' + session.serverToken() + '"'
                 }
