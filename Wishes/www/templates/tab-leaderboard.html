@@ -37,7 +37,7 @@
         </div>
 
         <div class="helpers" ng-show="shouldShow[1]">
-            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= leaderboardLength };" ng-repeat="thisGuy in helpers" >
+            <div class="wrapper ng-class:{ 'current-user': isCurrentUser(thisGuy), 'extra-user': $index >= helpers.length };" ng-repeat="thisGuy in helpers" >
                 <div class="card leaderboard-card animated"  ng-class="animateClass[1][$index % 2]">
                     <div class="item">
                         <div>
