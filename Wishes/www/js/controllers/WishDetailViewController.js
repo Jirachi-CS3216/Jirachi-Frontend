@@ -1,26 +1,8 @@
-module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, session, $state) {
+module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis) {
 
 	$scope.session = session;
 
-	var wish = {
-		id:3,
-		title:"Some Wishes",
-		description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec vestibulum turpis. Nam et urna ante. Integer porttitor, sapien quis dapibus vulputate, urna nisl pulvinar risus, ut condimentum nisi sapien scelerisque dui. Vestibulum scelerisque lobortis laoreet. Sed nec cursus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis nunc urna. Etiam porta ultrices dolor, eu luctus magna feugiat et. Nam et leo est. Donec nec eleifend metus, vel efficitur lectus. Mauris risus ex, posuere ac ex ut, laoreet congue elit.",
-		user_id:2,
-		assigned_to:5,
-		fulfill_status:null,
-		expiry_at:null,
-		close_at:null,
-		created_at:"2016-09-19T11:11:26.000Z",
-		updated_at:"2016-09-19T11:11:26.000Z",
-
-		//not yet existing attributes
-		assignee_contact: "88888888",
-		assignee_display_name: "Jay Chow",
-		picked_at:"2016-09-20T11:11:26.000Z",
-		fulfilled_at:"2016-09-21T11:11:26.000Z",
-		confirmed_at:"2016-09-21T14:11:26.000Z"
-	};
+	var wish = {}
 
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
 		var wish = session.selectedWish;
@@ -66,10 +48,49 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 			})
 		}
 
-
-
 	  	viewData.enableBack = true;
-	}); 
+	});
+
+
+
+	$scope.doerMarkFulfill = function() {
+		console.log($scope.wish)
+
+		$ionicPopup.show({
+			title: "Mark This Wish Fulfilled",
+			template: "Are you sure you have completed this wish? You won't get the point rewards if the wish-er are not satisfied with what you did.",
+			buttons:[{
+				text: "Cancel"
+			}, {
+				text: "Continue",
+				onTap: function(e) {
+					apis.assign.put(session.currentUserID(), $scope.wish.id, {}, {
+						fulfill_status: "Do-er marked as fulfilled"
+					}).success(function(response) {
+						console.log(response)
+						$ionicPopup.show({
+							title: "Wish Status Updated",
+							buttons:[{
+								text: "OK",
+								onTap: function(e) {
+									$scope.activities.push({
+										image: "./img/avatars/" + $scope.wish.assigned_to % 8  + ".svg",
+										description: "Wish Fulfilled!",
+										time: new Date()
+									})
+								}
+							}]
+						})
+
+					}).error(function(response){
+						console.log(response)
+					})
+				}
+			}]
+		})
+	}
+
+
 
 	$scope.getWishStatus = function() {
 		if ($scope.wish.isExpired) {
