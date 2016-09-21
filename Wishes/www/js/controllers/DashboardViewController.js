@@ -1,11 +1,13 @@
 module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS) {
 	$scope.session = session;
+	$scope.spinnerShouldShow = true;
 	
 	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
         indicator.showSessionExpiredIndicator()
     });
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
+		$scope.spinnerShouldShow = true;
    		verifyNetworkStatus("Network unavailable, posting and picking wishes are disabled.");
 	});
 
@@ -16,18 +18,11 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				$scope.locationPickerModal.hide()
 				$scope.postModal.hide()
 				$scope.getModal.hide()
-				$scope.spinnerModal.hide()
+				$scope.spinnerShouldShow = false;
 				indicator.showNetworkDownIndicator($scope, message)
 			}
 	    })
     }
-
-	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-spinner.html', {
-	    scope: $scope,
-	    animation: 'fade-in'
-	}).then(function(modal) {
-	    $scope.spinnerModal = modal;
-	});
 
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-post.html', {
 	    scope: $scope,
@@ -54,9 +49,9 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 			wish.longitude = $scope.selectedPoint.lng()
 		}
 
-		$scope.spinnerModal.show();
+		$scope.spinnerShouldShow = true;
 		apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
-			$scope.spinnerModal.hide();
+			$scope.spinnerShouldShow = false;
 			if (!data.error) {
 				$ionicPopup.show({
 		            title: 'Wish Posted',
@@ -85,7 +80,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		}).error(function(data, status) {
 			verifyNetworkStatus("Network Unavailable")
 			console.log("Wish created failed")
-			$scope.spinnerModal.hide();
+			$scope.spinnerShouldShow = false;
 		})
 	}
 
@@ -203,13 +198,11 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.openGetModal = function() {
 		verifyNetworkStatus()
 		$scope.getModal.show();
-		$scope.loadRandomWishes(0);
+		$scope.loadRandomWishes();
 	};
 
-	$scope.loadRandomWishes = function(spinnerDelay) {
-		setTimeout(function(){
-			$scope.spinnerModal.show()
-		}, spinnerDelay)
+	$scope.loadRandomWishes = function() {
+		$scope.spinnerShouldShow = true
 		navigator.geolocation.getCurrentPosition(function (position) {
 			
 	      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -217,8 +210,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      		latitude: position.coords.latitude,
 	      		longitude: position.coords.longitude
 	      	}).success(function(data, status) {
-	      		$scope.spinnerModal.hide()
-
+	      		$scope.spinnerShouldShow = false;
 	      		if (data.length === 0) {
 	      			$ionicPopup.show({
 	      				title: "Oops!",
@@ -229,15 +221,14 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      			wishes = data;
 	      			$scope.refreshCards();	
 	      		}
-	      		
 	      		console.log("get random wishes successfully")
 	      		console.log(data, status)
 	      	}).error(function(data, status) {
-				$scope.spinnerModal.hide()
+				$scope.spinnerShouldShow = false;
 	      		console.log(data, status)
 	      	})
 		}, function(err) {
-			$scope.spinnerModal.hide()
+			$scope.spinnerShouldShow = false;
 			console.log("failed to get current location")
 			$ionicPopup.show({
 				title: "Failed to get user location.",
@@ -275,15 +266,15 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.showLocationPicker = function() {
 		$scope.locationPickerModal.show();
 		if (!$scope.map) {
-			$scope.spinnerModal.show()
+			$scope.spinnerShouldShow = true
 			navigator.geolocation.getCurrentPosition(function (position) {
-				$scope.spinnerModal.hide()
+				$scope.spinnerShouldShow = false;
 		      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		      	if (!$scope.map) {
 					intializeMap();
 				}
 			}, function(err) {
-				$scope.spinnerModal.hide()
+				$scope.spinnerShouldShow = false;
 				$ionicPopup.show({
 					title: "Failed to get user location.",
 					buttons:[
