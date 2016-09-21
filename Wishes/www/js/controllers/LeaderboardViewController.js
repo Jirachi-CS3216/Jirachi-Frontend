@@ -33,7 +33,6 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
       $scope.wishers = data.by_wishes_count;
 
       apis.myRank.get(session.currentUserID(), {}).success(function(data){
-        console.log(data)
         $scope.insertCurrentUser(data.by_points, data.by_fulfill_wishes_count, data.by_wishes_count);
       })
     }) 
