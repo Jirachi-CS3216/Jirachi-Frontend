@@ -193,7 +193,8 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 	$scope.openGetModal = function() {
 		verifyNetworkStatus()
-		$scope.spinnerModal.show()
+		$scope.getModal.show();
+	    $scope.spinnerModal.show()
 		navigator.geolocation.getCurrentPosition(function (position) {
 			console.log("location get: ")
 			console.log(position)
@@ -217,7 +218,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				buttons:[{title: "OK"}]
 			})
 		});
-	    $scope.getModal.show();
 	};
 	
 	$scope.closeGetModal = function() {
