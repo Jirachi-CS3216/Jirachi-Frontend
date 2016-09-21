@@ -17,8 +17,8 @@
 						<div class="wish-contact" ng-show="card.posterHasContact">
 							Contact Available
 						</div>
-						<hr ng-show="card.hasMeetupLocation">
-						<div class="map-thumbnail" ng-click="" ng-show="card.hasMeetupLocation">
+						<hr ng-show="card.needs_meetup">
+						<div class="map-thumbnail" ng-click="" ng-show="card.needs_meetup">
 							<div class="address-line">{{ card.address }}</div>
 							<img ng-srcset="{{ thumbnailURL(card.latitude, card.longitude) }}">
 						</div>
@@ -33,9 +33,12 @@
 						</div>
 					</div>
 				</td-card>
-				<td-card id="end-card" drag="false">
-					<i class="icon ion-ios-refresh disable-user-behavior" ng-click="refreshCards()"></i>
+
+				<!-- Don't remove this, unexpeced behavior may happen -->
+				<td-card id="end-card" drag="false" disabled style="opacity: 0;">
+					<i class="icon ion-ios-refresh disable-user-behavior"></i>
 				</td-card>
+				
 			</td-cards>
 		</div>
 	</div>
