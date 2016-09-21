@@ -66,8 +66,8 @@
 
 			<div class="past-wishes" ng-show="(othersWishes|filter:expiredFilter).length != 0">
 				<div class="wish-group-header animated fadeInUp">past wishes</div>
-				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp">
-					<div class="item item-text-wrap item-icon-right" ng-repeat="wish in othersWishes  | filter: expiredFilter track by wish.id" style="animation-delay:{{ $index * 0.05 + othersWishes.length * 0.05 }}s">
+				<div ng-click="cardDidClick(wish)" class="card wish-card animated fadeInUp" ng-repeat="wish in othersWishes  | filter: expiredFilter track by wish.id">
+					<div class="item item-text-wrap item-icon-right" style="animation-delay:{{ $index * 0.05 + othersWishes.length * 0.05 }}s">
 
 						<i class="icon ion-happy-outline" ng-show="wish.fulfill_status === 'Wish-er marked as fulfilled'"></i>
 						<i class="icon ion-sad-outline" ng-show="wish.fulfill_status === 'Wish-er marked as unfulfilled'"></i>
