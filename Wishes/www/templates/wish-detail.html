@@ -73,11 +73,16 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="wish-action" ng-show="(activities.length === 2 && session.currentUserID() === wish.assigned_to) || (activities.length === 3 && session.currentUserID() === wish.user_id)">
+			<hr>
 			<button class="button button-balanced button-block" ng-show="activities.length === 2 && session.currentUserID() === wish.assigned_to" ng-click="doerMarkFulfill()">
 				Mark as Fulfilled
 			</button>
 
+			<button class="button button-assertive button-block" ng-show="activities.length === 3 && session.currentUserID() === wish.user_id">
+				I'm not satisfied!
+			</button>
 			<button class="button button-balanced button-block" ng-show="activities.length === 3 && session.currentUserID() === wish.user_id">
 				Confirm Fulfillment
 			</button>
