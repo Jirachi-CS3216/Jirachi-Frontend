@@ -30,6 +30,8 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
 
     apis.leaderboard.get({}).success(function(data, status, statusText, config){
 
+      console.log(data)
+
       if (status === 299) {
         indicator.showNetworkDownIndicator();
       }
@@ -39,6 +41,9 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
 
       $scope.helpers = data.by_fulfill_wishes_count;
       $scope.isHelpersLoading = false;
+
+      $scope.wishers = data.by_wishes_count;
+      $scope.isWishersLoading = false;
 
       $scope.insertCurrentUser();
     }) 
@@ -91,47 +96,6 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
 
   $scope.shouldShow = [true, false, false]
   $scope.animateClass = [["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"]]
-
-  $scope.wishers = [{
-    "id": 11,
-    "display_name": "Lazy Guy",
-    "counts": 120
-  },
-  {
-    "id": 12,
-    "display_name": "Lazy Guy",
-    "counts": 114
-  },
-  {
-    "id": 13,
-    "display_name": "Lazy Guy",
-    "counts": 98
-  },
-  {
-    "id": 14,
-    "display_name": "Lazy Guy",
-    "counts": 84
-  },
-  {
-    "id": 15,
-    "display_name": "Lazy Guy",
-    "counts": 64
-  },
-  {
-    "id": 16,
-    "display_name": "Lazy Guy",
-    "counts": 46
-  },
-  {
-    "id": 17,
-    "display_name": "Lazy Guy",
-    "counts": 44
-  },
-  {
-    "id": 18,
-    "display_name": "Lazy Guy",
-    "counts": 42
-  }]
 
   $scope.isCurrentUser = function(user) {
     return user.id === $scope.currentUserID;
