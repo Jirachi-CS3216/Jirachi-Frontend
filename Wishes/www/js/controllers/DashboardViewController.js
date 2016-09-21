@@ -202,7 +202,9 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.openGetModal = function() {
 		verifyNetworkStatus()
 		$scope.getModal.show();
-	    $scope.spinnerModal.show()
+		setTimeout(function(){
+			$scope.spinnerModal.show()
+		}, 100)
 		navigator.geolocation.getCurrentPosition(function (position) {
 			
 	      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -229,6 +231,10 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 			})
 		});
 	};
+
+	$scope.loadRandomWishes = function() {
+
+	}
 	
 	$scope.closeGetModal = function() {
 		$scope.getModal.hide();
