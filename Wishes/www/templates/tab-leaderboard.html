@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="text-content">
-                                <div class="name">{{ isCurrentUser(thisGuy) ? "YOU" : (thisGuy.display_name || thisGuy.username)}}</div>
+                                <div class="name">{{ thisGuy.display_name || thisGuy.username}}</div>
                                 <div class="points">{{ thisGuy.points }} points</div>
                             </div>
                             <div>
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="text-content">
-                                <div class="name">{{ isCurrentUser(thisGuy) ? "YOU" : (thisGuy.display_name || thisGuy.username)}}</div>
+                                <div class="name">{{ thisGuy.display_name || thisGuy.username}}</div>
                                 <div class="points">{{ thisGuy.count }} helps</div>
                             </div>
                             <div>
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="text-content">
-                                <div class="name">{{ isCurrentUser(thisGuy) ? "YOU" : (thisGuy.display_name || thisGuy.username) }}</div>
+                                <div class="name">{{ thisGuy.display_name || thisGuy.username }}</div>
                                 <div class="points">{{ thisGuy.count }} wishes</div>
                             </div>
                             <div>
