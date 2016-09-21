@@ -16,6 +16,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				$scope.locationPickerModal.hide()
 				$scope.postModal.hide()
 				$scope.getModal.hide()
+				$scope.spinnerModal.hide()
 				indicator.showNetworkDownIndicator($scope, message)
 			}
 	    })
@@ -192,6 +193,10 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 	$scope.openGetModal = function() {
 		verifyNetworkStatus()
+		navigator.geolocation.getCurrentPosition(function(position) {
+	      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	      	$scope.spinnerModal.hide();
+	    });
 	    $scope.getModal.show();
 	};
 	
@@ -224,7 +229,25 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.showLocationPicker = function() {
 		$scope.locationPickerModal.show();
 		if (!$scope.map) {
-			intializeMap();
+			$scope.spinnerModal.show()
+
+			navigator.geolocation.getCurrentPosition(function (position) {
+				$scope.spinnerModal.hide()
+		      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		      	if (!$scope.map) {
+					intializeMap();
+				}
+			}, function(err) {
+				$scope.spinnerModal.hide()
+				$ionicPopup.show({
+					title: "Failed to get user location.",
+					buttons:[
+						{
+							title: "OK"
+						}
+					]
+				})
+			});
 		}
 	}
 
@@ -242,6 +265,9 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		if ($scope.selectedPoint) {
 			var myLatlng = $scope.selectedPoint
 			var myZoom = $scope.selectedZoom
+		} else if ($scope.currentLocation) {
+			var myLatlng = $scope.currentLocation
+			var myZoom = 13
 		} else {
 			var myLatlng = new google.maps.LatLng(1.3521,103.8198);
 			var myZoom = 13
