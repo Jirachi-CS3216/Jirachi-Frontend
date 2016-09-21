@@ -81,14 +81,10 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		        });
 			} else {
 				console.log("Wish created failed")
-				console.log(data)
-				console.log(status)
 			}
 		}).error(function(data, status) {
 			verifyNetworkStatus("Network Unavailable")
 			console.log("Wish created failed")
-			console.log(data)
-			console.log(status)
 			$scope.spinnerModal.hide();
 		})
 	}
@@ -129,12 +125,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		});
 	}
 
-	$scope.cardSnapBack = function() {
-		console.log("snapBack");
-	}
-
 	$scope.acceptWish = function(card) {
-		console.log(card)
 		var userID = session.currentUserID()
 		apis.assign.put(userID, card.id, {}, {
 			assigned_to: userID
@@ -152,7 +143,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				})
 			} else {
 				//wish picked successfully
-				console.log(data);
 				$ionicPopup.show({
 					title: "Wish Picked up Successfully!",
 					templates: "You may check it's status in My Wishes section!",
@@ -165,9 +155,21 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				})
 			}
       	}).error(function(data, status) {
-			console.log(data);
+			$ionicPopup.show({
+				title: "Oops, the wish has just been grabbed by another guy.",
+				templates: "Don't hesitate again next time!",
+				buttons:[{
+					text: "OK",
+					onTap: function(e) {
+						$scope.onClickTransitionOut(card)
+					}
+				}]
+			})
       	})
 	}
+
+
+	//The following is disabled right now
 
 	$scope.$on('removeCard', function(event, element, card) {
 		console.log('removeCard');
@@ -202,9 +204,13 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.openGetModal = function() {
 		verifyNetworkStatus()
 		$scope.getModal.show();
+		$scope.loadRandomWishes(200);
+	};
+
+	$scope.loadRandomWishes = function(spinnerDelay) {
 		setTimeout(function(){
 			$scope.spinnerModal.show()
-		}, 100)
+		}, spinnerDelay)
 		navigator.geolocation.getCurrentPosition(function (position) {
 			
 	      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -230,10 +236,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				buttons:[{title: "OK"}]
 			})
 		});
-	};
-
-	$scope.loadRandomWishes = function() {
-
 	}
 	
 	$scope.closeGetModal = function() {
@@ -265,8 +267,9 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.showLocationPicker = function() {
 		$scope.locationPickerModal.show();
 		if (!$scope.map) {
-			$scope.spinnerModal.show()
-
+			setTimeout(function(){
+				$scope.spinnerModal.show()
+			}, 200)
 			navigator.geolocation.getCurrentPosition(function (position) {
 				$scope.spinnerModal.hide()
 		      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
