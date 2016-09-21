@@ -92,4 +92,11 @@
     border-color: transparent;
     @include box-shadow(1px, 0px, 3px, rgba(0, 0, 0, 0.1));
   }
+
+  .test {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
 }
