@@ -31,27 +31,27 @@
 					<img class="avatar" ng-src="./img/avatars/{{ wish.assigned_to ? wish.assigned_to % 8 : 0 }}.svg">
 					<div class="description"> {{ wish.assignee_display_name }}</div>
 				</div>
-				<div class="item item-icon-left" ng-show="wish.assignee_contact">
+				<div class="item item-icon-left" ng-show="wish.assignee_phone">
 					<i class="icon ion-ios-telephone"></i>
-					<div class="contact">HP: {{ wish.assignee_contact }}</div>
+					<div class="contact">HP: {{ wish.assignee_phone }}</div>
 				</div>
 			</div>
 		</div>
 
-<!-- 		<div class="wish-owner" ng-show="wish.user_id != session.currentUserID()">
+		<div class="wish-owner" ng-show="wish.user_id != session.currentUserID()">
 			<hr>
-			<div class="block-title">Wish Poster</div>
+			<div class="block-title">Wish Owner</div>
 			<div class="card timeline-card">
 				<div class="item item-avatar">
 					<img class="avatar" ng-src="./img/avatars/{{ wish.user_id % 8 }}.svg">
-					<div class="description"> {{ wish.owner_display_name }}</div>
+					<div class="description"> {{ wish.wisher_display_name }}</div>
 				</div>
-				<div class="item item-icon-left" ng-show="wish.owner_contact">
+				<div class="item item-icon-left" ng-show="wish.wisher_contact_number">
 					<i class="icon ion-ios-telephone"></i>
-					<div class="contact">HP: {{ wish.owner_contact }}</div>
+					<div class="contact">HP: {{ wish.wisher_contact_number }}</div>
 				</div>
 			</div>
-		</div> -->
+		</div>
 
 
 		<div class="wish-timeline">
