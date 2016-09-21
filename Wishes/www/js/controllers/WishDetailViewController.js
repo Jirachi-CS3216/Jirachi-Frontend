@@ -43,7 +43,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 		if (wish.assigned_to && wish.fulfilled_at && wish.confirmed_at && wish.fulfill_status === "Wish-er marked as fulfilled") {
 			$scope.activities.push({
 				image: "./img/avatars/" + wish.user_id % 8  + ".svg",
-				description: "Wish Is Satisfying :D",
+				description: "Wish Satisfied :D",
 				time: wish.confirmed_at	
 			})
 		}
@@ -51,7 +51,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 		if (wish.assigned_to && wish.fulfilled_at && wish.confirmed_at && wish.fulfill_status === "Wish-er marked as unfulfilled") {
 			$scope.activities.push({
 				image: "./img/avatars/" + wish.user_id % 8  + ".svg",
-				description: "Wish Is Not Satisfying :(",
+				description: "Wish Not Satisfied :(",
 				time: wish.confirmed_at	
 			})
 		}
@@ -118,7 +118,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 								onTap: function(e) {
 									$scope.activities.push({
 										image: "./img/avatars/" + $scope.wish.user_id % 8  + ".svg",
-										description: "Wish Is Satisfying!",
+										description: "Wish Satisfied :D",
 										time: new Date()
 									})
 								}
@@ -156,7 +156,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 								onTap: function(e) {
 									$scope.activities.push({
 										image: "./img/avatars/" + $scope.wish.user_id % 8  + ".svg",
-										description: "Wish Is Not Satisfying :(",
+										description: "Wish Not Satisfied :(",
 										time: new Date()
 									})
 								}
