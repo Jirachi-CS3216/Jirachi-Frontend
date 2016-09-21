@@ -80,11 +80,11 @@
 				Mark as Fulfilled
 			</button>
 
-			<button class="button button-assertive button-block" ng-show="activities.length === 3 && session.currentUserID() === wish.user_id">
-				I'm not satisfied!
+			<button class="button button-assertive button-block" ng-show="activities.length === 3 && session.currentUserID() === wish.user_id" ng-click="wisherMarkNotFulfill()">
+				I'm not satisfied :(
 			</button>
-			<button class="button button-balanced button-block" ng-show="activities.length === 3 && session.currentUserID() === wish.user_id">
-				Confirm Fulfillment
+			<button class="button button-balanced button-block" ng-show="activities.length === 3 && session.currentUserID() === wish.user_id" ng-click="wisherMarkFulfill()">
+				I'm satisfied :D
 			</button>
 
 		</div>

@@ -40,10 +40,18 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 			})
 		}
 
-		if (wish.assigned_to && wish.fulfilled_at && wish.confirmed_at) {
+		if (wish.assigned_to && wish.fulfilled_at && wish.confirmed_at && wish.fulfill_status === "Wish-er marked as fulfilled") {
 			$scope.activities.push({
 				image: "./img/avatars/" + wish.user_id % 8  + ".svg",
-				description: "Fulfillment Confirmed!",
+				description: "Wish Is Satisfying :D",
+				time: wish.confirmed_at	
+			})
+		}
+
+		if (wish.assigned_to && wish.fulfilled_at && wish.confirmed_at && wish.fulfill_status === "Wish-er marked as unfulfilled") {
+			$scope.activities.push({
+				image: "./img/avatars/" + wish.user_id % 8  + ".svg",
+				description: "Wish Is Not Satisfying :(",
 				time: wish.confirmed_at	
 			})
 		}
@@ -54,8 +62,6 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 
 
 	$scope.doerMarkFulfill = function() {
-		console.log($scope.wish)
-
 		$ionicPopup.show({
 			title: "Mark This Wish Fulfilled",
 			template: "Are you sure you have completed this wish? You won't get the point rewards if the wish-er are not satisfied with what you did.",
@@ -76,6 +82,81 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 									$scope.activities.push({
 										image: "./img/avatars/" + $scope.wish.assigned_to % 8  + ".svg",
 										description: "Wish Fulfilled!",
+										time: new Date()
+									})
+								}
+							}]
+						})
+
+					}).error(function(response){
+						console.log(response)
+					})
+				}
+			}]
+		})
+	}
+
+	$scope.wisherMarkFulfill = function() {
+		console.log($scope.wish)
+
+		$ionicPopup.show({
+			title: "Are You Satisfied?",
+			template: "Glad to hear that you're happy with what the wish picker has done. Press 'Continue' to confirm your happiness and we will reward both of you!",
+			buttons:[{
+				text: "Cancel"
+			}, {
+				text: "Continue",
+				onTap: function(e) {
+					apis.assign.put(session.currentUserID(), $scope.wish.id, {}, {
+						fulfill_status: "Wish-er marked as fulfilled"
+					}).success(function(response) {
+						console.log(response)
+						$ionicPopup.show({
+							title: "Wish Status Updated",
+							buttons:[{
+								text: "OK",
+								onTap: function(e) {
+									$scope.activities.push({
+										image: "./img/avatars/" + $scope.wish.user_id % 8  + ".svg",
+										description: "Wish Is Satisfying!",
+										time: new Date()
+									})
+								}
+							}]
+						})
+
+					}).error(function(response){
+						console.log(response)
+					})
+				}
+			}]
+		})
+	}
+
+	$scope.wisherMarkNotFulfill = function() {
+		console.log($scope.wish)
+
+		$ionicPopup.show({
+			title: "Aren't You Satisfied?",
+			template: "Sorry to hear that you are not satisfied, but sometimes we're not appriciating what others do, but intead, their willing to help us. " + 
+					  "Mark the wish as unsatisfied will not gain you anything, but it may hurt someone who has ever tried to help. If you change your mind, please press 'Cancel'",
+			buttons:[{
+				text: "Cancel"
+			}, {
+				text: "Continue",
+				onTap: function(e) {
+					apis.assign.put(session.currentUserID(), $scope.wish.id, {}, {
+						fulfill_status: "Wish-er marked as unfulfilled"
+					}).success(function(response) {
+						console.log(response)
+						$ionicPopup.show({
+							title: "Wish Status Updated",
+							buttons:[{
+								text: "OK",
+								onTap: function(e) {
+									$scope.activities.push({
+										image: "./img/avatars/" + $scope.wish.user_id % 8  + ".svg",
+										description: "Wish Is Not Satisfying :(",
 										time: new Date()
 									})
 								}
