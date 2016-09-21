@@ -1,4 +1,4 @@
-module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis) {
+module.controller('WishDetailCtrl', function($scope, $location, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis) {
 
 	$scope.session = session;
 
@@ -207,6 +207,14 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 		} else {
 			return "button-energized";
 		}
+	}
+
+	$scope.mapThumbnailDidClick = function() {
+		$location.path($scope.nativeMapURL())
+	}
+
+	$scope.nativeMapURL = function() {
+		return "http://maps.apple.com/?ll=" + $scope.wish.longitude + "," + $scope.wish.latitude
 	}
 
 	$scope.thumbnailURL = function(lat, long) {
