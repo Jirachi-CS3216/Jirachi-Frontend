@@ -34,8 +34,6 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 				indicator.showNetworkDownIndicator();
 			}
 
-			console.log(data)
-
 			var myWishes = data.self
 			// if (myWishes.length !== $scope.myWishes.length) {
 				myWishes.forEach(function(wish){
