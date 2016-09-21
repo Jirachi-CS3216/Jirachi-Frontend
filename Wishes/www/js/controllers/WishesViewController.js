@@ -37,7 +37,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			console.log(data)
 
 			var myWishes = data.self
-			if (myWishes.length !== $scope.myWishes.length) {
+			// if (myWishes.length !== $scope.myWishes.length) {
 				myWishes.forEach(function(wish){
 					var expiredDate = new Date(wish.created_at)
 					wish.time = expiredDate;
@@ -49,13 +49,13 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 				})
 
 				$scope.myWishes = myWishes;
-			}
+			// }
 
 			$scope.isMyWishesLoading = false
 
 
 			var othersWishes = data.others
-			if (othersWishes.length !== $scope.othersWishes.length) {
+			// if (othersWishes.length !== $scope.othersWishes.length) {
 				othersWishes.forEach(function(wish){
 					var expiredDate = new Date(wish.created_at)
 					wish.time = expiredDate;
@@ -67,7 +67,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 				})
 
 				$scope.othersWishes = othersWishes;
-			}
+			// }
 
 			$scope.isOthersWishesLoading = false
 		})
