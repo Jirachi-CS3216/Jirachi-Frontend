@@ -28,15 +28,32 @@
 			<div class="block-title">Wish Picker</div>
 			<div class="card timeline-card">
 				<div class="item item-avatar">
-					<img class="avatar" ng-src="./img/avatars/{{ wish.assigned_to ? wish.assigned_to : 0 % 8 }}.svg">
+					<img class="avatar" ng-src="./img/avatars/{{ wish.assigned_to ? wish.assigned_to % 8 : 0 }}.svg">
 					<div class="description"> {{ wish.assignee_display_name }}</div>
 				</div>
-				<div class="item item-icon-left" ng-show="wish.assignee_contact !== ''">
+				<div class="item item-icon-left" ng-show="wish.assignee_contact">
 					<i class="icon ion-ios-telephone"></i>
 					<div class="contact">HP: {{ wish.assignee_contact }}</div>
 				</div>
 			</div>
 		</div>
+
+<!-- 		<div class="wish-owner" ng-show="wish.user_id != session.currentUserID()">
+			<hr>
+			<div class="block-title">Wish Poster</div>
+			<div class="card timeline-card">
+				<div class="item item-avatar">
+					<img class="avatar" ng-src="./img/avatars/{{ wish.user_id % 8 }}.svg">
+					<div class="description"> {{ wish.owner_display_name }}</div>
+				</div>
+				<div class="item item-icon-left" ng-show="wish.owner_contact">
+					<i class="icon ion-ios-telephone"></i>
+					<div class="contact">HP: {{ wish.owner_contact }}</div>
+				</div>
+			</div>
+		</div> -->
+
+
 		<div class="wish-timeline">
 			<hr>
 			<div class="block-title">Activities</div>

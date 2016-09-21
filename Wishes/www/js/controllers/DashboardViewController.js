@@ -135,10 +135,37 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 	$scope.acceptWish = function(card) {
 		console.log(card)
-		apis.wish.get(card.id, {}).success(function(data, status) {
-      		console.log(data);
+		var userID = session.currentUserID()
+		apis.assign.put(userID, card.id, {}, {
+			assigned_to: userID
+		}).success(function(data, status) {
+			if (data.error) {
+				$ionicPopup.show({
+					title: "Oops, the wish has just been grabbed by another guy.",
+					templates: "Don't hesitate again next time!",
+					buttons:[{
+						text: "OK",
+						onTap: function(e) {
+							$scope.onClickTransitionOut(card)
+						}
+					}]
+				})
+			} else {
+				//wish picked successfully
+				console.log(data);
+				$ionicPopup.show({
+					title: "Wish Picked up Successfully!",
+					templates: "You may check it's status in My Wishes section!",
+					buttons:[{
+						text: "OK",
+						onTap: function(e) {
+							$scope.closeGetModal();
+						}
+					}]
+				})
+			}
       	}).error(function(data, status) {
-			
+			console.log(data);
       	})
 	}
 

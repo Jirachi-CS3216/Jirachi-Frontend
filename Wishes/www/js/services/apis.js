@@ -84,9 +84,9 @@ serviceModule
         }
     }
 
-    this.wish = {
-        get: function(wishID, parameters) {
-            return $http.get(buildUrl(apiHost + '/wishes/' + wishID, parameters), {
+    this.assign = {
+        put: function(userID, wishID, parameters, data) {
+            return $http.put(buildUrl(apiHost + '/users/' + userID + '/wishes/' + wishID, parameters), data, {
                 headers: {
                     'Authorization': 'Token "' + session.serverToken() + '"'
                 }
