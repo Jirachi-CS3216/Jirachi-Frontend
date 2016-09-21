@@ -133,4 +133,14 @@ serviceModule
             });
         }
     }
+
+    this.myRank = {
+        get: function(userID, parameters) {
+            return $http.get(buildUrl(apiHost + '/leaderboard/' + userID, parameters), {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
+            });
+        }
+    }
 });

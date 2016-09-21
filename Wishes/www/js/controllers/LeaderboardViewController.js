@@ -32,34 +32,37 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
       $scope.helpers = data.by_fulfill_wishes_count;
       $scope.wishers = data.by_wishes_count;
 
-      $scope.insertCurrentUser();
+      apis.myRank.get(session.currentUserID(), {}).success(function(data){
+        console.log(data)
+        $scope.insertCurrentUser(data.by_points, data.by_fulfill_wishes_count, data.by_wishes_count);
+      })
     }) 
   };
 
-  $scope.insertCurrentUser = function() {
+  $scope.insertCurrentUser = function(byPoints, byFulfill, byWishes) {
     if(!$scope.isUserInLeaderboard($scope.haves)) {
       $scope.haves.push({
         "id": session.currentUserID(),
         "display_name": session.currentUserDisplayName(),
         "points": session.currentUserPoints(),
-        "ranking": 1250
+        "ranking": byPoints
       });
     }
     if(!$scope.isUserInLeaderboard($scope.helpers)) {
 
       $scope.helpers.push({
-        "id": $scope.currentUserID,
-        "display_name": $scope.session.currentUserDisplayName(),
-        "points": 100,
-        "ranking": 0
+        "id": session.currentUserID(),
+        "display_name": session.currentUserDisplayName(),
+        "points": session.currentUserPickedWishesCount(),
+        "ranking": byFulfill
       });
     }
     if(!$scope.isUserInLeaderboard($scope.wishers)) {
       $scope.wishers.push({
-        "id": $scope.currentUserID,
-        "display_name": $scope.session.currentUserDisplayName(),
-        "points": 100,
-        "ranking": 0
+        "id": session.currentUserID(),
+        "display_name": session.currentUserDisplayName(),
+        "points": session.currentUserPostedWishesCount(),
+        "ranking": byWishes
       });
     }
   };

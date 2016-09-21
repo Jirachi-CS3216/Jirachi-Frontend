@@ -85,10 +85,10 @@ serviceModule.service('session', function session($window) {
     }
 
     this.currentUserPickedWishesCount = function() {
-        if (!_session || !_session.currentUser || !_session.currentUser.picked_wishes_count) {
+        if (!_session || !_session.currentUser || !_session.currentUser.fulfilled_others_wishes_count) {
             return 0;
         } else {
-            return _session.currentUser.picked_wishes_count
+            return _session.currentUser.fulfilled_others_wishes_count
         }
     }
 });
