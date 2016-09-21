@@ -102,4 +102,14 @@ serviceModule
             });
         }
     }
+
+    this.leaderboard = {
+        get: function(parameters) {
+            return $http.get(buildUrl(apiHost + '/leaderboard', parameters), {
+                headers: {
+                    'Authorization': 'Token "' + session.serverToken() + '"'
+                }
+            });
+        }
+    }
 });
