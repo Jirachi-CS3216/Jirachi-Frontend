@@ -7,13 +7,13 @@
                 <div class="list list-inset">
                     <label class="item item-input">
                         <input name="username" type="text" placeholder="Username" ng-model="data.username" ng-required="true">
-                        <div ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block"> username required</div>
+                        <div ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block"> Hey, you can't leave your name empty</div>
                     </label>
                     <label class="item item-input">
                         <input name="password" type="password" placeholder="Password" ng-model="data.password" ng-required="true" ng-minlength="6" ng-maxlength="72">
-                        <div ng-show="userForm.password.$error.minlength" class="help-block">too short</div>
-                        <div ng-show="userForm.password.$error.maxlength" class="help-block">too long</div>
-                        <div ng-show="!userForm.password.$error.minlength && !userForm.password.$error.maxlength && userForm.password.$invalid && !userForm.password.$pristine" class="help-block"> password required</div>
+                        <div ng-show="userForm.password.$error.minlength" class="help-block">Your password should contain at least 6 characters</div>
+                        <div ng-show="userForm.password.$error.maxlength" class="help-block">Your password should contain at most 72 characters</div>
+                        <div ng-show="!userForm.password.$error.minlength && !userForm.password.$error.maxlength && userForm.password.$invalid && !userForm.password.$pristine" class="help-block"> Hey, you need to set a password</div>
                     </label>
                 </div>
                 <button type="submit" class="button button-block button-positive" ng-disabled="userForm.$invalid">
