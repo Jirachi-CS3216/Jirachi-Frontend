@@ -40,7 +40,7 @@
       border-radius: 5px;
     }
 
-    .wish-contact {
+    .wish-contact, .wish-contact-n {
       line-height: 50px;
       text-align: center;
       background-color: rgba(0, 255, 0, 0.2);
@@ -48,6 +48,10 @@
       margin-bottom: 10px;
       margin-top: 10px;
       border-radius: 5px; 
+    }
+
+    .wish-contact-n {
+      background-color: rgba(255, 0, 0, 0.2);
     }
 
     .blank-space {

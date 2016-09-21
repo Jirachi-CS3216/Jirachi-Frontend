@@ -204,7 +204,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.openGetModal = function() {
 		verifyNetworkStatus()
 		$scope.getModal.show();
-		$scope.loadRandomWishes(200);
+		$scope.loadRandomWishes(400);
 	};
 
 	$scope.loadRandomWishes = function(spinnerDelay) {
@@ -269,7 +269,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		if (!$scope.map) {
 			setTimeout(function(){
 				$scope.spinnerModal.show()
-			}, 200)
+			}, 400)
 			navigator.geolocation.getCurrentPosition(function (position) {
 				$scope.spinnerModal.hide()
 		      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);

@@ -8,14 +8,17 @@
 	    </ion-header-bar>
 		<div ng-if="cards.active">
 			<td-cards class="animated pulse">
-				<td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" drag="false">
+				<td-card ng-repeat="card in cards.active track by card.id" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" drag="false">
 					<ion-content class="content-panel">
 						<div class="wish-title">{{ card.title }}</div>
 						<hr>
 						<div class="wish-description">{{ card.description }}</div>
-						<hr ng-show="card.posterHasContact">
-						<div class="wish-contact" ng-show="card.posterHasContact">
+						<hr>
+						<div class="wish-contact" ng-show="card.has_contact_number">
 							Contact Available
+						</div>
+						<div class="wish-contact-n" ng-show="!card.has_contact_number">
+							Contact Not Available
 						</div>
 						<hr ng-show="card.needs_meetup">
 						<div class="map-thumbnail" ng-click="" ng-show="card.needs_meetup">
