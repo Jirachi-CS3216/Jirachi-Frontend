@@ -1,16 +1,10 @@
-module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, auth, session, apis, indicator, SERVER_EVENTS) {
+module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, apis, indicator, SERVER_EVENTS) {
 	
 	$scope.session = session;
-
+    $scope.spinnerShouldShow = false;
+    console.log($scope.spinnerShouldShow)
     $scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
         indicator.showSessionExpiredIndicator()
-    });
-
-    $ionicModal.fromTemplateUrl('../../templates/dashboard-modal-spinner.html', {
-        scope: $scope,
-        animation: 'fade-in'
-    }).then(function(modal) {
-        $scope.spinnerModal = modal;
     });
 
     function verifyNetworkStatus(message) {
@@ -26,6 +20,7 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
     }
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
+        $scope.spinnerShouldShow = false;
    		loadStoredDetails()
         verifyNetworkStatus("Network unavailable, user details editing is disabled.")
         $scope.getLastestUserInfo()
@@ -78,13 +73,13 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
                         e.preventDefault();
                         console.log("invalid input")
                     } else {
-                        $scope.spinnerModal.show();
+                        $scope.spinnerShouldShow = true;
                         apis.updateUserInfo.put(session.currentUserID(), {}, {
                             username: session.currentUser().username,
                             old_password: $scope.updatePasswordData.oldPassword,
                             new_password: $scope.updatePasswordData.newPassword
                         }).success(function(data,status,headers,config) {
-                            $scope.spinnerModal.hide();
+                            $scope.spinnerShouldShow = false;
                             if (status === 200 && !data.error) {
                                 $scope.showPopupWithTitle("Password updated successfully!")
                                 $scope.updatePasswordData = {}
@@ -94,7 +89,7 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, $ionicModal, aut
                                 $scope.updatePasswordData = {}
                             }
                         }).error(function(data,status,headers,config) {
-                            $scope.spinnerModal.hide();
+                            $scope.spinnerShouldShow = false;
                             $scope.showPopupWithTitle("Password updated failed. Please try again later.")
                             $scope.updatePasswordData = {}
                         })
