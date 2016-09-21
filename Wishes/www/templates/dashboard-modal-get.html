@@ -8,7 +8,7 @@
 	    </ion-header-bar>
 		<div ng-if="cards.active">
 			<td-cards class="animated pulse">
-				<td-card ng-repeat="card in cards.active track by card.id" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" drag="false">
+				<td-card ng-repeat="card in cards.active track by card.id" on-destroy="cardDestroyed($index)" drag="false">
 					<ion-content class="content-panel">
 						<div class="wish-title">{{ card.title }}</div>
 						<hr>
@@ -38,8 +38,8 @@
 				</td-card>
 
 				<!-- Don't remove this, unexpeced behavior may happen -->
-				<td-card id="end-card" drag="false" disabled style="opacity: 0;">
-					<i class="icon ion-ios-refresh disable-user-behavior"></i>
+				<td-card id="end-card" drag="false" ng-click="loadRandomWishes(0)">
+					<i class="icon ion-ios-refresh disable-user-behavior" style="color: white;"></i>
 				</td-card>
 				
 			</td-cards>

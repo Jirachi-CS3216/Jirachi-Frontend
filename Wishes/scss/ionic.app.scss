@@ -29,7 +29,8 @@
   ion-spinner {
     position: absolute;
     left: calc(50vw - 32px);
-    top: calc(48vh - 32px);
+    top: calc(50vh - 32px);
+    z-index: 1000;
 
     svg {
       width: 64px;

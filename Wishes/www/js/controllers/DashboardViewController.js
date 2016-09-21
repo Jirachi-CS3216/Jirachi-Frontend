@@ -103,8 +103,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		master: Array.prototype.slice.call(wishes, 0),
 		active: Array.prototype.slice.call(wishes, 0),
 		discards: [],
-		liked: [],
-		disliked: []
 	}
 
 	$scope.cardDestroyed = function(index) {
@@ -137,7 +135,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 					buttons:[{
 						text: "OK",
 						onTap: function(e) {
-							$scope.onClickTransitionOut(card)
+							$scope.cardDestroyed(0)
 						}
 					}]
 				})
@@ -149,6 +147,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 					buttons:[{
 						text: "OK",
 						onTap: function(e) {
+							$scope.cardDestroyed(0)
 							$scope.closeGetModal();
 						}
 					}]
@@ -161,7 +160,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				buttons:[{
 					text: "OK",
 					onTap: function(e) {
-						$scope.onClickTransitionOut(card)
+						$scope.cardDestroyed(0)
 					}
 				}]
 			})
@@ -204,7 +203,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.openGetModal = function() {
 		verifyNetworkStatus()
 		$scope.getModal.show();
-		$scope.loadRandomWishes(400);
+		$scope.loadRandomWishes(0);
 	};
 
 	$scope.loadRandomWishes = function(spinnerDelay) {
@@ -219,8 +218,17 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      		longitude: position.coords.longitude
 	      	}).success(function(data, status) {
 	      		$scope.spinnerModal.hide()
-	      		wishes = data;
-	      		$scope.refreshCards();	
+
+	      		if (data.length === 0) {
+	      			$ionicPopup.show({
+	      				title: "Oops!",
+	      				template: "It seems no active wishes from others are available right now.",
+	      				buttons:[{text: "OK"}]
+	      			})
+	      		} else {
+	      			wishes = data;
+	      			$scope.refreshCards();	
+	      		}
 	      		
 	      		console.log("get random wishes successfully")
 	      		console.log(data, status)
@@ -267,9 +275,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.showLocationPicker = function() {
 		$scope.locationPickerModal.show();
 		if (!$scope.map) {
-			setTimeout(function(){
-				$scope.spinnerModal.show()
-			}, 400)
+			$scope.spinnerModal.show()
 			navigator.geolocation.getCurrentPosition(function (position) {
 				$scope.spinnerModal.hide()
 		      	$scope.currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
