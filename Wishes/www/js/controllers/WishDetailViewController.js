@@ -214,7 +214,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 	}
 
 	$scope.nativeMapURL = function() {
-		return "comgooglemapsurl://maps.google.com/?q=" + $scope.wish.latitude + "," + $scope.wish.longitude + "&zoom=16&views=traffic"
+		return "http://maps.apple.com/maps?q=" + $scope.wish.latitude + "," + $scope.wish.longitude + "&zoom=16&views=traffic"
 	}
 
 	$scope.thumbnailURL = function(lat, long) {
