@@ -9,7 +9,7 @@ service('auth', function auth($http, $state, $ionicPopup, session, apis, $window
                 username: data.username,
                 password: data.password
             }).success(function(response){
-                if (response.error !== undefined && response.error !== null && response.error !== "") {
+                if (response.message === "Authentication failed" || response.error !== undefined && response.error !== null && response.error !== "") {
                     handleLoginFailure(handler)
                 } else {
                     handleLoginSuccess(response, handler)
