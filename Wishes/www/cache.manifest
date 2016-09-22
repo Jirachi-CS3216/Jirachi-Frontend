@@ -5,13 +5,6 @@ CACHE MANIFEST
 # the cache manifest is no longer byte-for-byte
 # identical.
  
-demoimages/clownfish.jpg
-demoimages/clownfishsmall.jpg
-demoimages/flowingrock.jpg
-demoimages/flowingrocksmall.jpg
-demoimages/stones.jpg
-
-
 css/animate.min.css
 css/ionic.app.css
 css/ionic.app.min.css
@@ -35,7 +28,7 @@ js/controllers/LeaderboardViewController.js
 js/controllers/LoginViewController.js
 js/controllers/PostViewController.js
 js/controllers/SettingsViewController.js
-js/controllers/SingupViewController.js
+js/controllers/SignupViewController.js
 js/controllers/WishDetailViewController.js
 js/controllers/WishesViewController.js
 
@@ -45,7 +38,7 @@ js/modified-libs/td-cards.css
 js/services/apis.js
 js/services/auth.js
 js/services/indicator.js
-js/services/offineWishPosting.js
+js/services/offlineWishPosting.js
 js/services/session.js
 
 js/app.js
@@ -90,7 +83,7 @@ lib/ionic/scss/_button.scss
 lib/ionic/scss/_checkbox.scss
 lib/ionic/scss/_form.scss
 lib/ionic/scss/_grid.scss
-lib/ionic/scss/_item.scss
+lib/ionic/scss/_items.scss
 lib/ionic/scss/_list.scss
 lib/ionic/scss/_loading.scss
 lib/ionic/scss/_menu.scss
@@ -121,7 +114,7 @@ lib/ionic/version.json
 templates/dashboard-modal-get.html
 templates/dashboard-modal-post-modal-location-picker.html
 templates/dashboard-modal-post.html
-templates/login.html.html
+templates/login.html
 templates/signup.html
 templates/tab-activity.html
 templates/tab-dash.html
