@@ -69,46 +69,46 @@ lib/ionic/js/ionic.bundle.js
 lib/ionic/js/ionic.bundle.min.js
 lib/ionic/js/ionic.js
 lib/ionic/js/ionic.min.js
-lib/ionic/scss/ionicons/_ionicons-font.scss
-lib/ionic/scss/ionicons/_ionicons-icons.scss
-lib/ionic/scss/ionicons/_ionicons-variables.scss
-lib/ionic/scss/ionicons/ionicons.scss
-lib/ionic/scss/_action-sheet.scss
-lib/ionic/scss/_animations.scss
-lib/ionic/scss/_backdrop.scss
-lib/ionic/scss/_badge.scss
-lib/ionic/scss/_bar.scss
-lib/ionic/scss/_button-bar.scss
-lib/ionic/scss/_button.scss
-lib/ionic/scss/_checkbox.scss
-lib/ionic/scss/_form.scss
-lib/ionic/scss/_grid.scss
-lib/ionic/scss/_items.scss
-lib/ionic/scss/_list.scss
-lib/ionic/scss/_loading.scss
-lib/ionic/scss/_menu.scss
-lib/ionic/scss/_mixins.scss
-lib/ionic/scss/_modal.scss
-lib/ionic/scss/_platform.scss
-lib/ionic/scss/_popover.scss
-lib/ionic/scss/_popup.scss
-lib/ionic/scss/_progress.scss
-lib/ionic/scss/_radio.scss
-lib/ionic/scss/_range.scss
-lib/ionic/scss/_refresher.scss
-lib/ionic/scss/_reset.scss
-lib/ionic/scss/_scaffolding.scss
-lib/ionic/scss/_select.scss
-lib/ionic/scss/_slide-box.scss
-lib/ionic/scss/_slides.scss
-lib/ionic/scss/_spinner.scss
-lib/ionic/scss/_tabs.scss
-lib/ionic/scss/_toggle.scss
-lib/ionic/scss/_transitions.scss
-lib/ionic/scss/_type.scss
-lib/ionic/scss/_util.scss
-lib/ionic/scss/_variables.scss
-lib/ionic/scss/ionic.scss
+# lib/ionic/scss/ionicons/_ionicons-font.scss
+# lib/ionic/scss/ionicons/_ionicons-icons.scss
+# lib/ionic/scss/ionicons/_ionicons-variables.scss
+# lib/ionic/scss/ionicons/ionicons.scss
+# lib/ionic/scss/_action-sheet.scss
+# lib/ionic/scss/_animations.scss
+# lib/ionic/scss/_backdrop.scss
+# lib/ionic/scss/_badge.scss
+# lib/ionic/scss/_bar.scss
+# lib/ionic/scss/_button-bar.scss
+# lib/ionic/scss/_button.scss
+# lib/ionic/scss/_checkbox.scss
+# lib/ionic/scss/_form.scss
+# lib/ionic/scss/_grid.scss
+# lib/ionic/scss/_items.scss
+# lib/ionic/scss/_list.scss
+# lib/ionic/scss/_loading.scss
+# lib/ionic/scss/_menu.scss
+# lib/ionic/scss/_mixins.scss
+# lib/ionic/scss/_modal.scss
+# lib/ionic/scss/_platform.scss
+# lib/ionic/scss/_popover.scss
+# lib/ionic/scss/_popup.scss
+# lib/ionic/scss/_progress.scss
+# lib/ionic/scss/_radio.scss
+# lib/ionic/scss/_range.scss
+# lib/ionic/scss/_refresher.scss
+# lib/ionic/scss/_reset.scss
+# lib/ionic/scss/_scaffolding.scss
+# lib/ionic/scss/_select.scss
+# lib/ionic/scss/_slide-box.scss
+# lib/ionic/scss/_slides.scss
+# lib/ionic/scss/_spinner.scss
+# lib/ionic/scss/_tabs.scss
+# lib/ionic/scss/_toggle.scss
+# lib/ionic/scss/_transitions.scss
+# lib/ionic/scss/_type.scss
+# lib/ionic/scss/_util.scss
+# lib/ionic/scss/_variables.scss
+# lib/ionic/scss/ionic.scss
 lib/ionic/version.json
 
 templates/dashboard-modal-get.html
