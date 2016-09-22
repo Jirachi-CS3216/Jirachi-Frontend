@@ -37,60 +37,29 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	});
 
 
+	var isPosting = false
 	$scope.post = function() {
-		var wish = {}
-		wish.title = this.postWishTitle;
-		wish.description = this.postWishDescription;
-		wish.needs_meetup = $scope.selectedPoint !== undefined;
-		if (wish.needs_meetup) {
-			wish.address = $scope.selectedAddress;
-			wish.latitude = $scope.selectedPoint.lat()
-			wish.longitude = $scope.selectedPoint.lng()
-		}
-
-		$scope.spinnerShouldShow = true;
-		offlineWishPosting.postWish(wish);
-		$scope.closePostModal();
-
-		/*
-		if (navigator.online) {
-			apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
-				$scope.spinnerShouldShow = false;
-				if (!data.error) {
-					$ionicPopup.show({
-			            title: 'Wish Posted',
-			            template: 'You wish has been posted to the community. You may check the status in My Wishes section',
-			            buttons: [{
-			            	text: 'OK',
-			            	onTap: function(e) {
-					          $scope.closePostModal();
-					        }
-			            }]
-			        });
-				} else if (data.error.points) {
-					$ionicPopup.show({
-			            title: 'Not Enough Points',
-			            template: 'Each wish cost 100 points and you do not have enough points in your accounts. Try to pick and fulfill others\' wishes to earn points.',
-			            buttons: [{
-			            	text: 'OK',
-			            	onTap: function(e) {
-					          $scope.closePostModal();
-					        }
-			            }]
-			        });
-				} else {
-					console.log("Wish created failed")
-				}
-			}).error(function(data, status) {
-				verifyNetworkStatus("Network Unavailable")
-				console.log("Wish created failed")
-				$scope.spinnerShouldShow = false;
-			})
+		if (isPosting) {
+			console.log("blocked duplicate submission")
+			return;
 		} else {
-			console.log("offline")
-			var LOCAL_STORAGE_ID = "WishForm";
+			isPosting = true;
+			var wish = {}
+			wish.title = this.postWishTitle;
+			wish.description = this.postWishDescription;
+			wish.needs_meetup = $scope.selectedPoint !== undefined;
+			if (wish.needs_meetup) {
+				wish.address = $scope.selectedAddress;
+				wish.latitude = $scope.selectedPoint.lat()
+				wish.longitude = $scope.selectedPoint.lng()
+			}
+
+			$scope.spinnerShouldShow = true;
+			offlineWishPosting.postWish(wish, function(success){
+				$scope.closePostModal();
+				isPosting = false;
+			});
 		}
-		*/
 	}
 
 	//modals for getting wishes
