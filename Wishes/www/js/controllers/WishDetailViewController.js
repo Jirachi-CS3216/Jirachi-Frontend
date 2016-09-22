@@ -1,10 +1,11 @@
 module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis) {
 
 	$scope.session = session;
-
-	var wish = {}
-
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+		if ($scope.wish) {
+			return;
+		}
+
 		var wish = session.selectedWish;
 		if (!wish) {
 			$ionicHistory.nextViewOptions({
