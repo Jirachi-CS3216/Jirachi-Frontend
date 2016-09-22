@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS) {
+module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting) {
 	
 	$scope.session = session;
 	$scope.selectedTab = 0;
@@ -32,6 +32,8 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 
 			if (status === 299) {
 				indicator.showNetworkDownIndicator();
+			} else if (status === 200) {
+				offlineWishPosting.postFromDisk();
 			}
 
 			var myWishes = data.self

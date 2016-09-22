@@ -4,13 +4,11 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 	
 	var LOCAL_STORAGE_ID = "WishForm";
 
-	function postFromDisk() {
-		if (navigator.online) {
-			try {
-				var wish = JSON.parse($window.localStorage[LOCAL_STORAGE_ID]);
-				postWish(wish);
-			} catch (e) {
-			}
+	this.postFromDisk = function() {
+		try {
+			var wish = JSON.parse($window.localStorage[LOCAL_STORAGE_ID]);
+			this.postWish(wish);
+		} catch (e) {
 		}
 	}
 
@@ -30,6 +28,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 		if (navigator.onLine) {
 			apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
 				if (!data.error) {
+					clearFromDisk();
 					$ionicPopup.show({
 						title: 'Wish Posted',
 						template: 'You wish has been posted to the community. You may check the status in My Wishes section',
