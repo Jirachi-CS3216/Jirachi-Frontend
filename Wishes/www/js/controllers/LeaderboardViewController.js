@@ -1,4 +1,4 @@
-module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator, offlineWishPosting) {
+module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator, offlineWishPosting, $ionicScrollDelegate) {
 
   $scope.spinnerShouldShow = true;
   $scope.session = session;
@@ -36,6 +36,7 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
 
       apis.myRank.get(session.currentUserID(), {}).success(function(data){
         $scope.insertCurrentUser(data.by_points, data.by_fulfill_wishes_count, data.by_wishes_count);
+        $ionicScrollDelegate.resize();
       })
     }) 
   };
@@ -81,7 +82,7 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
      shouldShow[status] = true
      $scope.shouldShow = shouldShow
      $scope.animateClass = [["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"], ["fadeInLeft", "fadeInRight"]]
-     $scope.$apply()
+     $ionicScrollDelegate.resize();
    }, 300)
   }
 

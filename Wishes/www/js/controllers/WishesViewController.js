@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting) {
+module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $ionicScrollDelegate) {
 	
 	$scope.session = session;
 	$scope.selectedTab = 0;
@@ -52,6 +52,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			// }
 
 			$scope.isMyWishesLoading = false
+			$ionicScrollDelegate.resize();
 
 
 			var othersWishes = data.others
@@ -70,6 +71,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			// }
 
 			$scope.isOthersWishesLoading = false
+			$ionicScrollDelegate.resize();
 		})
 	}
 
