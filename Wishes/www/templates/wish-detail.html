@@ -29,7 +29,7 @@
 			<div class="card timeline-card">
 				<div class="item item-avatar">
 					<img class="avatar" ng-src="./img/avatars/{{ wish.assigned_to ? wish.assigned_to % 8 : 0 }}.svg">
-					<div class="description"> {{ wish.assignee_display_name }}</div>
+					<div class="description"> {{ wish.assignee_display_name || 'Ghost' }}</div>
 				</div>
 				<div class="item item-icon-left" ng-show="wish.assignee_phone">
 					<i class="icon ion-ios-telephone"></i>
