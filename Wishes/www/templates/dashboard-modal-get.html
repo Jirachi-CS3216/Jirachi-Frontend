@@ -7,7 +7,7 @@
 	        </button>
 	    </ion-header-bar>
 		<div ng-if="cards.active">
-			<td-cards class="animated pulse">
+			<td-cards class="animated pulse .animated-transition">
 				<td-card ng-repeat="card in cards.active track by card.id" on-destroy="cardDestroyed($index)" drag="false">
 					<ion-content class="content-panel">
 						<div class="wish-title">{{ card.title }}</div>
@@ -29,7 +29,7 @@
 					</ion-content>
 					<div class="row button-line">
 						<div class="col">
-							<button class="button button-assertive button-block" ng-click="onClickTransitionOut(card)">Discard</button>	
+							<button class="button button-assertive button-block" ng-click="discardWish();onClickTransitionOut(card)">Discard</button>	
 						</div>
 						<div class="col">
 							<button class="button button-balanced button-block" ng-click="acceptWish(card)">Accept</button>	
@@ -46,5 +46,6 @@
 	</div>
 	<div class="wish-spinner" ng-show="spinnerShouldShow">
 	    <ion-spinner icon="ripple"></ion-spinner>
+	    <div class="status-message">loading nearest wishes...</div>
 	</div>
 </ion-modal-view>

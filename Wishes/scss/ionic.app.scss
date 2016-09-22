@@ -44,4 +44,14 @@
       fill: white;
     }
   }
+
+  .status-message {
+    color: white;
+    position: absolute;
+    top: calc(50vh + 32px);
+    left: 0;
+    right: 0;
+    padding: 20px;
+    text-align: center;
+  }
 }

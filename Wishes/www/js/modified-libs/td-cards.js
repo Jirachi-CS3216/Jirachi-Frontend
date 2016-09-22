@@ -534,7 +534,7 @@
 
           var position, newTop;
           position = card.style.transform || card.style.webkitTransform;
-          newTop = Math.max(max - 25, Math.min(max, max - (max * Math.abs(amt))));
+          newTop = Math.max(max - 35, Math.min(max, max - (max * Math.abs(amt))));
           newScale = (1 - (Math.max(i - 1, Math.min(i, i - (i * Math.abs(amt)))) / 10));
           card.style.transform = card.style.webkitTransform = 'translate3d(0, ' + newTop + 'px, 0) scale('+ newScale+')';
         };
@@ -544,7 +544,7 @@
 
           var max = Math.min(cards.length, 10);
           for(var i = 1; i < cards.length; i++){
-            bringCardUp(cards[i], amt, 25 * i, i);
+            bringCardUp(cards[i], amt, 35 * i, i);
           }
         };
 

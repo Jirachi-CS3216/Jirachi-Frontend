@@ -1,4 +1,4 @@
-module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting, TDCardDelegate) {
 	$scope.session = session;
 	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
         indicator.showSessionExpiredIndicator()
@@ -142,8 +142,11 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	}
 
 
-	//The following is disabled right now
+	$scope.discardWish = function() {
 
+	}
+
+	//The following is disabled right now
 	$scope.$on('removeCard', function(event, element, card) {
 		console.log('removeCard');
 		var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
@@ -189,19 +192,24 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      		latitude: position.coords.latitude,
 	      		longitude: position.coords.longitude
 	      	}).success(function(data, status) {
-	      		$scope.spinnerShouldShow = false;
 	      		if (data.length === 0) {
 	      			$ionicPopup.show({
 	      				title: "Oops!",
 	      				template: "It seems no active wishes from others are available right now.",
-	      				buttons:[{text: "OK"}]
+	      				buttons:[{
+	      					text: "OK",
+	      					onTap: function(e) {
+	      						$scope.spinnerShouldShow = false;
+	      					}
+	      				}]
 	      			})
 	      		} else {
 	      			wishes = data;
-	      			$scope.refreshCards();	
+	      			$scope.refreshCards();
+	      			$timeout(function(){
+	      				$scope.spinnerShouldShow = false;
+	      			}, 500)
 	      		}
-	      		console.log("get random wishes successfully")
-	      		console.log(data, status)
 	      	}).error(function(data, status) {
 				$scope.spinnerShouldShow = false;
 	      		console.log(data, status)
