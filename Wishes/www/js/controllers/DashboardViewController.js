@@ -1,4 +1,4 @@
-module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting) {
 	$scope.session = session;
 	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
         indicator.showSessionExpiredIndicator()
@@ -36,6 +36,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
     	$scope.locationPickerModal = modal;
 	});
 
+
 	$scope.post = function() {
 		var wish = {}
 		wish.title = this.postWishTitle;
@@ -48,38 +49,48 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		}
 
 		$scope.spinnerShouldShow = true;
-		apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
-			$scope.spinnerShouldShow = false;
-			if (!data.error) {
-				$ionicPopup.show({
-		            title: 'Wish Posted',
-		            template: 'You wish has been posted to the community. You may check the status in My Wishes section',
-		            buttons: [{
-		            	text: 'OK',
-		            	onTap: function(e) {
-				          $scope.closePostModal();
-				        }
-		            }]
-		        });
-			} else if (data.error.points) {
-				$ionicPopup.show({
-		            title: 'Not Enough Points',
-		            template: 'Each wish cost 100 points and you do not have enough points in your accounts. Try to pick and fulfill others\' wishes to earn points.',
-		            buttons: [{
-		            	text: 'OK',
-		            	onTap: function(e) {
-				          $scope.closePostModal();
-				        }
-		            }]
-		        });
-			} else {
+		offlineWishPosting.postWish(wish);
+		$scope.closePostModal();
+
+		/*
+		if (navigator.online) {
+			apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
+				$scope.spinnerShouldShow = false;
+				if (!data.error) {
+					$ionicPopup.show({
+			            title: 'Wish Posted',
+			            template: 'You wish has been posted to the community. You may check the status in My Wishes section',
+			            buttons: [{
+			            	text: 'OK',
+			            	onTap: function(e) {
+					          $scope.closePostModal();
+					        }
+			            }]
+			        });
+				} else if (data.error.points) {
+					$ionicPopup.show({
+			            title: 'Not Enough Points',
+			            template: 'Each wish cost 100 points and you do not have enough points in your accounts. Try to pick and fulfill others\' wishes to earn points.',
+			            buttons: [{
+			            	text: 'OK',
+			            	onTap: function(e) {
+					          $scope.closePostModal();
+					        }
+			            }]
+			        });
+				} else {
+					console.log("Wish created failed")
+				}
+			}).error(function(data, status) {
+				verifyNetworkStatus("Network Unavailable")
 				console.log("Wish created failed")
-			}
-		}).error(function(data, status) {
-			verifyNetworkStatus("Network Unavailable")
-			console.log("Wish created failed")
-			$scope.spinnerShouldShow = false;
-		})
+				$scope.spinnerShouldShow = false;
+			})
+		} else {
+			console.log("offline")
+			var LOCAL_STORAGE_ID = "WishForm";
+		}
+		*/
 	}
 
 	//modals for getting wishes
