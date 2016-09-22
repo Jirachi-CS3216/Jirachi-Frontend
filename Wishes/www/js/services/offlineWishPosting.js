@@ -24,7 +24,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 		saveToDisk(null);
 	}
 
-	this.postWish = function(wish) {
+	this.postWish = function(wish, handler) {
 		if (navigator.onLine) {
 			apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
 				if (!data.error) {
@@ -35,8 +35,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 						buttons: [{
 							text: 'OK',
 							onTap: function(e) {
-								//$scope.closePostModal();
-								return true;
+								handler(true)
 							}
 						}]
 					});
@@ -47,8 +46,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 						buttons: [{
 							text: 'OK',
 							onTap: function(e) {
-								//$scope.closePostModal();
-								return true;
+								handler(true)
 							}
 						}]
 					});
@@ -56,9 +54,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 					console.log("Wish created failed")
 				}
 			}).error(function(data, status) {
-				verifyNetworkStatus("Network Unavailable")
-				console.log("Wish created failed")
-				return true;
+				handler(false)
 			})
 		} else {
 			console.log("offline")
@@ -69,8 +65,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 				buttons: [{
 					text: 'OK',
 					onTap: function(e) {
-						//$scope.closePostModal();
-						return true;
+						handler(true)
 					}
 				}]
 			});
