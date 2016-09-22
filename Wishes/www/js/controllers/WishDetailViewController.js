@@ -101,7 +101,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 		console.log($scope.wish)
 
 		$ionicPopup.show({
-			title: "Are You Satisfied?",
+			title: "I'm satisfied! :D",
 			template: "Glad to hear that you're happy with what the wish picker has done. Press 'Continue' to confirm your happiness and we will reward both of you!",
 			buttons:[{
 				text: "Cancel"
@@ -138,9 +138,8 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 		console.log($scope.wish)
 
 		$ionicPopup.show({
-			title: "Aren't You Satisfied?",
-			template: "Sorry to hear that you are not satisfied, but sometimes we're not appriciating what others do, but intead, their willing to help us. " + 
-					  "Mark the wish as unsatisfied will not gain you anything, but it may hurt someone who has ever tried to help. If you change your mind, please press 'Cancel'",
+			title: "I'm not satisfied :(",
+			template: "Clicking 'Continue' will cause both the helper and yourself to not gain any bonus points. If you do appreciate the help provided, be satisfied and click 'Cancel' instead? :)",
 			buttons:[{
 				text: "Cancel"
 			}, {
