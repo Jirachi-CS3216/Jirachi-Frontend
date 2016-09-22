@@ -6,21 +6,22 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
 		$scope.spinnerShouldShow = true;
-   		verifyNetworkStatus("Network unavailable, posting and picking wishes are disabled.");
+   		verifyNetworkStatus("Network unavailable, you can still post wish but picking wish is disabled.");
 	});
 
-    function verifyNetworkStatus(message) {
-    	apis.updateUserInfo.get(session.currentUserID(), {}).success(function(data, status){
+  function verifyNetworkStatus(message) {
+   	apis.updateUserInfo.get(session.currentUserID(), {}).success(function(data, status){
 			$scope.networkDown = (status !== 200)
 			if (status !== 200) {
 				$scope.locationPickerModal.hide()
-				$scope.postModal.hide()
 				$scope.getModal.hide()
 				$scope.spinnerShouldShow = false;
 				indicator.showNetworkDownIndicator($scope, message)
+			} else {
+				offlineWishPosting.postFromDisk()
 			}
-	    })
-    }
+	  })
+  }
 
 	$ionicModal.fromTemplateUrl('../../templates/dashboard-modal-post.html', {
 	    scope: $scope,

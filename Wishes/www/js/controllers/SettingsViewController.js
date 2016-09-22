@@ -1,4 +1,4 @@
-module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, apis, indicator, SERVER_EVENTS) {
+module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, apis, indicator, SERVER_EVENTS, offlineWishPosting) {
 	
 	$scope.session = session;
     $scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
@@ -13,6 +13,8 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
                     $scope.popup.close();
                 }
                 indicator.showNetworkDownIndicator($scope, message)
+            } else {
+                offlineWishPosting.postFromDisk()
             }
         })
     }

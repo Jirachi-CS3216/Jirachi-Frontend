@@ -1,4 +1,4 @@
-module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator) {
+module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator, offlineWishPosting) {
 
   $scope.spinnerShouldShow = true;
   $scope.session = session;
@@ -27,6 +27,8 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
       $scope.spinnerShouldShow = false;
       if (status === 299) {
         indicator.showNetworkDownIndicator();
+      } else if (status === 200) {
+        offlineWishPosting.postFromDisk();
       }
       $scope.haves = data.by_points;
       $scope.helpers = data.by_fulfill_wishes_count;
