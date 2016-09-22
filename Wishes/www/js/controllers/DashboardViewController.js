@@ -103,9 +103,14 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 			assigned_to: userID
 		}).success(function(data, status) {
 			if (data.error) {
+				console.log(data.error)
+				var b = data.error === "Assignee have too many incomplete assigned wishes."
+				var t = b ? "Too Many On-going Wishes!" : "Oops, the wish has just been grabbed by another guy."
+				var d = b ? "Complete the pending ones before accepting new wishes" : "Don't hesitate again next time!"
+
 				$ionicPopup.show({
-					title: "Oops, the wish has just been grabbed by another guy.",
-					templates: "Don't hesitate again next time!",
+					title: t,
+					template: d,
 					buttons:[{
 						text: "OK",
 						onTap: function(e) {
