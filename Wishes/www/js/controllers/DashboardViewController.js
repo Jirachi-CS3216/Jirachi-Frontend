@@ -357,7 +357,13 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		}
 	}
 
-	
+	$scope.$on('modal.shown',function() {
+     $timeout(function(){
+          if( $document[0].body.classList.contains('loading-active')) {
+              $document[0].body.classList.remove('loading-active');
+          }
+      },50);
+	});
 
 	// End of Map
 
