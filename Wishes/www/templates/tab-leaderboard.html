@@ -34,6 +34,9 @@
                     </div>
                 </div>
             </div>
+            <div class="placeholder" ng-if="haves.length <= 0">
+                Oops, seems that you're offline now. Come back later!
+            </div>
         </div>
 
         <div class="helpers" ng-show="shouldShow[1]">
@@ -63,6 +66,9 @@
                     </div>
                 </div>   
             </div>
+            <div class="placeholder" ng-if="helpers.length <= 0">
+                Oops, seems that you're offline now. Come back later!
+            </div>
         </div>
 
         <div class="wishers" ng-show="shouldShow[2]">
@@ -91,6 +97,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="placeholder" ng-if="helpers.length <= 0">
+                Oops, seems that you're offline now. Come back later!
             </div>
         </div>
     </ion-content>
