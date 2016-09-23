@@ -113,9 +113,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 					template: d,
 					buttons:[{
 						text: "OK",
-						onTap: function(e) {
-							$scope.cardDestroyed(0)
-						}
 					}]
 				})
 			} else {
