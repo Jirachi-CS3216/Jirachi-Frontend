@@ -67,17 +67,32 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 					$scope.closePostModal();
 					isPosting = false;
 				} else {
-					$ionicPopup.show({
-						title: "Wish Posting Failed",
-						template: "You have another offline wish in pending. Please get your device online to post a new one.",
-						buttons:[{
-							text: "OK",
-							onTap: function(e){
-								$scope.closePostModal();
-								isPosting = false;		
-							}
-						}]
-					})
+					if (message === "Only One Offline Wish Can Be Cached") {
+						$ionicPopup.show({
+							title: "Wish Posting Failed",
+							template: "You have another offline wish in pending. Please get your device online to post a new one.",
+							buttons:[{
+								text: "OK",
+								onTap: function(e){
+									$scope.closePostModal();
+									isPosting = false;		
+								}
+							}]
+						})
+					} else {
+						$ionicPopup.show({
+							title: "Wish Posting Failed",
+							template: "Please remove Emojis from your post.",
+							buttons:[{
+								text: "OK",
+								onTap: function(e){
+									isPosting = false;		
+								}
+							}]
+						})
+					}
+
+					
 				}
 			});
 		}
