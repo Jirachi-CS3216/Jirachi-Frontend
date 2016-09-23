@@ -14,7 +14,6 @@ module.controller('SignupCtrl', function($scope, $state, $ionicHistory, $ionicSc
             password: data.password
         }).success(function(response) {
         	if (response.error) {
-        		console.log(response)
         		$ionicPopup.show({
 		            title: 'Username Already Existed!',
 		            buttons: [{text: 'OK'}]
@@ -34,7 +33,6 @@ module.controller('SignupCtrl', function($scope, $state, $ionicHistory, $ionicSc
 		        });
         	}
         }).error(function(response) {
-      		console.log(response)  	
         })
   	};
 

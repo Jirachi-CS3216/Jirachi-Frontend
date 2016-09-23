@@ -47,7 +47,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	var isPosting = false
 	$scope.post = function() {
 		if (isPosting) {
-			console.log("blocked duplicate submission")
 			return;
 		} else {
 			isPosting = true;
@@ -109,7 +108,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 			assigned_to: userID
 		}).success(function(data, status) {
 			if (data.error) {
-				console.log(data.error)
 				var b = data.error === "Assignee have too many incomplete assigned wishes."
 				var t = b ? "Too Many On-going Wishes!" : "Oops, the wish has just been grabbed by another guy."
 				var d = b ? "Complete the pending ones before accepting new wishes" : "Don't hesitate again next time!"
@@ -156,19 +154,16 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 	//The following is disabled right now
 	$scope.$on('removeCard', function(event, element, card) {
-		console.log('removeCard');
 		var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
 		$scope.cards.discards.push(discarded);
 	});
 
 	$scope.cardSwipedLeft = function(index) {
-		console.log('LEFT SWIPE');
 		var card = $scope.cards.active[index];
 		$scope.cards.disliked.push(card);
 	};
 	
 	$scope.cardSwipedRight = function(index) {
-		console.log('RIGHT SWIPE');
 		var card = $scope.cards.active[index];
 		$scope.cards.liked.push(card);
 	};
@@ -220,7 +215,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      		}
 	      	}).error(function(data, status) {
 				$scope.spinnerShouldShow = false;
-	      		console.log(data, status)
 	      	})
 		}, function(err) {
 			$rootScope.$broadcast("notification-should-show", {
@@ -251,7 +245,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      		}
 	      	}).error(function(data, status) {
 				$scope.spinnerShouldShow = false;
-	      		console.log(data, status)
 	      	})
 		});
 	}
@@ -350,7 +343,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
    					}
 
    				} else {
-   					console.log("Google Geocoding Failed");
    				}
    			});
 		}

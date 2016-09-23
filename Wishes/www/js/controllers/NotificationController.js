@@ -1,7 +1,6 @@
 module.controller('NotificationCtrl', function($scope, $timeout) {
-    console.log("start notification watch");
 
-    var DURATION = 5000
+    var DURATION = 3000
     $scope.notificationShowClass = ""
     $scope.notificationShouldShow = false
     $scope.iconClass = ""

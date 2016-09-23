@@ -82,10 +82,8 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 					apis.assign.put(session.currentUserID(), $scope.wish.id, {}, {
 						fulfill_status: "Do-er marked as fulfilled"
 					}).success(function(response) {
-						console.log(response)
 
 					}).error(function(response){
-						console.log(response)
 						var activity = {wishID: $scope.wish.id, fulfillStatus: "Do-er marked as fulfilled"};
 						offlineWishActivityUpdating.saveToDisk(activity);
 					})
@@ -109,7 +107,6 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 	}
 
 	$scope.wisherMarkFulfill = function() {
-		console.log($scope.wish)
 
 		$ionicPopup.show({
 			title: "I'm satisfied! :D",
@@ -122,10 +119,8 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 					apis.assign.put(session.currentUserID(), $scope.wish.id, {}, {
 						fulfill_status: "Wish-er marked as fulfilled"
 					}).success(function(response) {
-						console.log(response)
 
 					}).error(function(response){
-						console.log(response)
 						var activity = {wishID: $scope.wish.id, fulfillStatus: "Wish-er marked as fulfilled"};
 						offlineWishActivityUpdating.saveToDisk(activity);
 					})
@@ -150,7 +145,6 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 	}
 
 	$scope.wisherMarkNotFulfill = function() {
-		console.log($scope.wish)
 
 		$ionicPopup.show({
 			title: "I'm not satisfied :(",
@@ -163,9 +157,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 					apis.assign.put(session.currentUserID(), $scope.wish.id, {}, {
 						fulfill_status: "Wish-er marked as unfulfilled"
 					}).success(function(response) {
-						console.log(response)
 					}).error(function(response){
-						console.log(response)
 						var activity = {wishID: $scope.wish.id, fulfillStatus: "Wish-er marked as unfulfilled"};
 						offlineWishActivityUpdating.saveToDisk(activity);
 					})

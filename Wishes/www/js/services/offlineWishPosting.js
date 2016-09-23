@@ -41,13 +41,11 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 						message: "Points not enough :( Try to pick and fulfill others\' wishes to earn points!'"
 					});
 				} else {
-					console.log("Wish created failed")
 				}
 			}).error(function(data, status) {
 				handler(false)
 			})
 		} else {
-			console.log("offline")
 			saveToDisk(wish);
 			$rootScope.$broadcast("notification-should-show", {
 				iconClass: "ion-alert-circled",

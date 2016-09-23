@@ -78,7 +78,6 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
                     $scope.updatePasswordButtonPressed = true;
                     if (!$scope.passform || $scope.passform.$invalid || $scope.updatePasswordData.oldPassword === $scope.updatePasswordData.newPassword) {
                         e.preventDefault();
-                        console.log("invalid input")
                     } else {
                         apis.updateUserInfo.put(session.currentUserID(), {}, {
                             username: session.currentUser().username,
@@ -89,7 +88,6 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
                                 $scope.showPopupWithTitle("Password updated successfully!")
                                 $scope.updatePasswordData = {}
                             } else {
-                                console.log(data)
                                 $scope.showPopupWithTitle(data.error)
                                 $scope.updatePasswordData = {}
                             }
@@ -149,13 +147,9 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
             user: session.currentUser()
         }).success(function(data,status,headers,config) {
             if (status === 200 && !data.error) {
-                console.log("User Info Updated")
             } else {
-                console.log(data)
-                console.log("User Info Failed to update")
             }
         }).error(function(data,status,headers,config) {
-            console.log("User Info Failed to update")
         })
     }
 })
