@@ -16,7 +16,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 		if (data) {
 			$window.localStorage[LOCAL_STORAGE_ID] = JSON.stringify(data);
 		} else {
-			delete $window.localStorage[LOCAL_STORAGE_ID];
+			saveToDisk(null);
 		}
 	}
 
@@ -36,7 +36,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 					});
 					handler(true)
 					if (fromDisk) {
-						delete $window.localStorage[LOCAL_STORAGE_ID];
+						saveToDisk(null);
 					}
 				} else if (data.error.points) {
 					$rootScope.$broadcast("notification-should-show", {
@@ -46,18 +46,18 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 					});
 					handler(false)
 					if (fromDisk) {
-						delete $window.localStorage[LOCAL_STORAGE_ID];
+						saveToDisk(null);
 					}
 				} else {
 					handler(false)
 					if (fromDisk) {
-						delete $window.localStorage[LOCAL_STORAGE_ID];
+						saveToDisk(null);
 					}
 				}
 			}).error(function(data, status) {
 				handler(false)
 				if (fromDisk) {
-					delete $window.localStorage[LOCAL_STORAGE_ID];
+					saveToDisk(null);
 				}
 			})
 		} else {
