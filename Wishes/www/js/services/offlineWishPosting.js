@@ -1,6 +1,6 @@
 serviceModule.
 
-service('offlineWishPosting', function offlineWishPosting($window, session, apis, $ionicPopup) {
+service('offlineWishPosting', function offlineWishPosting($window, session, apis, $rootScope) {
 	
 	var LOCAL_STORAGE_ID = "WishForm";
 
@@ -29,26 +29,16 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 			apis.wishes.post(session.currentUserID(), {}, wish).success(function(data, status){
 				if (!data.error) {
 					clearFromDisk();
-					$ionicPopup.show({
-						title: 'Wish Posted',
-						template: 'You wish has been posted to the community. You may check the status in My Wishes section',
-						buttons: [{
-							text: 'OK',
-							onTap: function(e) {
-								handler(true)
-							}
-						}]
+					$rootScope.$broadcast("notification-should-show", {
+						iconClass: "ion-alert-circled",
+						title: "Wish Posted",
+						message: "You wish has been posted to the community. You may check the status in My Wishes section"
 					});
 				} else if (data.error.points) {
-					$ionicPopup.show({
-						title: 'Not Enough Points',
-						template: 'Each wish cost 100 points and you do not have enough points in your accounts. Try to pick and fulfill others\' wishes to earn points.',
-						buttons: [{
-							text: 'OK',
-							onTap: function(e) {
-								handler(true)
-							}
-						}]
+					$rootScope.$broadcast("notification-should-show", {
+						iconClass: "ion-alert-circled",
+						title: "Not Enough Points",
+						message: "Each wish cost 100 points and you do not have enough points in your accounts. Try to pick and fulfill others\' wishes to earn points.'"
 					});
 				} else {
 					console.log("Wish created failed")
@@ -59,15 +49,10 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 		} else {
 			console.log("offline")
 			saveToDisk(wish);
-			$ionicPopup.show({
-				title: 'Wish in progress',
-				template: 'Your are currently offline but your wish has been submitted. It will be posted once you go online. ',
-				buttons: [{
-					text: 'OK',
-					onTap: function(e) {
-						handler(true)
-					}
-				}]
+			$rootScope.$broadcast("notification-should-show", {
+				iconClass: "ion-alert-circled",
+				title: "Wish in progress",
+				message: "Your are currently offline but your wish has been submitted. It will be posted once you go online. "
 			});
 		}
 	}
