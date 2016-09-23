@@ -1,4 +1,4 @@
-module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $rootScope) {
+module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $rootScope, $state) {
 	
 	$scope.session = session;
     $scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
@@ -13,6 +13,7 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
                     $scope.popup.close();
                 }
                 $rootScope.$broadcast("notification-should-show", {
+                    state: $state.current.url,
                     iconClass: "ion-alert-circled",
                     title: "Application Offline",
                     message: message

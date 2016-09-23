@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $ionicScrollDelegate, offlineWishActivityUpdating, $rootScope) {
+module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $ionicScrollDelegate, offlineWishActivityUpdating, $rootScope, $state) {
 	
 	$scope.session = session;
 	$scope.selectedTab = 0;
@@ -32,6 +32,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			$scope.onceLoaded = true;
 			if (status === 299) {
 				$rootScope.$broadcast("notification-should-show", {
+					state: $state.current.url,
 		          	iconClass: "ion-alert-circled",
 		          	title: "Application Offline",
 		          	message: "Cached results are shown instead."

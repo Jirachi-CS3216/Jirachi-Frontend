@@ -1,4 +1,4 @@
-module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting, $rootScope, $document) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting, $rootScope, $document, $state) {
 	$scope.session = session;
 	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
         indicator.showSessionExpiredIndicator()
@@ -7,6 +7,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
 		$scope.spinnerShouldShow = true;
    		verifyNetworkStatus();
+   		console.log($state.current)
 	});
 
   function verifyNetworkStatus() {
@@ -18,6 +19,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				$scope.spinnerShouldShow = false;
 
 				$rootScope.$broadcast("notification-should-show", {
+					state: $state.current.url,
 					iconClass: "ion-alert-circled",
 					title: "Application Offline",
 					message: "You can still finish your current wish but picking wish is disabled."
@@ -232,6 +234,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      	})
 		}, function(err) {
 			$rootScope.$broadcast("notification-should-show", {
+				state: $state.current.url,
 				iconClass: "ion-alert-circled",
 				title: "Failed to Get User Location",
 				message: "Random wishes are shown."
@@ -302,6 +305,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 			}, function(err) {
 				$scope.spinnerShouldShow = false;
 				$rootScope.$broadcast("notification-should-show", {
+					state: $state.current.url,
 					iconClass: "ion-alert-circled",
 					title: "Failed to Get User Location",
 					message: "Please drag the map to select the location yourself."

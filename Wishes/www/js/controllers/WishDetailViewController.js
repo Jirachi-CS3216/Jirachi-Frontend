@@ -1,4 +1,4 @@
-module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis, offlineWishActivityUpdating, $rootScope) {
+module.controller('WishDetailCtrl', function($state, $scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis, offlineWishActivityUpdating, $rootScope) {
 
 	$scope.session = session;
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
@@ -8,6 +8,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 
 		if (!navigator.onLine) {
 			$rootScope.$broadcast("notification-should-show", {
+				state: $state.current.url,
 				iconClass: "ion-alert-circled",
 				title: "Application Offline",
 				message: "Cached results will be shown instead."
