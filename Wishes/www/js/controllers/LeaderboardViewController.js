@@ -1,6 +1,5 @@
 module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator, offlineWishPosting, $ionicScrollDelegate, $rootScope) {
 
-  $scope.spinnerShouldShow = true;
   $scope.session = session;
 
   $scope.currentUser = $scope.session.currentUser();
@@ -21,11 +20,8 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
   });
 
   $scope.getLeaderboards = function() {
-    console.log("datttttttta")
+    $scope.isLoading = true;
     apis.leaderboard.get({}).success(function(data, status, statusText, config){
-      $scope.spinnerShouldShow = false;
-      console.log("datttttttta")
-      console.log(data)
       if (status === 299) {
         $rootScope.$broadcast("notification-should-show", {
           iconClass: "ion-alert-circled",
@@ -42,13 +38,12 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
       apis.myRank.get(session.currentUserID(), {}).success(function(data){
         $scope.insertCurrentUser(data.by_points, data.by_fulfill_wishes_count, data.by_wishes_count);
         $ionicScrollDelegate.resize();
+        $scope.isLoading = false;
+      }).error(function(date){
+        $scope.isLoading = false;
       })
     }).error(function(data, status, statusText, config){
-      console.log("datttttttta")
-      console.log(data)
-      console.log(status)
-      console.log(statusText)
-      console.log(config)
+      $scope.isLoading = false;
     }) 
   };
 

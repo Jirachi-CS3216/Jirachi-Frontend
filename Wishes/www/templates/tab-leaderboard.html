@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="placeholder" ng-if="haves.length <= 0">
+            <div class="placeholder" ng-if="haves.length <= 0 && !isLoading">
                 Oops, seems that you're offline now. Come back later!
             </div>
         </div>
@@ -66,7 +66,7 @@
                     </div>
                 </div>   
             </div>
-            <div class="placeholder" ng-if="helpers.length <= 0">
+            <div class="placeholder" ng-if="helpers.length <= 0 && !isLoading">
                 Oops, seems that you're offline now. Come back later!
             </div>
         </div>
@@ -98,9 +98,13 @@
                     </div>
                 </div>
             </div>
-            <div class="placeholder" ng-if="helpers.length <= 0">
+            <div class="placeholder" ng-if="wishers.length <= 0 && !isLoading">
                 Oops, seems that you're offline now. Come back later!
             </div>
         </div>
     </ion-content>
+    <div class="wish-spinner animated" ng-show="isLoading && haves.length <= 0">
+        <ion-spinner icon="ripple"></ion-spinner>
+        <div class="status-message">loading leaderborder...</div>
+    </div>
 </ion-view>

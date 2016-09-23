@@ -4,6 +4,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 	$scope.selectedTab = 0;
 	$scope.isMyWishesLoading = true;
 	$scope.isOthersWishesLoading = true;
+	$scope.onceLoaded = false;
 	$scope.myWishes = []
 	$scope.othersWishes = []
 
@@ -27,9 +28,8 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 
 	$scope.getWishes = function() {
 		//api insertion point
-
 		apis.wishes.get(session.currentUserID(), {}).success(function(data, status, statusText, config){
-
+			$scope.onceLoaded = true;
 			if (status === 299) {
 				$rootScope.$broadcast("notification-should-show", {
 		          	iconClass: "ion-alert-circled",
@@ -70,9 +70,12 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 			})
 
 			$scope.othersWishes = othersWishes;
-
 			$scope.isOthersWishesLoading = false
 			$ionicScrollDelegate.resize();
+		}).error(function(e) {
+			$scope.onceLoaded = true;
+			$scope.isMyWishesLoading = false
+			$scope.isOthersWishesLoading = false
 		})
 	}
 
