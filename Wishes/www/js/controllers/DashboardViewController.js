@@ -6,10 +6,10 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
 		$scope.spinnerShouldShow = true;
-   		verifyNetworkStatus("Network unavailable, you can still post wish but picking wish is disabled.");
+   		verifyNetworkStatus();
 	});
 
-  function verifyNetworkStatus(message) {
+  function verifyNetworkStatus() {
    	apis.updateUserInfo.get(session.currentUserID(), {}).success(function(data, status){
 			$scope.networkDown = (status !== 200)
 			if (status !== 200) {
@@ -20,7 +20,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				$rootScope.$broadcast("notification-should-show", {
 					iconClass: "ion-alert-circled",
 					title: "Application Offline",
-					message: "Wishes will be postponed until the internet is recovered"
+					message: "You can still post wish but picking wish is disabled."
 				})
 
 			} else {

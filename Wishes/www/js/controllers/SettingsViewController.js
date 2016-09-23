@@ -27,7 +27,10 @@ module.controller('SettingsCtrl', function($scope, $ionicPopup, auth, session, a
    		loadStoredDetails()
         verifyNetworkStatus("Network unavailable, user details editing is disabled.")
         $scope.getLastestUserInfo()
-        FB.XFBML.parse();
+        
+        if (typeof(FB) != 'undefined' && FB != null ) {
+            FB.XFBML.parse();
+        }
 	});
 
     function loadStoredDetails() {

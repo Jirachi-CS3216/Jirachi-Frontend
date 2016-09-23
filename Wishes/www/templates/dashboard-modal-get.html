@@ -23,7 +23,7 @@
 						<hr ng-show="card.needs_meetup">
 						<div class="map-thumbnail" ng-click="" ng-show="card.needs_meetup">
 							<div class="address-line">{{ card.address }}</div>
-							<img ng-srcset="{{ thumbnailURL(card.latitude, card.longitude) }}">
+							<img ng-src="{{ thumbnailURL(card.latitude, card.longitude) }}" ng-srcset="{{ thumbnailURL(card.latitude, card.longitude) }}">
 						</div>
 						<div class="blank-space"></div>
 					</ion-content>
