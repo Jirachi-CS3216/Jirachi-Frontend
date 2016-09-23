@@ -17,6 +17,19 @@ css/ionic.app.css
 css/ionic.app.min.css
 css/style.css
 
+fonts/Dancing_Script/DancingScript-Bold.ttf
+fonts/Dancing_Script/DancingScript-Regular.ttf
+fonts/Lato/Lato-Black.ttf
+fonts/Lato/Lato-BlackItalic.ttf
+fonts/Lato/Lato-Bold.ttf
+fonts/Lato/Lato-BoldItalic.ttf
+fonts/Lato/Lato-Hairline.ttf
+fonts/Lato/Lato-HairlineItalic.ttf
+fonts/Lato/Lato-Light.ttf
+fonts/Lato/Lato-LightItalic.ttf
+fonts/Lato/Lato-Regular.ttf
+fonts/Lato/Lato-Italic.ttf
+
 img/marker.png
 img/background-dashboard.jpg
 img/avatars/0.svg
