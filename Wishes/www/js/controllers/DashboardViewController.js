@@ -20,7 +20,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				$rootScope.$broadcast("notification-should-show", {
 					iconClass: "ion-alert-circled",
 					title: "Application Offline",
-					message: "You can still post wish but picking wish is disabled."
+					message: "You can still finish your current wish but picking wish is disabled."
 				})
 
 			} else {
