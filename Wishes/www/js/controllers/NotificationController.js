@@ -17,11 +17,13 @@ module.controller('NotificationCtrl', function($scope, $timeout) {
         $scope.titleText = title
         $scope.messageText = message
         $scope.notificationShowClass = "notification-show"
-        $scope.$apply();
 
         $timeout(function(){
             $scope.notificationShowClass = ""
-            $scope.$apply();
         }, DURATION)
     }
+
+    $scope.$on('notification-should-show', function(event, args) {
+        $scope.showNotifciation(args.iconClass, args.title, args.message);
+    });
 })

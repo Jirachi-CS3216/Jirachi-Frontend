@@ -1,4 +1,4 @@
-module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting, TDCardDelegate) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting, $rootScope) {
 	$scope.session = session;
 	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
         indicator.showSessionExpiredIndicator()
@@ -16,7 +16,13 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				$scope.locationPickerModal.hide()
 				$scope.getModal.hide()
 				$scope.spinnerShouldShow = false;
-				indicator.showNetworkDownIndicator($scope, message)
+
+				$rootScope.$broadcast("notification-should-show", {
+					iconClass: "ion-alert-circled",
+					title: "Application Offline",
+					message: "Wishes will be postponed until the internet is recovered"
+				})	
+				// indicator.showNetworkDownIndicator($scope, message)
 			} else {
 				offlineWishPosting.postFromDisk()
 			}
