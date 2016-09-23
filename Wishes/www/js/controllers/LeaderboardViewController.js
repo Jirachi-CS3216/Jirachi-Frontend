@@ -1,4 +1,4 @@
-module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator, offlineWishPosting, $ionicScrollDelegate) {
+module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator, offlineWishPosting, $ionicScrollDelegate, $rootScope) {
 
   $scope.spinnerShouldShow = true;
   $scope.session = session;
@@ -21,12 +21,14 @@ module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, 
   });
 
   $scope.getLeaderboards = function() {
-    //api insertion point
-
     apis.leaderboard.get({}).success(function(data, status, statusText, config){
       $scope.spinnerShouldShow = false;
       if (status === 299) {
-        indicator.showNetworkDownIndicator();
+        $rootScope.$broadcast("notification-should-show", {
+          iconClass: "ion-alert-circled",
+          title: "Application Offline",
+          message: "Cached results will be shown instead."
+        })
       } else if (status === 200) {
         offlineWishPosting.postFromDisk();
       }

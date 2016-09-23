@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $ionicScrollDelegate, offlineWishActivityUpdating) {
+module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $ionicScrollDelegate, offlineWishActivityUpdating, $rootScope) {
 	
 	$scope.session = session;
 	$scope.selectedTab = 0;
@@ -31,45 +31,45 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 		apis.wishes.get(session.currentUserID(), {}).success(function(data, status, statusText, config){
 
 			if (status === 299) {
-				indicator.showNetworkDownIndicator();
+				$rootScope.$broadcast("notification-should-show", {
+		          	iconClass: "ion-alert-circled",
+		          	title: "Application Offline",
+		          	message: "Cached results are shown instead."
+		        })
 			} else if (status === 200) {
 				offlineWishPosting.postFromDisk();
 				offlineWishActivityUpdating.updateFromDisk();
 			}
 
 			var myWishes = data.self
-			// if (myWishes.length !== $scope.myWishes.length) {
-				myWishes.forEach(function(wish){
-					var expiredDate = new Date(wish.created_at)
-					wish.time = expiredDate;
-					expiredDate.setDate(expiredDate.getDate() + 20)
-					var now = Date.now()
-					wish.isExpired = now > expiredDate || (wish.fulfill_status === "Wish-er marked as fulfilled" || wish.fulfill_status === "Wish-er marked as unfulfilled")
-					wish.isPicked =  !(!wish.assigned_to) //cast to boolean
-					wish.isFulfilled = wish.fulfill_status === "fulfilled"
-				})
+			myWishes.forEach(function(wish){
+				var expiredDate = new Date(wish.created_at)
+				wish.time = expiredDate;
+				expiredDate.setDate(expiredDate.getDate() + 20)
+				var now = Date.now()
+				wish.isExpired = now > expiredDate || (wish.fulfill_status === "Wish-er marked as fulfilled" || wish.fulfill_status === "Wish-er marked as unfulfilled")
+				wish.isPicked =  !(!wish.assigned_to) //cast to boolean
+				wish.isFulfilled = wish.fulfill_status === "fulfilled"
+			})
 
-				$scope.myWishes = myWishes;
-			// }
+			$scope.myWishes = myWishes;
 
 			$scope.isMyWishesLoading = false
 			$ionicScrollDelegate.resize();
 
 
 			var othersWishes = data.others
-			// if (othersWishes.length !== $scope.othersWishes.length) {
-				othersWishes.forEach(function(wish){
-					var expiredDate = new Date(wish.created_at)
-					wish.time = expiredDate;
-					expiredDate.setDate(expiredDate.getDate() + 20)
-					var now = Date.now()
-					wish.isExpired = now > expiredDate || (wish.fulfill_status === "Wish-er marked as fulfilled" || wish.fulfill_status === "Wish-er marked as unfulfilled")
-					wish.isPicked =  !(!wish.assigned_to) //cast to boolean
-					wish.isFulfilled = wish.fulfill_status === "fulfilled"
-				})
+			othersWishes.forEach(function(wish){
+				var expiredDate = new Date(wish.created_at)
+				wish.time = expiredDate;
+				expiredDate.setDate(expiredDate.getDate() + 20)
+				var now = Date.now()
+				wish.isExpired = now > expiredDate || (wish.fulfill_status === "Wish-er marked as fulfilled" || wish.fulfill_status === "Wish-er marked as unfulfilled")
+				wish.isPicked =  !(!wish.assigned_to) //cast to boolean
+				wish.isFulfilled = wish.fulfill_status === "fulfilled"
+			})
 
-				$scope.othersWishes = othersWishes;
-			// }
+			$scope.othersWishes = othersWishes;
 
 			$scope.isOthersWishesLoading = false
 			$ionicScrollDelegate.resize();
