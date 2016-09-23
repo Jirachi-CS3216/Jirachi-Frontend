@@ -8,7 +8,7 @@ service('offlineWishActivityUpdating', function offlineWishPosting($window, sess
 			if ($window.localStorage[LOCAL_STORAGE_ID]) {
 				var activities = JSON.parse($window.localStorage[LOCAL_STORAGE_ID]);
 				activities.forEach(updateActivity);
-				clearFromDisk();
+				this.clearFromDisk();
 			}
 		} catch (e) {
 			console.log(e);
@@ -44,7 +44,7 @@ service('offlineWishActivityUpdating', function offlineWishPosting($window, sess
 		});
 	}
 
-	function clearFromDisk() {
-		saveToDisk(null);
+	this.clearFromDisk = function() {
+		this.saveToDisk(null);
 	}
 });
