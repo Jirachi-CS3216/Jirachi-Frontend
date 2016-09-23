@@ -32,13 +32,13 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 					$rootScope.$broadcast("notification-should-show", {
 						iconClass: "ion-alert-circled",
 						title: "Wish Posted",
-						message: "You wish has been posted to the community. You may check the status in My Wishes section"
+						message: "You wish has been posted to the community."
 					});
 				} else if (data.error.points) {
 					$rootScope.$broadcast("notification-should-show", {
 						iconClass: "ion-alert-circled",
 						title: "Not Enough Points",
-						message: "Each wish cost 100 points and you do not have enough points in your accounts. Try to pick and fulfill others\' wishes to earn points.'"
+						message: "Points not enough :( Try to pick and fulfill others\' wishes to earn points!'"
 					});
 				} else {
 					console.log("Wish created failed")
@@ -51,8 +51,8 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 			saveToDisk(wish);
 			$rootScope.$broadcast("notification-should-show", {
 				iconClass: "ion-alert-circled",
-				title: "Wish in progress",
-				message: "Your are currently offline but your wish has been submitted. It will be posted once you go online. "
+				title: "Offline Wish Postponed",
+				message: "Stay calm, you wish will be posted once you go online :) "
 			});
 		}
 	}
