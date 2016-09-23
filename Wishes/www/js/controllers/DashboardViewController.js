@@ -294,14 +294,14 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				}
 			}, function(err) {
 				$scope.spinnerShouldShow = false;
-				$ionicPopup.show({
-					title: "Failed to get user location.",
-					buttons:[
-						{
-							title: "OK"
-						}
-					]
+				$rootScope.$broadcast("notification-should-show", {
+					iconClass: "ion-alert-circled",
+					title: "Failed to Get User Location",
+					message: "Please drag the map to select the location yourself."
 				})
+				if (!$scope.map) {
+					intializeMap();
+				}
 			});
 		}
 	}
