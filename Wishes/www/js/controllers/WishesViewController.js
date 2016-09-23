@@ -1,4 +1,4 @@
-module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $ionicScrollDelegate) {
+module.controller('WishesCtrl', function($scope, $location, $timeout, session, apis, indicator, SERVER_EVENTS, offlineWishPosting, $ionicScrollDelegate, offlineWishActivityUpdating) {
 	
 	$scope.session = session;
 	$scope.selectedTab = 0;
@@ -34,6 +34,7 @@ module.controller('WishesCtrl', function($scope, $location, $timeout, session, a
 				indicator.showNetworkDownIndicator();
 			} else if (status === 200) {
 				offlineWishPosting.postFromDisk();
+				offlineWishActivityUpdating.updateFromDisk();
 			}
 
 			var myWishes = data.self

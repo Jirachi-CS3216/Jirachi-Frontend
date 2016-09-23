@@ -1,4 +1,4 @@
-module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis) {
+module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis, offlineWishActivityUpdating) {
 
 	$scope.session = session;
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
@@ -75,22 +75,25 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 						fulfill_status: "Do-er marked as fulfilled"
 					}).success(function(response) {
 						console.log(response)
-						$ionicPopup.show({
-							title: "Wish Status Updated",
-							buttons:[{
-								text: "OK",
-								onTap: function(e) {
-									$scope.activities.push({
-										image: "./img/avatars/" + $scope.wish.assigned_to % 8  + ".svg",
-										description: "Wish Fulfilled!",
-										time: new Date()
-									})
-								}
-							}]
-						})
 
 					}).error(function(response){
 						console.log(response)
+						var activity = {wishID: $scope.wish.id, fulfillStatus: "Do-er marked as fulfilled"};
+						offlineWishActivityUpdating.saveToDisk(activity);
+					})
+					$ionicPopup.show({
+						title: "Wish Status Updated",
+						buttons:[{
+							text: "OK",
+							onTap: function(e) {
+								$scope.activities.push({
+									image: "./img/avatars/" + $scope.wish.assigned_to % 8  + ".svg",
+									description: "Wish Fulfilled!",
+									time: new Date()
+								})
+								$scope.wish.fulfilled_at = new Date()
+							}
+						}]
 					})
 				}
 			}]
@@ -112,22 +115,26 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 						fulfill_status: "Wish-er marked as fulfilled"
 					}).success(function(response) {
 						console.log(response)
-						$ionicPopup.show({
-							title: "Wish Status Updated",
-							buttons:[{
-								text: "OK",
-								onTap: function(e) {
-									$scope.activities.push({
-										image: "./img/avatars/" + $scope.wish.user_id % 8  + ".svg",
-										description: "Wish Satisfied :D",
-										time: new Date()
-									})
-								}
-							}]
-						})
 
 					}).error(function(response){
 						console.log(response)
+						var activity = {wishID: $scope.wish.id, fulfillStatus: "Wish-er marked as fulfilled"};
+						offlineWishActivityUpdating.saveToDisk(activity);
+					})
+					$ionicPopup.show({
+						title: "Wish Status Updated",
+						buttons:[{
+							text: "OK",
+							onTap: function(e) {
+								$scope.activities.push({
+									image: "./img/avatars/" + $scope.wish.user_id % 8  + ".svg",
+									description: "Wish Satisfied :D",
+									time: new Date()
+								})
+								$scope.wish.confirmed_at = new Date()
+								$scope.wish.fulfill_status = "Wish-er marked as fulfilled"
+							}
+						}]
 					})
 				}
 			}]
@@ -149,22 +156,25 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 						fulfill_status: "Wish-er marked as unfulfilled"
 					}).success(function(response) {
 						console.log(response)
-						$ionicPopup.show({
-							title: "Wish Status Updated",
-							buttons:[{
-								text: "OK",
-								onTap: function(e) {
-									$scope.activities.push({
-										image: "./img/avatars/" + $scope.wish.user_id % 8  + ".svg",
-										description: "Wish Not Satisfied :(",
-										time: new Date()
-									})
-								}
-							}]
-						})
-
 					}).error(function(response){
 						console.log(response)
+						var activity = {wishID: $scope.wish.id, fulfillStatus: "Wish-er marked as unfulfilled"};
+						offlineWishActivityUpdating.saveToDisk(activity);
+					})
+					$ionicPopup.show({
+						title: "Wish Status Updated",
+						buttons:[{
+							text: "OK",
+							onTap: function(e) {
+								$scope.activities.push({
+									image: "./img/avatars/" + $scope.wish.user_id % 8  + ".svg",
+									description: "Wish Not Satisfied :(",
+									time: new Date()
+								})
+								$scope.wish.confirmed_at = new Date()
+								$scope.wish.fulfill_status = "Wish-er marked as unfulfilled"
+							}
+						}]
 					})
 				}
 			}]
