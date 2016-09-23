@@ -35,6 +35,9 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 						message: "You wish has been posted to the community."
 					});
 					handler(true)
+					if (fromDisk) {
+						delete $window.localStorage[LOCAL_STORAGE_ID];
+					}
 				} else if (data.error.points) {
 					$rootScope.$broadcast("notification-should-show", {
 						iconClass: "ion-alert-circled",
@@ -42,11 +45,20 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 						message: "Points not enough :( Try to pick and fulfill others\' wishes to earn points!'"
 					});
 					handler(false)
+					if (fromDisk) {
+						delete $window.localStorage[LOCAL_STORAGE_ID];
+					}
 				} else {
 					handler(false)
+					if (fromDisk) {
+						delete $window.localStorage[LOCAL_STORAGE_ID];
+					}
 				}
 			}).error(function(data, status) {
 				handler(false)
+				if (fromDisk) {
+					delete $window.localStorage[LOCAL_STORAGE_ID];
+				}
 			})
 		} else {
 			if ($window.localStorage[LOCAL_STORAGE_ID]) {
