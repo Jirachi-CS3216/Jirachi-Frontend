@@ -49,6 +49,11 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 				handler(false)
 			})
 		} else {
+			if ($window.localStorage[LOCAL_STORAGE_ID]) {
+				handler(false, "Only One Offline Wish Can Be Cached")
+				return
+			}
+
 			saveToDisk(wish);
 			$rootScope.$broadcast("notification-should-show", {
 				iconClass: "ion-archive",

@@ -61,9 +61,23 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 			}
 
 			$scope.spinnerShouldShow = true;
-			offlineWishPosting.postWish(wish, function(success){
-				$scope.closePostModal();
-				isPosting = false;
+			offlineWishPosting.postWish(wish, function(success, message){
+				if (success) {
+					$scope.closePostModal();
+					isPosting = false;
+				} else {
+					$ionicPopup.show({
+						title: "Wish Posting Failed",
+						template: "You have another offline wish in pending. Please get your device online to post a new one.",
+						buttons:[{
+							text: "OK",
+							onTap: function(e){
+								$scope.closePostModal();
+								isPosting = false;		
+							}
+						}]
+					})
+				}
 			});
 		}
 	}
@@ -123,7 +137,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				//wish picked successfully
 				$ionicPopup.show({
 					title: "Wish Picked up Successfully!",
-					templates: "You may check it's status in My Wishes section!",
+					template: "You may check it's status in My Wishes section!",
 					buttons:[{
 						text: "OK",
 						onTap: function(e) {
@@ -136,7 +150,7 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
       	}).error(function(data, status) {
 			$ionicPopup.show({
 				title: "Oops, the wish has just been grabbed by another guy.",
-				templates: "Don't hesitate again next time!",
+				template: "Don't hesitate again next time!",
 				buttons:[{
 					text: "OK",
 					onTap: function(e) {
