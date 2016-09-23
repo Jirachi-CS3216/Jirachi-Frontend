@@ -55,3 +55,54 @@
     text-align: center;
   }
 }
+
+.wish-notification-bar {
+  height: 60px;
+  position: absolute;
+  top: -65px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  color: white;
+  z-index: 900;
+  @include box-shadow(2px, 0px, 5px, rgba(0, 0, 0, 0.3));
+  transition: 0.2s ease-in-out all !important;
+
+  div {
+    background-color: transparent;
+  }
+
+  i {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    left: 15px;
+    top: 15px;
+  }
+
+  .title {
+    margin-top: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    padding-left: 60px;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .message {
+    font-size: 12px;
+    padding-left: 60px;
+
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.notification-show {
+  top: 0 !important;
+}

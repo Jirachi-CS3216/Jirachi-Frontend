@@ -31,10 +31,10 @@
 					<img class="avatar" ng-src="./img/avatars/{{ wish.assigned_to ? wish.assigned_to % 8 : 0 }}.svg">
 					<div class="description"> {{ wish.assignee_display_name || 'Ghost' }}</div>
 				</div>
-				<div class="item item-icon-left" ng-show="wish.assignee_phone">
+				<a class="item item-icon-left" ng-show="wish.assignee_phone" href="tel:{{wish.assignee_phone}}">
 					<i class="icon ion-ios-telephone"></i>
 					<div class="contact">HP: {{ wish.assignee_phone }}</div>
-				</div>
+				</a>
 			</div>
 		</div>
 
@@ -46,10 +46,10 @@
 					<img class="avatar" ng-src="./img/avatars/{{ wish ? wish.user_id % 8 : 0 }}.svg">
 					<div class="description"> {{ wish.wisher_display_name }}</div>
 				</div>
-				<div class="item item-icon-left" ng-show="wish.wisher_contact_number">
+				<a class="item item-icon-left" ng-show="wish.wisher_contact_number" href="tel:{{wish.wisher_contact_number}}">
 					<i class="icon ion-ios-telephone"></i>
 					<div class="contact">HP: {{ wish.wisher_contact_number }}</div>
-				</div>
+				</a>
 			</div>
 		</div>
 

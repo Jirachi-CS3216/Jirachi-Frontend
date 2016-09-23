@@ -1,4 +1,4 @@
-module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting, TDCardDelegate) {
+module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, indicator, session, $timeout, SERVER_EVENTS, offlineWishPosting, $rootScope) {
 	$scope.session = session;
 	$scope.$on(SERVER_EVENTS.notAuthenticated, function(event) {
         indicator.showSessionExpiredIndicator()
@@ -16,7 +16,13 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				$scope.locationPickerModal.hide()
 				$scope.getModal.hide()
 				$scope.spinnerShouldShow = false;
-				indicator.showNetworkDownIndicator($scope, message)
+
+				$rootScope.$broadcast("notification-should-show", {
+					iconClass: "ion-alert-circled",
+					title: "Application Offline",
+					message: "Wishes will be postponed until the internet is recovered"
+				})
+
 			} else {
 				offlineWishPosting.postFromDisk()
 			}
@@ -217,12 +223,36 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      		console.log(data, status)
 	      	})
 		}, function(err) {
-			$scope.spinnerShouldShow = false;
-			console.log("failed to get current location")
-			$ionicPopup.show({
-				title: "Failed to get user location.",
-				buttons:[{title: "OK"}]
+			$rootScope.$broadcast("notification-should-show", {
+				iconClass: "ion-alert-circled",
+				title: "Failed to Get User Location",
+				message: "Random wishes are shown."
 			})
+
+			apis.randomWishes.get(session.currentUserID(), {
+	      	}).success(function(data, status) {
+	      		if (data.length === 0) {
+	      			$ionicPopup.show({
+	      				title: "Oops!",
+	      				template: "It seems no active wishes from others are available right now.",
+	      				buttons:[{
+	      					text: "OK",
+	      					onTap: function(e) {
+	      						$scope.spinnerShouldShow = false;
+	      					}
+	      				}]
+	      			})
+	      		} else {
+	      			wishes = data;
+	      			$scope.refreshCards();
+	      			$timeout(function(){
+	      				$scope.spinnerShouldShow = false;
+	      			}, 500)
+	      		}
+	      	}).error(function(data, status) {
+				$scope.spinnerShouldShow = false;
+	      		console.log(data, status)
+	      	})
 		});
 	}
 	
@@ -264,14 +294,14 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 				}
 			}, function(err) {
 				$scope.spinnerShouldShow = false;
-				$ionicPopup.show({
-					title: "Failed to get user location.",
-					buttons:[
-						{
-							title: "OK"
-						}
-					]
+				$rootScope.$broadcast("notification-should-show", {
+					iconClass: "ion-alert-circled",
+					title: "Failed to Get User Location",
+					message: "Please drag the map to select the location yourself."
 				})
+				if (!$scope.map) {
+					intializeMap();
+				}
 			});
 		}
 	}
@@ -357,7 +387,13 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 		}
 	}
 
-	
+	$scope.$on('modal.shown',function() {
+     $timeout(function(){
+          if( $document[0].body.classList.contains('loading-active')) {
+              $document[0].body.classList.remove('loading-active');
+          }
+      },50);
+	});
 
 	// End of Map
 
