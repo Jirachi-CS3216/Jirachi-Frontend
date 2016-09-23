@@ -21,8 +21,8 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 					iconClass: "ion-alert-circled",
 					title: "Application Offline",
 					message: "Wishes will be postponed until the internet is recovered"
-				})	
-				// indicator.showNetworkDownIndicator($scope, message)
+				})
+
 			} else {
 				offlineWishPosting.postFromDisk()
 			}
@@ -223,12 +223,36 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	      		console.log(data, status)
 	      	})
 		}, function(err) {
-			$scope.spinnerShouldShow = false;
-			console.log("failed to get current location")
-			$ionicPopup.show({
-				title: "Failed to get user location.",
-				buttons:[{title: "OK"}]
+			$rootScope.$broadcast("notification-should-show", {
+				iconClass: "ion-alert-circled",
+				title: "Failed to Get User Location",
+				message: "Random wishes are shown."
 			})
+
+			apis.randomWishes.get(session.currentUserID(), {
+	      	}).success(function(data, status) {
+	      		if (data.length === 0) {
+	      			$ionicPopup.show({
+	      				title: "Oops!",
+	      				template: "It seems no active wishes from others are available right now.",
+	      				buttons:[{
+	      					text: "OK",
+	      					onTap: function(e) {
+	      						$scope.spinnerShouldShow = false;
+	      					}
+	      				}]
+	      			})
+	      		} else {
+	      			wishes = data;
+	      			$scope.refreshCards();
+	      			$timeout(function(){
+	      				$scope.spinnerShouldShow = false;
+	      			}, 500)
+	      		}
+	      	}).error(function(data, status) {
+				$scope.spinnerShouldShow = false;
+	      		console.log(data, status)
+	      	})
 		});
 	}
 	

@@ -12,7 +12,9 @@ module.controller('NotificationCtrl', function($scope, $timeout) {
 
     }
 
+    $scope.notificationInProgress = false
     $scope.showNotifciation = function(iconClass, title, message) {
+        $scope.notificationInProgress = true
         $scope.iconClass = iconClass
         $scope.titleText = title
         $scope.messageText = message
@@ -20,10 +22,21 @@ module.controller('NotificationCtrl', function($scope, $timeout) {
 
         $timeout(function(){
             $scope.notificationShowClass = ""
+            $scope.notificationInProgress = false
         }, DURATION)
     }
 
     $scope.$on('notification-should-show', function(event, args) {
-        $scope.showNotifciation(args.iconClass, args.title, args.message);
+        $scope.tryPostNotification(args)
     });
+
+    $scope.tryPostNotification = function(args) {
+        if ($scope.notificationInProgress) {
+            $timeout(function(){
+                $scope.tryPostNotification(args)
+            }, 4000)
+        } else {
+            $scope.showNotifciation(args.iconClass, args.title, args.message);
+        }
+    }
 })
