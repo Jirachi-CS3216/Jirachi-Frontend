@@ -1,9 +1,17 @@
-module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis, offlineWishActivityUpdating) {
+module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis, offlineWishActivityUpdating, $rootScope) {
 
 	$scope.session = session;
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
 		if ($scope.wish) {
 			return;
+		}
+
+		if (!navigator.onLine) {
+			$rootScope.$broadcast("notification-should-show", {
+				iconClass: "ion-alert-circled",
+				title: "Application Offline",
+				message: "Cached results will be shown instead."
+			})
 		}
 
 		var wish = session.selectedWish;
@@ -57,7 +65,7 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 			})
 		}
 
-	  	viewData.enableBack = true;
+		viewData.enableBack = true;
 	});
 
 
@@ -234,14 +242,14 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 
 		if (imageElement && imageElement.clientWidth !== 0 && selectedPoint) {
 			var url = "https://maps.googleapis.com/maps/api/staticmap" + 
-				  "?center=" + selectedPoint.toUrlValue() +
-				  "&zoom=" + selectedZoom +
-				  "&size=" + imageElement.clientWidth + "x150" + 
-				  "&scale=2" + 
-				  "&maptype=roadmap" + 
-				  "&markers=red%7C" + selectedPoint.toUrlValue() +
-				  "&key=" + GOOGLE_MAPE_API_KEY +
-				  " 2x"
+			"?center=" + selectedPoint.toUrlValue() +
+			"&zoom=" + selectedZoom +
+			"&size=" + imageElement.clientWidth + "x150" + 
+			"&scale=2" + 
+			"&maptype=roadmap" + 
+			"&markers=red%7C" + selectedPoint.toUrlValue() +
+			"&key=" + GOOGLE_MAPE_API_KEY +
+			" 2x"
 			return url
 		} else {
 			return ""
