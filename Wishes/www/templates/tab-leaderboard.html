@@ -49,7 +49,9 @@
                             </div>
                             <div class="text-content">
                                 <div class="name">{{ thisGuy.display_name || thisGuy.username}}</div>
-                                <div class="points">{{ thisGuy.count }} helps</div>
+                                <div class="points">
+                                    {{ thisGuy.count > 1 ? thisGuy.count + ' helps' : (thisGuy.count === 1 ? '1 help' : 'no helps') }}
+                                </div>
                             </div>
                             <div>
                                 <img class="avatar-image pull-right" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 0">
@@ -76,7 +78,9 @@
                             </div>
                             <div class="text-content">
                                 <div class="name">{{ thisGuy.display_name || thisGuy.username }}</div>
-                                <div class="points">{{ thisGuy.count }} wishes</div>
+                                <div class="points">
+                                    {{ thisGuy.count > 1 ? thisGuy.count + ' wishes' : (thisGuy.count === 1 ? '1 wish' : 'no wishes') }}
+                                </div>
                             </div>
                             <div>
                                 <img class="avatar-image pull-right" ng-src="./img/avatars/{{thisGuy.id % 8}}.svg" ng-show="$index % 2 === 0">
