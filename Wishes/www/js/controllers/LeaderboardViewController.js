@@ -1,4 +1,4 @@
-module.controller('LeaderboardCtrl', function($scope, $timeout, Chats, session, apis, SERVER_EVENTS, indicator, offlineWishPosting, $ionicScrollDelegate, $rootScope, $state) {
+module.controller('LeaderboardCtrl', function($scope, $timeout, session, apis, SERVER_EVENTS, indicator, offlineWishPosting, $ionicScrollDelegate, $rootScope, $state) {
 
   $scope.session = session;
 
