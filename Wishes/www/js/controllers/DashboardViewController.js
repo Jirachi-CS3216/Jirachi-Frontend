@@ -44,7 +44,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
     	$scope.locationPickerModal = modal;
 	});
 
-
 	var isPosting = false
 	$scope.post = function() {
 		if (isPosting) {
@@ -177,9 +176,11 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
       	})
 	}
 
-
 	$scope.discardWish = function() {
-
+		$scope.timeSwitch = true
+		$timeout(function(){
+			$scope.timeSwitch = false;
+		}, 1000)
 	}
 
 	//The following is disabled right now
