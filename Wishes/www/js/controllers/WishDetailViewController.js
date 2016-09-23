@@ -1,4 +1,4 @@
-module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis) {
+module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory, $ionicPopup, session, $state, apis, offlineWishActivityUpdating) {
 
 	$scope.session = session;
 	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
@@ -78,6 +78,8 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 
 					}).error(function(response){
 						console.log(response)
+						var activity = {wishID: $scope.wish.id, fulfillStatus: "Do-er marked as fulfilled"};
+						offlineWishActivityUpdating.saveToDisk(activity);
 					})
 					$ionicPopup.show({
 						title: "Wish Status Updated",
@@ -116,6 +118,8 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 
 					}).error(function(response){
 						console.log(response)
+						var activity = {wishID: $scope.wish.id, fulfillStatus: "Wish-er marked as fulfilled"};
+						offlineWishActivityUpdating.saveToDisk(activity);
 					})
 					$ionicPopup.show({
 						title: "Wish Status Updated",
@@ -154,6 +158,8 @@ module.controller('WishDetailCtrl', function($scope, $stateParams, $ionicHistory
 						console.log(response)
 					}).error(function(response){
 						console.log(response)
+						var activity = {wishID: $scope.wish.id, fulfillStatus: "Wish-er marked as unfulfilled"};
+						offlineWishActivityUpdating.saveToDisk(activity);
 					})
 					$ionicPopup.show({
 						title: "Wish Status Updated",
