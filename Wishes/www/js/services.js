@@ -1,7 +1,6 @@
 var serviceModule = angular.module('starter.services', []);
 
 serviceModule
-
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
