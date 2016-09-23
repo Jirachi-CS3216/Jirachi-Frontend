@@ -16,7 +16,7 @@ service('offlineWishPosting', function offlineWishPosting($window, session, apis
 		if (data) {
 			$window.localStorage[LOCAL_STORAGE_ID] = JSON.stringify(data);
 		} else {
-			saveToDisk(null);
+			delete $window.localStorage[LOCAL_STORAGE_ID];
 		}
 	}
 

@@ -7,7 +7,6 @@ module.controller('DashCtrl', function($scope, $ionicModal, $ionicPopup, apis, i
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
 		$scope.spinnerShouldShow = true;
    		verifyNetworkStatus();
-   		console.log($state.current)
 	});
 
   function verifyNetworkStatus() {
