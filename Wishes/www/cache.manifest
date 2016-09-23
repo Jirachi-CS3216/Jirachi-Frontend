@@ -31,6 +31,7 @@ js/controllers/SettingsViewController.js
 js/controllers/SignupViewController.js
 js/controllers/WishDetailViewController.js
 js/controllers/WishesViewController.js
+js/controllers/NotificationController.js
 
 js/modified-libs/td-cards.js
 js/modified-libs/td-cards.css
@@ -39,6 +40,7 @@ js/services/apis.js
 js/services/auth.js
 js/services/indicator.js
 js/services/offlineWishPosting.js
+js/services/offlineWishActivityUpdating.js
 js/services/session.js
 
 js/app.js
