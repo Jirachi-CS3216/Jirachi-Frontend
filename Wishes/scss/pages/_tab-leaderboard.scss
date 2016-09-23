@@ -53,6 +53,9 @@
   				font-size: 18px;
   				margin-top: 5px;
   				margin-bottom: 10px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
   			}
   		}
 
@@ -94,7 +97,7 @@
   	  }
 
   	  .text-content {
-  	  	left: 90px;
+  	  	left: 120px;
   	  	right: $card-row-height
   	  }
     }
@@ -119,7 +122,7 @@
 
   	  .text-content {
   	  	left: $card-row-height;
-  	  	right: 90px;
+  	  	right: 120px;
   	  }
     }
   }
