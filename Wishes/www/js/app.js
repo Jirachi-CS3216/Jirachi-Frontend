@@ -165,7 +165,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .service('wicache', function wicache($window) {
   var LOCAL_STORAGE_CACHE_ID = 'Wicache';
-  this.data = {}
+  this.data = JSON.parse($window.localStorage[LOCAL_STORAGE_CACHE_ID] || "{}");
 
   this.cacheResponse = function(response, keyObjects) {
     var key = JSON.stringify(keyObjects);
@@ -193,7 +193,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   return {
     response: function(response) {
       var config = response.config
-      if (!config.disableWicache) {
+      if (config.url.includes("http") && (!config.disableWicache || response.config.methods === "OPTIONS")) {
         wicache.cacheResponse(response, {
           method: config.method,
           url: config.url,
@@ -204,8 +204,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }, 
 
     responseError: function (response) {
-      if ((response.status === 404 || response.status === -1) && response.config.disableWicache !== true) {
-        console.log("network down: fetching from cache")
+      if ((response.status === 404 || response.status === -1) && (!response.config.disableWicache || response.config.methods === "OPTIONS")) {
         var config = response.config
         var newResponse = wicache.response({
           method: config.method,
